@@ -1,31 +1,31 @@
 # The Eden Protocol
 
-**QuantumEden’s Eden Protocol** is a quantum-resistant blockchain architecture designed to restore institutional trust, safeguard digital sovereignty, and empower veterans through civic merit and technological honor.
+**QuantumEden’s Eden Protocol** is a quantum-resistant blockchain designed to restore institutional trust, safeguard digital sovereignty, and empower veterans through civic merit and technological honor.
 
 ## Why Eden?
 
-- **Quantum Threats:** Classical cryptography is vulnerable to quantum computing.
-- **Institutional Trust:** Civic infrastructure is fragile, corrupted, and opaque.
-- **Veteran Empowerment:** Provide meaningful purpose and restore trust through veteran-led initiatives.
+- **Quantum Threats:** Classical cryptography will fail against emerging quantum computing threats.
+- **Institutional Trust:** Civic infrastructure is vulnerable, opaque, and outdated.
+- **Veteran Empowerment:** Provides purpose, meaningful engagement, and technical careers for veterans.
 
-## Key Components
+## Core Architecture
 
-- **MeritCoin Ledger**: Immutable ledger rewarding verified civic contribution.
-- **Quantum-Resistant Blockchain (EdenChain)**: Built with NIST-standard CRYSTALS algorithms.
-- **Air-Gapped Legacy Enclave (IBM 5100 Emulation)**: Offline approval system immune to AI and digital threats.
+- **MeritCoin Ledger:** Immutable blockchain ledger rewarding civic contributions and verified achievements.
+- **Quantum-Resistant Blockchain (EdenChain):** Built on NIST-standard CRYSTALS-Kyber encryption and CRYSTALS-Dilithium digital signatures for post-quantum security.
+- **QuantumEden Secure Enclave:** Air-gapped hardware and software environment acting as a cryptographic approval vault, ensuring offline verification immune to external cyber threats.
 
-## Milestones (2025)
+## Roadmap (2025)
 
-- [ ] Working blockchain testnet (Q2)
-- [ ] Secure first grant/funding round (Q2-Q3)
-- [ ] Form veteran-led LLC (QuantumEden Holdings) (Q3)
-- [ ] Launch full public beta (Q4)
+- [ ] Deploy working EdenChain blockchain testnet (Q2)
+- [ ] Secure initial funding/grants (Q2–Q3)
+- [ ] Establish veteran-owned LLC—QuantumEden Holdings (Q3)
+- [ ] Launch fully operational beta network (Q4)
 
 ## Join the Mission
 
-We seek veterans, developers, cryptographers, and dreamers.
+We invite veterans, cybersecurity professionals, blockchain developers, and visionaries to collaborate.
 
-> "The Garden is not forbidden. It is forgotten.  
-> We are planting the tree of trust, rooted in sacrifice, grown in verification, and harvested by those who remember."
+> "Society is a garden of trust, where the tree of life withers or grows.  
+> The American Dream is a vision of new Eden. An impossible hope of a world better than our own actualized one encryption at a time. Welcome to QuantumEden."
 
-*– QuantumEden*
+*— QuantumEden*
