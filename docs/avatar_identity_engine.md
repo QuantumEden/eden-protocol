@@ -26,13 +26,90 @@ To create a dynamic, cryptographically verifiable identity layer that:
 
 ---
 
-## Avatar Attributes
+## Archetypes and Symbolic Roles
 
-- **Archetype Class**: (e.g., Architect, Seer, Vanguard, Sentinel)
-- **Aura Type**: Color and behavior (based on EQ and MFQ)
-- **Eye Design**: Symbolic reflection of IQ
-- **Movement & Tools**: From Aptitude assessment
-- **Quest Branching**: Calling determines narrative arc
+### 1. The Builder (The Rebel / Artisan)
+- **Drive**: Action, innovation, trial-by-fire
+- **Traits**: Experiential, improvisational, grounded in doing
+- **MBTI**: SP types (ISTP, ESTP, ISFP, ESFP)
+- **Element**: Fire
+- **Shadow**: Destruction
+- **Mantra**: "I forge through chaos."
+- **EdenQuest Role**: Unlocks tools, pathways, and breaks narrative stasis
+
+#### Subtypes & Secondary Auras:
+- **ISTP** – The Tactician / Warrior — Scarlet
+- **ESTP** – The Daredevil / Rebel — Amber
+- **ISFP** – The Artisan / Creator — Orange
+- **ESFP** – The Performer / Jester — Crimson
+
+---
+
+### 2. The Guardian (The Sentinel / Preserver)
+- **Drive**: Order, stability, duty
+- **Traits**: Loyal, structured, tradition-anchored
+- **MBTI**: SJ types (ISTJ, ESTJ, ISFJ, ESFJ)
+- **Element**: Earth
+- **Shadow**: Tyranny
+- **Mantra**: "I uphold what endures."
+- **EdenQuest Role**: Maintains continuity, enforces the Way, preserves institutional memory
+
+#### Subtypes & Secondary Auras:
+- **ISTJ** – The Inspector / Judge — Olive
+- **ESTJ** – The Overseer / Ruler — Bronze
+- **ISFJ** – The Protector / Caregiver — Forest Green
+- **ESFJ** – The Consul / Host — Emerald
+
+---
+
+### 3. The Healer (The Seeker / Idealist)
+- **Drive**: Meaning, empathy, transformation
+- **Traits**: Introspective, moral, emotionally intelligent
+- **MBTI**: NF types (INFP, ENFP, INFJ, ENFJ)
+- **Element**: Water
+- **Shadow**: Delusion
+- **Mantra**: "I transmute pain into growth."
+- **EdenQuest Role**: Guides therapeutic quests, reveals psychological truth, restores balance
+
+#### Subtypes & Secondary Auras:
+- **INFP** – The Dreamer / Healer — Teal
+- **ENFP** – The Champion / Lover — Aqua
+- **INFJ** – The Mystic / Prophet — Indigo
+- **ENFJ** – The Mentor / Teacher — Cobalt
+
+---
+
+### 4. The Strategist (The Analyst / Architect)
+- **Drive**: Insight, logic, mastery
+- **Traits**: Abstract, strategic, knowledge-seeking
+- **MBTI**: NT types (INTJ, INTP, ENTJ, ENTP)
+- **Element**: Air
+- **Shadow**: Arrogance
+- **Mantra**: "I reveal the hidden order."
+- **EdenQuest Role**: Decodes archetypal truth, designs metaphysical structures, exposes illusions
+
+#### Subtypes & Secondary Auras:
+- **INTJ** – The Architect / Magician — Ivory
+- **INTP** – The Logician / Sage — Silver
+- **ENTJ** – The Commander / Ruler — Platinum
+- **ENTP** – The Inventor / Trickster — Pale Gold
+
+Together, these four form a complete transformation cycle:
+- **Builder creates**
+- **Guardian preserves**
+- **Healer renews**
+- **Strategist illuminates**
+
+---
+
+## EdenQuest Aura System
+
+### Visual metaphysics for identity, affinity, and symbolic resonance
+
+Each archetype features:
+- A **Primary Aura Color** (based on elemental alignment)
+- A **Secondary Aura Variant** (based on MBTI subtype)
+- A **Unique Visual Signature** in virtual space
 
 ---
 
