@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Avatar",
+  "type": "object",
+  "properties": {
+    "mbti": { "type": "string" },
+    "archetype": { "type": "string" },
+    "element": { "type": "string" },
+    "primary_aura": { "type": "string" },
+    "secondary_aura": { "type": "string" },
+    "glyphs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "eyes": { "type": "string" }
+  },
+  "required": ["mbti", "archetype", "element"]
+}
