@@ -1,56 +1,50 @@
-# Tree of Life Engine
-# Tracks user behavior, growth, and decay across symbolic skill branches
+# /src/tree_of_life/tree_of_life_engine.py
 
-from typing import Dict, Any
-import datetime
+"""
+Tree of Life Engine — Symbolic Trait System
 
-# Step 1: Define symbolic branches and default tree state
-def initialize_tree_of_life() -> Dict[str, Dict[str, Any]]:
-    branches = [
-        "discipline", "empathy", "resilience",
-        "craft", "mindfulness", "physical_care", "expression"
-    ]
-    
-    return {
-        branch: {
-            "score": 50,  # starts balanced
-            "last_updated": datetime.datetime.now().isoformat()
+Supports core trait growth, decay, and now mod-based behavioral inputs.
+"""
+
+class TreeOfLife:
+    def __init__(self):
+        self.traits = {
+            "discipline": 50,
+            "empathy": 50,
+            "resilience": 50,
+            "mindfulness": 50,
+            "vitality": 50,
+            "expression": 50
         }
-        for branch in branches
-    }
 
-# Step 2: Grow a specific branch (e.g., user completes quest or logs positive habit)
-def grow_branch(tree: Dict[str, Dict[str, Any]], branch: str, amount: int = 5) -> None:
-    if branch in tree:
-        tree[branch]["score"] = min(100, tree[branch]["score"] + amount)
-        tree[branch]["last_updated"] = datetime.datetime.now().isoformat()
+    def apply_core_effect(self, trait: str, delta: int):
+        if trait not in self.traits:
+            raise ValueError("Invalid trait")
+        self.traits[trait] += delta
+        self.traits[trait] = max(0, min(100, self.traits[trait]))
+        return self.traits[trait]
 
-# Step 3: Decay neglected branches (called during daily update)
-def decay_tree(tree: Dict[str, Dict[str, Any]], decay_rate: int = 1) -> None:
-    now = datetime.datetime.now()
-    for branch, data in tree.items():
-        last = datetime.datetime.fromisoformat(data["last_updated"])
-        days_passed = (now - last).days
-        if days_passed > 0:
-            decay_amount = decay_rate * days_passed
-            tree[branch]["score"] = max(0, tree[branch]["score"] - decay_amount)
-            tree[branch]["last_updated"] = now.isoformat()
+    def apply_mod_effect(self, trait: str, delta: int, mod_id: str, user_id: str):
+        from src.xp.xp_integrity import validate_xp_from_mod
 
-# Step 4: Get average score or health of the whole tree
-def tree_health(tree: Dict[str, Dict[str, Any]]) -> float:
-    scores = [data["score"] for data in tree.values()]
-    return sum(scores) / len(scores)
+        if trait not in self.traits:
+            raise ValueError("Invalid trait")
 
-# Optional Step 5: Print tree summary for reporting or visualization
-def print_tree_summary(tree: Dict[str, Dict[str, Any]]) -> None:
-    print("\n=== Tree of Life Summary ===")
-    for branch, data in tree.items():
-        print(f"{branch.capitalize()}: {data['score']}%")
-    print(f"Overall Health: {tree_health(tree):.2f}%\n")
+        # Validate symbolic XP change via mod approval
+        if validate_xp_from_mod(user_id, mod_id, abs(delta)):
+            self.traits[trait] += delta
+            self.traits[trait] = max(0, min(100, self.traits[trait]))
+            return self.traits[trait]
 
-# Local test routine (can be triggered from simulation)
+    def get_trait(self, trait: str):
+        return self.traits.get(trait, None)
+
+
+# Example use case
 if __name__ == "__main__":
-    tree = initialize_tree_of_life()
-    grow_branch(tree, "discipline", 10)
-    decay_tree(tree)
-    print_tree_summary(tree)
+    tree = TreeOfLife()
+    print("Original discipline:", tree.get_trait("discipline"))
+    tree.apply_core_effect("discipline", 5)
+    print("After core effect:", tree.get_trait("discipline"))
+    tree.apply_mod_effect("discipline", 10, "tai_chi_001", "user123")
+    print("After mod effect:", tree.get_trait("discipline"))
