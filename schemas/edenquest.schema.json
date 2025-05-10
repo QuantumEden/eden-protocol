@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EdenQuest",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["quest_assigned", "no_quest"]
+    },
+    "target_branch": { "type": "string" },
+    "quest": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "theme": { "type": "string" },
+        "symbol": { "type": "string" },
+        "goal": { "type": "string" }
+      },
+      "required": ["title", "theme", "symbol", "goal"]
+    }
+  },
+  "required": ["status", "target_branch", "quest"]
+}
