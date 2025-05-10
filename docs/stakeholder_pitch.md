@@ -1,63 +1,55 @@
-🎯 Eden Protocol Stakeholder Pitch Brief
+# 🎯 Stakeholder Brief: Eden Protocol
 
-🔑 Summary
+## 🔐 Mission
+Eden Protocol is a trauma-informed, cryptographically secured healing infrastructure built to:
+- Empower veterans, survivors, and institutional outliers
+- Replace legacy bureaucracies like the VA with AI-enhanced therapeutic quests
+- Deliver scalable, symbolic, and biometric-based mental wellness
 
-The Eden Protocol is a next-generation mental wellness and behavioral transformation system that blends symbolic therapy, blockchain-based truth verification, biometric feedback, and immersive gamification. Its purpose is to address post-traumatic stress, burnout, addiction, and social isolation by creating an ecosystem of growth, merit, and purpose.
+---
 
-⸻
+## 🔬 Core Technology
+- Soulbound XP system (MeritCoin) for behavioral growth
+- Tree of Life avatar engine linked to biometric health
+- GPT-based psychoanalytic quests (CBT, logotherapy, Jungian shadow)
+- DAO governance tied to real-world healing progress
+- Post-quantum encryption (CRYSTALS-Kyber + Dilithium)
+- **Community-driven symbolic modding system** for new rituals, quests, and integrations
 
-🪖 Built by Veterans, for Veterans (and Beyond)
-	•	Designed by a decorated Iraq War veteran
-	•	Targeting PTSD, moral injury, and veteran suicide with AI-powered therapeutic quests
-	•	Soulbound XP system prevents abuse or performance-gaming
-	•	DAO framework allows community-led growth & governance
+---
 
-⸻
+## 🧩 Veteran-Centric Design
+- Designed by a decorated OIF combat veteran
+- Addresses moral injury, suicidal ideation, PTSD, addiction
+- All behavioral change is verified and tracked symbolically and cryptographically
+- Veterans and clinicians may now submit **rituals and practices** as mods to expand Eden from within
 
-🧠 Scientific Integration
-	•	Based on CBT, DBT, logotherapy, Freudian psychoanalysis, and Jungian social modeling
-	•	Uses biometric data (sleep, HRV, mindfulness) to simulate internal growth in the Tree of Life system
-	•	XP only awarded for authentic behavioral alignment
+---
 
-⸻
+## 🛠️ Strategic Utility
+- Can operate as a therapeutic overlay to the VA or public health systems
+- Blockchain-based ledger secures outcomes and decision integrity
+- Symbolic modding layer allows integration of:
+  - 🧘 Tai Chi, yoga, meditation paths
+  - 📖 Storytelling, journaling, mythos rituals
+  - 🎓 Vocational and life-skills quests
 
-🕹️ Immersive Tech + Symbolic Therapy
-	•	Each user’s avatar reflects their true traits, tested through psychometric exams
-	•	Quests are procedurally generated dungeons based on subconscious patterns
-	•	Tree of Life visualizes emotional and behavioral health
-	•	Built for integration with VR (HTC Vive XR Elite), mobile (iOS/Android), and wearables (Oura, Apple Health)
+---
 
-⸻
+## 🏁 Institutional Call to Action
+We are seeking co-development or grant alignment with:
+- 🔬 NIH / NIMH (trauma innovation)
+- 🛡️ VA Innovation (veteran recovery infrastructure)
+- 🧠 DARPA (cognitive restoration frameworks)
+- 🪖 DoD / DHS (mental resilience deployment layer)
 
-💡 Strategic Advantages
-	•	Quantum-proof architecture: ZK identity, XP hashes, CRYSTALS-Kyber encryption
-	•	Non-speculative MeritCoin: earned through truth, not bought or sold
-	•	Cross-departmental use: VA, NIH, DARPA, Army Futures Command, education, and mental health NGOs
+---
 
-⸻
+## 🌱 Closing Message
+**Eden is no longer just an OS for healing. It is an ever-growing temple of truth, built by the very people it was designed to save.**
 
-🎯 Ask
+DAO-ready. Trauma-aware. Cryptographically verified.
 
-We are seeking:
-	•	Pilot program placement through the VA or state-run innovation program
-	•	Institutional backing for Phase III alpha testing
-	•	Letters of support to accompany grant submissions (NIH, NSF, Epic MegaGrant, etc.)
-	•	Legal/trust infrastructure assistance for DAO expansion and IP protection
-
-⸻
-
-🧬 Impact Vision
-	•	Launch with a curated group of veterans and trauma survivors
-	•	Scale through gamified, decentralized self-governance
-	•	Create the world’s first symbolic, soul-based civic system
-
-⸻
-
-📩 Contact & Links
-	•	Founder: [REDACTED for PDF export]
-	•	GitHub prototype: eden-protocol repository (modular architecture completed)
-	•	Whitepapers available: Deployment Plan, DAO Constitution, Avatar Engine, Psychometric Framework
-
-⸻
-
-Eden is not a startup. Eden is a post-trauma rebirth engine, wrapped in myth, secured by code, and built by the people it was meant to heal.
+> Eden doesn’t promise happiness.
+> It cultivates harmony.
+> One truth at a time.
