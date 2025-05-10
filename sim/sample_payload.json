@@ -1,0 +1,50 @@
+{
+  "avatar": {
+    "mbti": "INFJ",
+    "archetype": "The Healer",
+    "element": "Water",
+    "primary_aura": "Blue",
+    "secondary_aura": "Indigo",
+    "glyphs": ["dream", "truth"],
+    "eyes": "rippling reflection"
+  },
+  "token": "VERIFIED-ZK-TOKEN-XYZ",
+  "tree_of_life": {
+    "discipline": 72,
+    "empathy": 94,
+    "resilience": 53,
+    "craft": 61,
+    "mindfulness": 88,
+    "physical_care": 59,
+    "expression": 79,
+    "health_score": 72.28
+  },
+  "meritcoin": {
+    "level": 6,
+    "xp": 540,
+    "next_level": 600,
+    "locked": false
+  },
+  "edenquest": {
+    "status": "quest_assigned",
+    "target_branch": "resilience",
+    "quest": {
+      "title": "The Mirror of Ash",
+      "theme": "Growth through confrontation",
+      "symbol": "Smoke-covered water",
+      "goal": "Hold eye contact with your reflection in silence for 3 minutes"
+    }
+  },
+  "dao": {
+    "title": "Deploy Eden's Oracle",
+    "votes_for": 26,
+    "votes_against": 12,
+    "status": "closed",
+    "outcome": "passed"
+  },
+  "world_tree": {
+    "eden_vitality_index": 71.8,
+    "status": "Stable (Eden is Sustained)",
+    "user_count": 47
+  }
+}
