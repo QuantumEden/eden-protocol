@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XP and MeritCoin",
+  "type": "object",
+  "properties": {
+    "level": { "type": "integer", "minimum": 0 },
+    "xp": { "type": "integer", "minimum": 0 },
+    "next_level": { "type": "integer", "minimum": 0 },
+    "locked": { "type": "boolean" }
+  },
+  "required": ["level", "xp", "next_level", "locked"]
+}
