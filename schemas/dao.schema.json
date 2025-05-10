@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DAO Governance",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "votes_for": { "type": "integer", "minimum": 0 },
+    "votes_against": { "type": "integer", "minimum": 0 },
+    "voter_log": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["open", "closed"]
+    },
+    "outcome": {
+      "type": "string",
+      "enum": ["passed", "rejected"]
+    }
+  },
+  "required": ["id", "title", "description", "votes_for", "votes_against", "voter_log", "status", "outcome"]
+}
