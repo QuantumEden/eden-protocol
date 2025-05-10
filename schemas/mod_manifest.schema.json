@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Eden Mod Manifest",
+  "type": "object",
+  "required": ["mod_id", "name", "creator", "target_trait", "xp_value", "symbolic_glyph", "truth_gate"],
+  "properties": {
+    "mod_id": {
+      "type": "string",
+      "description": "Unique mod identifier (e.g., 'tai_chi_001')"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the mod"
+    },
+    "creator": {
+      "type": "string",
+      "description": "Wallet address, DAO handle, or symbolic identifier"
+    },
+    "target_trait": {
+      "type": "string",
+      "enum": ["discipline", "empathy", "resilience", "mindfulness", "vitality", "expression"],
+      "description": "Tree of Life trait affected by this mod"
+    },
+    "xp_value": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "description": "XP awarded upon completion"
+    },
+    "symbolic_glyph": {
+      "type": "string",
+      "description": "Unicode glyph or symbolic representation (e.g. '🜂')"
+    },
+    "truth_gate": {
+      "type": "string",
+      "enum": ["biometric", "journal", "voice", "ritual", "self-report"],
+      "description": "Completion verification method"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional detailed description of the symbolic journey"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional list of media or symbolic files used in the mod"
+    }
+  }
+}
