@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "User Profile Input",
+  "type": "object",
+  "properties": {
+    "mbti": {
+      "type": "string",
+      "pattern": "^(INTJ|INTP|ENTJ|ENTP|INFJ|INFP|ENFJ|ENFP|ISTJ|ISFJ|ESTJ|ESFJ|ISTP|ISFP|ESTP|ESFP)$"
+    },
+    "iq": {
+      "type": "integer",
+      "minimum": 50,
+      "maximum": 180
+    },
+    "eq": {
+      "type": "integer",
+      "minimum": 50,
+      "maximum": 180
+    },
+    "moral": {
+      "type": "string",
+      "enum": ["care", "fairness", "loyalty", "authority", "purity", "liberty"]
+    }
+  },
+  "required": ["mbti", "iq", "eq", "moral"]
+}
