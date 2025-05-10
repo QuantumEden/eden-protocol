@@ -1,0 +1,44 @@
+{
+  "quests": [
+    {
+      "title": "The Mirror of Ash",
+      "theme": "Growth through confrontation",
+      "symbol": "Smoke-covered water",
+      "target_trait": "resilience",
+      "model": "Jungian",
+      "archetypes": ["The Healer", "The Strategist"],
+      "objective": "Hold eye contact with your reflection in silence for 3 minutes.",
+      "prompt": "Your ego clings to comfort. Descend into the underworld and retrieve your truth."
+    },
+    {
+      "title": "The Labyrinth of Echoes",
+      "theme": "Breaking negative thought loops",
+      "symbol": "Endless hallway of mirrors",
+      "target_trait": "discipline",
+      "model": "CBT",
+      "archetypes": ["The Guardian", "The Builder"],
+      "objective": "Walk 10 minutes without distraction and write down every thought.",
+      "prompt": "Write down your daily failures without judgment. Choose one to fix today."
+    },
+    {
+      "title": "The Burning Bridge",
+      "theme": "Emotional regulation under fire",
+      "symbol": "A bridge over boiling water",
+      "target_trait": "expression",
+      "model": "DBT",
+      "archetypes": ["The Healer", "The Builder"],
+      "objective": "Describe how you feel in one word every minute for 5 minutes.",
+      "prompt": "You feel too much. Find the middle path: draw what silence feels like."
+    },
+    {
+      "title": "The Buried Compass",
+      "theme": "Finding meaning through suffering",
+      "symbol": "Compass wrapped in thorns",
+      "target_trait": "discipline",
+      "model": "Logotherapy",
+      "archetypes": ["The Strategist", "The Guardian"],
+      "objective": "Recall a moment of deep suffering. Define its purpose in one sentence.",
+      "prompt": "There is no meaning without struggle. Walk the long road without distraction."
+    }
+  ]
+}
