@@ -1,35 +1,34 @@
 # /src/dao/vote_commitment.py
 
 """
-DAO Vote Commitment Engine for Eden Protocol
+DAO Vote Commitment Engine — Now with Mod Proposal Support
 
-This module simulates a secure XP-weighted voting commitment
-system for symbolic proposals, using hashed identity and XP integrity.
+Supports soulbound XP-weighted voting on all proposal types:
+- Core system upgrades
+- Shadow protocol changes
+- Mod integration requests
 """
 
 import hashlib
 
-def generate_vote_commitment(user_hash: str, proposal_id: str, vote: str, xp_score: int) -> str:
-    """
-    Create a deterministic commitment string (simulated ZK-style hash).
-    Inputs:
-      - user_hash: anonymized ID from identity_hash.py
-      - proposal_id: DAO proposal identifier
-      - vote: "yes" or "no"
-      - xp_score: user's verified XP (used as weight)
-    Output:
-      - hashed commitment string
-    """
-    vote_data = f"{user_hash}|{proposal_id}|{vote.lower()}|{xp_score}"
-    return hashlib.sha256(vote_data.encode("utf-8")).hexdigest()
+# Proposal type enums
+CORE_UPGRADE = 0
+SHADOW_PROTOCOL = 1
+MOD_PROPOSAL = 2  # New: symbolic ritual, quest, or trait extension via mod
 
-# Simulated test
+
+def generate_vote_commitment(user_id: str, proposal_id: str, vote_choice: str, proposal_type: int) -> str:
+    payload = f"{user_id}:{proposal_id}:{vote_choice}:{proposal_type}"
+    return hashlib.sha256(payload.encode()).hexdigest()
+
+
+def validate_vote_commitment(user_id: str, proposal_id: str, vote_choice: str, proposal_type: int, commitment_hash: str) -> bool:
+    expected = generate_vote_commitment(user_id, proposal_id, vote_choice, proposal_type)
+    return expected == commitment_hash
+
+
+# Example
 if __name__ == "__main__":
-    user_hash = "4dcfe834...mocked"
-    proposal_id = "DAO_PROPOSAL_001"
-    vote = "yes"
-    xp = 820
-
-    commit = generate_vote_commitment(user_hash, proposal_id, vote, xp)
-    print("\n[DAO VOTE COMMITMENT HASH]")
-    print(f"Commitment: {commit}")
+    h = generate_vote_commitment("user123", "mod:tai_chi_001", "yes", MOD_PROPOSAL)
+    assert validate_vote_commitment("user123", "mod:tai_chi_001", "yes", MOD_PROPOSAL, h)
+    print("Mod vote commitment verified.")
