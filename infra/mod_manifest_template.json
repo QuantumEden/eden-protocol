@@ -1,0 +1,15 @@
+{
+  "mod_id": "tai_chi_001",
+  "name": "Tai Chi: Morning Flow",
+  "creator": "user0x8da3...",
+  "target_trait": "discipline",
+  "xp_value": 50,
+  "symbolic_glyph": "🜂",
+  "truth_gate": "biometric",
+  "description": "A 10-minute morning Tai Chi practice that strengthens discipline and body awareness. Must be completed at sunrise and tracked via movement sensor.",
+  "assets": [
+    "tai_chi_audio.mp3",
+    "visual_overlay.png",
+    "instructions.txt"
+  ]
+}
