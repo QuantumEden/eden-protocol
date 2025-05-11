@@ -1,0 +1,21 @@
+{
+  "zkrollup_enabled": false,
+  "zk_verifier": "pending_integration",
+  "zk_commitments": [
+    {
+      "user_hash": "anon_01f3a2c7",
+      "xp_total": 520,
+      "timestamp": "2025-05-10T00:00:00Z",
+      "trait_distribution": {
+        "discipline": 180,
+        "empathy": 95,
+        "resilience": 130,
+        "mindfulness": 65,
+        "vitality": 25,
+        "expression": 25
+      },
+      "proof_hash": "e3b0c44298fc1c14..."
+    }
+  ],
+  "zk_notes": "This is a placeholder format for integrating zero-knowledge XP proofs in future privacy-preserving rollups."
+}
