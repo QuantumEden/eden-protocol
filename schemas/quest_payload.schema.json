@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI-Generated Quest Payload",
+  "type": "object",
+  "required": [
+    "quest_id",
+    "title",
+    "user_id",
+    "archetype",
+    "trait_focus",
+    "difficulty",
+    "environment",
+    "steps",
+    "xp_reward",
+    "symbolic_theme"
+  ],
+  "properties": {
+    "quest_id": {
+      "type": "string",
+      "description": "Unique identifier for this symbolic quest"
+    },
+    "title": {
+      "type": "string",
+      "description": "The mythic or therapeutic name of the quest"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "The user's internal Eden identifier"
+    },
+    "archetype": {
+      "type": "string",
+      "enum": ["Builder", "Guardian", "Healer", "Strategist"],
+      "description": "Quest framing based on avatar's dominant psychological axis"
+    },
+    "trait_focus": {
+      "type": "string",
+      "enum": ["discipline", "empathy", "resilience", "mindfulness", "vitality", "expression"],
+      "description": "The Tree of Life trait being symbolically activated"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["low", "moderate", "high", "mythic"],
+      "description": "Relative shadow difficulty of this emotional challenge"
+    },
+    "environment": {
+      "type": "string",
+      "description": "The symbolic scene or setting (e.g., 'Ash Temple', 'Grief Cavern')"
+    },
+    "steps": {
+      "type": "array",
+      "description": "Ordered ritual tasks or challenges",
+      "items": {
+        "type": "object",
+        "required": ["instruction", "type", "symbol"],
+        "properties": {
+          "instruction": { "type": "string" },
+          "type": { "type": "string", "enum": ["ritual", "puzzle", "reflection", "movement", "dialogue"] },
+          "symbol": { "type": "string", "description": "Unicode glyph or archetypal motif (🜂, 🜄, 🜁, 🜃)" }
+        }
+      }
+    },
+    "xp_reward": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 250,
+      "description": "XP awarded upon verified completion"
+    },
+    "symbolic_theme": {
+      "type": "string",
+      "description": "Narrative or mythic lesson (e.g., 'Facing the buried self', 'Initiation into sorrow')"
+    }
+  }
+}
