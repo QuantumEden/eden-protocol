@@ -1,70 +1,42 @@
-# MeritCoin Leveling System
-# Manages XP, decay, thresholds, and status tied to behavioral integrity
+# Leveling System – XP, Merit, and Lock States
 
-from typing import Dict
-
-# Step 1: Define XP thresholds per level (simplified linear scale for now)
-XP_PER_LEVEL = 100
-MAX_LEVEL = 60
-
-# Step 2: Initialize player progression
-
-def initialize_merit_profile() -> Dict[str, int]:
+def initialize_merit_profile():
     return {
         "level": 1,
         "xp": 0,
-        "decay_locked": False
+        "xp_threshold": 100,
+        "locked": False
     }
 
-# Step 3: Gain XP and check for level up
+# ✅ NEW FUNCTION: XP bonus for truthful disclosure
+def calculate_disclosure_xp(disclosure_block):
+    """
+    Calculates XP reward for voluntary trauma/medical disclosure.
+    Prevents abuse by scaling rewards based on rarity and depth.
+    """
+    xp = 25  # Base reward for any disclosure
 
-def add_xp(profile: Dict[str, int], amount: int) -> None:
-    if profile["decay_locked"]:
-        return
+    diagnosis = disclosure_block.get("diagnosis", [])
+    tags = disclosure_block.get("trauma_tags", [])
+    service_connected = disclosure_block.get("service_connected", False)
 
-    profile["xp"] += amount
+    # Weighted multipliers
+    if "PTSD" in diagnosis:
+        xp += 50
+    if "TBI" in diagnosis:
+        xp += 30
+    if "depression" in diagnosis:
+        xp += 25
 
-    while profile["xp"] >= XP_PER_LEVEL and profile["level"] < MAX_LEVEL:
-        profile["xp"] -= XP_PER_LEVEL
-        profile["level"] += 1
+    if "combat" in tags:
+        xp += 20
+    if "sexual_assault" in tags:
+        xp += 40
+    if "insomnia" in tags:
+        xp += 15
 
-# Step 4: Apply XP decay (e.g., inactivity, false behavior, community regression)
+    if service_connected:
+        xp += 30
 
-def apply_decay(profile: Dict[str, int], decay_amount: int) -> None:
-    if profile["decay_locked"]:
-        return
-
-    profile["xp"] = max(0, profile["xp"] - decay_amount)
-
-# Step 5: Lock XP when behavior contradicts protocol (dishonesty, relapse, etc.)
-
-def lock_progress(profile: Dict[str, int]) -> None:
-    profile["decay_locked"] = True
-
-# Step 6: Unlock XP after redemptive behavior or quest completion
-
-def unlock_progress(profile: Dict[str, int]) -> None:
-    profile["decay_locked"] = False
-
-# Step 7: Print current status
-
-def print_merit_status(profile: Dict[str, int]) -> None:
-    print("\n=== MeritCoin Profile ===")
-    print(f"Level: {profile['level']}")
-    print(f"XP: {profile['xp']} / {XP_PER_LEVEL}")
-    print(f"Decay Locked: {profile['decay_locked']}")
-    print("==========================\n")
-
-# Local test (simulated)
-if __name__ == "__main__":
-    user = initialize_merit_profile()
-    add_xp(user, 120)
-    print_merit_status(user)
-    apply_decay(user, 30)
-    print_merit_status(user)
-    lock_progress(user)
-    add_xp(user, 100)
-    print_merit_status(user)
-    unlock_progress(user)
-    add_xp(user, 100)
-    print_merit_status(user)
+    # Cap max XP from single upload
+    return min(xp, 150)
