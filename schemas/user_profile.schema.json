@@ -1,26 +1,28 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "User Profile Input",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "User Profile Schema",
   "type": "object",
   "properties": {
     "mbti": {
       "type": "string",
-      "pattern": "^(INTJ|INTP|ENTJ|ENTP|INFJ|INFP|ENFJ|ENFP|ISTJ|ISFJ|ESTJ|ESFJ|ISTP|ISFP|ESTP|ESFP)$"
+      "description": "16-type Myers-Briggs personality code"
     },
     "iq": {
       "type": "integer",
-      "minimum": 50,
-      "maximum": 180
+      "description": "Abstract reasoning score (Raven's Matrices preferred)"
     },
     "eq": {
       "type": "integer",
-      "minimum": 50,
-      "maximum": 180
+      "description": "Emotional intelligence quotient"
     },
     "moral": {
       "type": "string",
-      "enum": ["care", "fairness", "loyalty", "authority", "purity", "liberty"]
+      "description": "Dominant moral foundation (e.g. care, liberty)"
+    },
+    "disclosure": {
+      "$ref": "./disclosure_payload.schema.json"
     }
   },
-  "required": ["mbti", "iq", "eq", "moral"]
+  "required": ["mbti", "iq", "eq", "moral"],
+  "additionalProperties": false
 }
