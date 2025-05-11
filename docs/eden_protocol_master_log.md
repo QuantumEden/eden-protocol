@@ -1,7 +1,5 @@
 # 📜 Eden Protocol Development Log (Master)
 
-> Repository Path: `/docs/eden_protocol_master_log.md`
-
 This log captures all work completed across Eden Protocol Phases 1 through 11.
 
 ---
