@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Disclosure Payload Schema",
+  "type": "object",
+  "properties": {
+    "diagnosis": {
+      "type": "array",
+      "description": "List of formal diagnoses (e.g. PTSD, TBI, Depression)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trauma_tags": {
+      "type": "array",
+      "description": "Symbolic trauma indicators or experiential keywords",
+      "items": {
+        "type": "string",
+        "enum": [
+          "combat",
+          "sexual_assault",
+          "insomnia",
+          "moral_injury",
+          "childhood_abuse",
+          "substance_dependency",
+          "betrayal",
+          "homelessness"
+        ]
+      }
+    },
+    "service_connected": {
+      "type": "boolean",
+      "description": "Indicates if trauma/condition is linked to military service"
+    },
+    "narrative": {
+      "type": "string",
+      "description": "Optional user-submitted story or symbolic summary",
+      "maxLength": 2000
+    },
+    "attachments": {
+      "type": "array",
+      "description": "Optional attached documents (PDF, FHIR/HL7 JSON)",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}
