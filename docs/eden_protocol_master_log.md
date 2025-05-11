@@ -98,4 +98,4 @@ Next up:
 
 ---
 
-> “Eden is a place we aspire to create. a better world we forge one step at a time. with the stones we have before us we can create a new world if we choose to embrace our shadows. by embracing a perspective techno-optimistic futurism we choose to not define ourselves by how the world sees us, but by how we see ourselves. This is The Eden Protocol.”
+> “Eden is not a place, but a promise. A better world forged one step at a time. With the stones of our past, we build the future — not by fleeing our shadows, but by embracing them. Through techno-optimistic futurism, we refuse to be defined by how the world sees us. Instead, we shape our destiny by how we choose to see ourselves. This is the Eden Protocol.”
