@@ -1,13 +1,13 @@
 # 🌳 Eden Protocol – Tree of Life Engine
-# Manages internal trait state, health score, and symbolic synchronization
+# Manages internal trait state, holistic health score, and symbolic group synchronization
 
 def initialize_tree_of_life() -> dict:
     """
-    Initializes a default Tree of Life for a new user with balanced baseline traits.
-    Each trait reflects one branch of psychological or behavioral growth.
+    Initializes a default Tree of Life structure for a new user with balanced baseline traits.
+    These traits reflect key domains of psychological and behavioral well-being.
 
     Returns:
-        dict: A dictionary of initial trait values
+        dict: Dictionary of six core trait values
     """
     return {
         "discipline": 50,
@@ -21,29 +21,30 @@ def initialize_tree_of_life() -> dict:
 
 def compute_health_score(tree: dict) -> float:
     """
-    Computes a user's holistic well-being score by averaging their six core traits.
+    Computes a user's holistic well-being score by averaging all six trait values.
 
     Args:
-        tree (dict): The user's Tree of Life
+        tree (dict): Tree of Life structure representing user traits
 
     Returns:
-        float: Health score on a 0–100 scale
+        float: Overall health score between 0–100
     """
     total = sum(tree.values())
     return round(total / len(tree), 2)
 
 
-def sync_tree_health(tree: dict, group_state: dict) -> dict:
+def sync_tree_health(tree: dict, group_state: dict = None) -> dict:
     """
-    Symbolic placeholder for future group synchronization logic.
-    In group rituals, a user's Tree of Life may be influenced by the collective state.
+    Placeholder for symbolic group-based Tree of Life adjustment.
+    In multiplayer rituals, group resonance may affect individual traits.
 
     Args:
-        tree (dict): Individual user's trait profile
-        group_state (dict): Symbolic group context (roles, aura, shared traits)
+        tree (dict): The user's current Tree of Life
+        group_state (dict, optional): Metadata from group ritual (aura synergy, roles, status)
 
     Returns:
-        dict: Synchronized or adjusted Tree of Life (currently unchanged)
+        dict: Adjusted Tree of Life (currently returns unchanged copy)
     """
-    # TODO: Future logic for cooperative trait healing, aura resonance, and XP boost
+    # 🧪 Future Implementation:
+    # Apply XP boosts, aura resonance modifiers, or decay mitigation here based on group synergy.
     return tree
