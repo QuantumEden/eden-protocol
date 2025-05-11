@@ -1,34 +1,36 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "UserProfile",
+  "description": "Schema for a user profile used to generate the Eden Protocol payload.",
   "type": "object",
   "required": ["mbti", "iq", "eq", "moral"],
   "properties": {
     "mbti": {
       "type": "string",
-      "description": "Myers-Briggs type (e.g., INTJ, ENFP)"
+      "description": "Myers-Briggs type (e.g., INTJ, ENFP)",
+      "pattern": "^[IE][NS][FT][JP]$"
     },
     "iq": {
       "type": "integer",
       "minimum": 50,
       "maximum": 200,
-      "description": "Cognitive intelligence score"
+      "description": "User’s IQ score, e.g. from Raven’s Progressive Matrices"
     },
     "eq": {
       "type": "integer",
       "minimum": 50,
       "maximum": 200,
-      "description": "Emotional intelligence score"
+      "description": "User’s emotional intelligence score, e.g. MSCEIT"
     },
     "moral": {
       "type": "string",
       "enum": ["care", "fairness", "loyalty", "authority", "purity", "liberty"],
-      "description": "Dominant moral foundation"
+      "description": "Dominant moral foundation of the user"
     },
     "group_opt_in": {
       "type": "boolean",
       "default": false,
-      "description": "Whether the user wishes to participate in group symbolic rituals (co-op quests)"
+      "description": "Indicates if the user consents to participating in cooperative symbolic quests (optional multiplayer)"
     }
   },
   "additionalProperties": false
