@@ -98,4 +98,4 @@ The Eden Protocol is a sanctuary of code and meaning. All code is free to view, 
 ---
 
 For grant inquiries, pitch decks, or onboarding:
-Contact: `eden@quantumeden.org`
+Contact: `bcousins@alumni.fullsail.edu`
