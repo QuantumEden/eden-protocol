@@ -1,6 +1,14 @@
-# Tree of Life Engine – Avatar Trait Mapping & Health Calculation
+# 🌳 Eden Protocol – Tree of Life Engine
+# Manages internal trait state, health score, and symbolic synchronization
 
-def initialize_tree_of_life():
+def initialize_tree_of_life() -> dict:
+    """
+    Initializes a default Tree of Life for a new user with balanced baseline traits.
+    Each trait reflects one branch of psychological or behavioral growth.
+
+    Returns:
+        dict: A dictionary of initial trait values
+    """
     return {
         "discipline": 50,
         "resilience": 50,
@@ -10,38 +18,32 @@ def initialize_tree_of_life():
         "emotional_regulation": 50
     }
 
-def compute_health_score(tree):
-    scores = list(tree.values())
-    return sum(scores) // len(scores)
 
-# ✅ NEW FUNCTION: Applies symbolic trait adjustments based on disclosures
-def apply_disclosure_adjustments(tree, disclosure_block):
+def compute_health_score(tree: dict) -> float:
     """
-    Modulates Tree of Life based on voluntary disclosure of trauma or medical history.
+    Computes a user's holistic well-being score by averaging their six core traits.
+
+    Args:
+        tree (dict): The user's Tree of Life
+
+    Returns:
+        float: Health score on a 0–100 scale
     """
-    diagnosis = disclosure_block.get("diagnosis", [])
-    tags = disclosure_block.get("trauma_tags", [])
-    service_connected = disclosure_block.get("service_connected", False)
+    total = sum(tree.values())
+    return round(total / len(tree), 2)
 
-    # Example logic: boost or weaken based on traits
-    if "PTSD" in diagnosis:
-        tree["resilience"] = max(tree["resilience"] - 10, 0)
-        tree["emotional_regulation"] = max(tree["emotional_regulation"] - 5, 0)
 
-    if "TBI" in diagnosis:
-        tree["mindfulness"] = max(tree["mindfulness"] - 5, 0)
+def sync_tree_health(tree: dict, group_state: dict) -> dict:
+    """
+    Symbolic placeholder for future group synchronization logic.
+    In group rituals, a user's Tree of Life may be influenced by the collective state.
 
-    if "insomnia" in tags:
-        tree["physical_care"] = max(tree["physical_care"] - 5, 0)
+    Args:
+        tree (dict): Individual user's trait profile
+        group_state (dict): Symbolic group context (roles, aura, shared traits)
 
-    if "sexual_assault" in tags:
-        tree["expression"] = max(tree["expression"] - 5, 0)
-
-    # Symbolic healing bonus for service-connected users
-    if service_connected:
-        tree["discipline"] = min(tree["discipline"] + 10, 100)
-        tree["resilience"] = min(tree["resilience"] + 10, 100)
-
+    Returns:
+        dict: Synchronized or adjusted Tree of Life (currently unchanged)
+    """
+    # TODO: Future logic for cooperative trait healing, aura resonance, and XP boost
     return tree
-
-# 🔁 Optionally, you may add more tag mappings over time
