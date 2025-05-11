@@ -1,77 +1,80 @@
-🚀 Eden Protocol Deployment Plan
+# 🚀 Eden Protocol – Deployment Plan
 
-🧭 Purpose
+> 🧭 Outlines the phased roadmap for launching Eden Protocol across simulation, prototype, and public DAO infrastructure. This includes grant pathways, biometric integration, and symbolic governance.
 
-This document outlines the 3-phase deployment roadmap for the Eden Protocol ecosystem, covering test environments, grant acquisition, app integration, and DAO activation.
+---
 
-⸻
+## 🌱 Phase I: Simulation & Internal Prototyping *(Now)*
 
-🌱 Phase I: Simulation & Internal Prototyping (NOW)
+### ✅ Completed:
+- Core Python backend modules
+- Symbolic simulation layers (Avatar Engine, XP, Tree of Life, Quests)
+- DAO proposal + XP-weighted voting system
+- Blockchain-ready payload architecture (Kyber/Dilithium prep)
 
-✅ Complete:
-	•	Core Python logic
-	•	Symbolic simulation layer (avatar, XP, Tree, quests)
-	•	DAO framework & XP vote system
-	•	Blockchain-ready payload architecture
+### 🛠️ To Execute:
+- Final biometric input → Tree of Life integration
+- Local test of DAO commit hash verification
+- Symbolic testnet for World Tree simulation loop
 
-🛠️ To Execute:
-	•	Final testing of biometric → Tree of Life engine
-	•	Local testing of DAO vote commitment hashes
-	•	Symbolic testnet world state loop
+### 📦 Deliverables:
+- GitHub repository with `README.md`, schemas, and contributor docs
+- Developer onboarding flow (VR and UI integrations)
 
-📦 Deliverables:
-	•	GitHub repo with README, docs, and schema
-	•	Developer onramp for VR and front-end contributors
+---
 
-⸻
+## 🌳 Phase II: App Prototyping & Grant Targeting *(Q2)*
 
-🌳 Phase II: App Prototyping & Grant Targeting (Q2)
+### 🛠️ Action Items:
+- Convert `/docs/eden_mobile_ui.md` to interactive prototype (Figma or React Native)
+- Integrate mock API endpoints for frontend testing
+- Connect wearable input data to biometric trait engine
 
-🛠️ Action Items:
-	•	Translate /docs/eden_mobile_ui.md into clickable prototype (Figma or React Native)
-	•	Integrate mock API endpoints for live frontend test
-	•	Sync wearable test data with biometric input engine
+### 🎯 Grant Targets:
+- 🎮 Epic MegaGrants – Symbolic UE5 dungeon architecture (future integration)
+- 🧬 NSF SBIR – Behavioral & cognitive science tools
+- 🧠 NIMH / PTSD therapy frameworks
+- 🛡️ DARPA – Soldier optimization systems
+- 🇺🇸 VA Innovation Office – Veteran trauma protocols
 
-🎯 Grant Targets:
-	•	Epic MegaGrants (UE5 therapeutic immersion)
-	•	NSF SBIR Phase I (behavioral health tech)
-	•	NIMH trauma therapy / PTSD prevention programs
-	•	DARPA NEXT-GEN Soldier Optimization
-	•	VA Innovation Office (veteran trauma protocol)
+> ⚠️ Unreal Engine 5 is the **target XR deployment environment**, but will not be used in prototyping phases. All symbolic logic, visual assets, and narrative loops are being built with future UE5 integration in mind.
 
-📦 Deliverables:
-	•	Working Tree of Life mobile prototype
-	•	2-page Eden Protocol summary (Phase III doc)
-	•	Stakeholder pitch deck
+### 📦 Deliverables:
+- Working Tree of Life mobile prototype
+- 2-page Eden Protocol strategic summary
+- Full stakeholder pitch deck (Phase III)
 
-⸻
+---
 
-🌍 Phase III: Public Pilot & DAO Activation (Q3–Q4)
+## 🌍 Phase III: Public Pilot & DAO Activation *(Q3–Q4)*
 
-🛠️ Action Items:
-	•	Host private alpha test with 25–50 veterans
-	•	Activate XP-based DAO using live symbolic proposals
-	•	Launch EdenChain testnet or use Polygon/ZK-L2 bridge for staging
-	•	Begin onboarding of architects, healers, strategists, and builders
+### 🛠️ Action Items:
+- Private alpha test with 25–50 veterans
+- Launch XP-based DAO for symbolic governance
+- Deploy EdenChain testnet or Polygon/ZK-L2 bridge
+- Begin onboarding symbolic archetypes: Builder, Healer, Guardian, Strategist
 
-📣 Public Tools:
-	•	Eden Protocol explainer video
-	•	World Tree public dashboard
-	•	Hero Quest onboarding path
+### 📣 Public-Facing Tools:
+- Eden Protocol explainer trailer (2–3 min)
+- Public World Tree dashboard (real-time state)
+- Hero Quest onboarding and XP tutorial path
 
-📦 Deliverables:
-	•	Soulbound XP smart contract live
-	•	DAO platform open to verified users
-	•	Grant reports and validation metrics
+### 📦 Deliverables:
+- Live soulbound XP smart contract
+- DAO platform accessible to verified contributors
+- Validation reports for grant programs + Phase II metrics
 
-⸻
+---
 
-🧬 Ongoing Quarterly Milestones (Post-Launch)
-	•	Q1 2026: Begin Unity/UE5 dungeon instance development
-	•	Q2 2026: Launch cross-platform avatar renderer (VR + mobile sync)
-	•	Q3 2026: Begin global EdenDAO onboarding
-	•	Q4 2026: Symbolic economy beta (DAO grants, mythic rewards)
+## 🧬 Ongoing Quarterly Milestones *(Post-Launch)*
 
-⸻
+| Quarter     | Milestone Description                                      |
+|-------------|-------------------------------------------------------------|
+| Q1 2026     | Begin Unreal Engine 5 symbolic dungeon development         |
+| Q2 2026     | Launch cross-platform XR avatar renderer (VR + mobile)     |
+| Q3 2026     | Global onboarding campaign for EdenDAO                     |
+| Q4 2026     | Symbolic economy beta: DAO grants + mythic reward tiers    |
 
-This deployment plan ensures symbolic alignment, technical rigor, and ethical expansion of the Eden Protocol across immersive and therapeutic frontiers.
+---
+
+> 🌐 This deployment plan balances immediate MVP realism with long-term mythic immersion. Eden Protocol evolves from simulation into symbolic infrastructure — one act of truth at a time.
