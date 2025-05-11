@@ -1,72 +1,92 @@
-# 🧬 Eden Protocol Executive Summary (Updated with Blockchain Layer)
+# 🌐 Eden Protocol System Summary
 
-## I. What Is the Eden Protocol?
-The Eden Protocol is a behavioral transformation engine that blends:
-- Symbolic therapy (CBT, logotherapy, psychoanalysis)
-- XP-based self-growth system (MeritCoin)
-- Biometric feedback (HRV, sleep, mindfulness)
-- Immersive, procedurally-generated AI quests
-- Zero-knowledge blockchain verification
-- 🧘 Community-created symbolic mods (rituals, quests, and growth practices)
-
-Eden is not a game. It is an internal architecture of truth — built to serve as a healing OS for veterans, trauma survivors, and institutional outliers.
+The Eden Protocol is a cryptographically anchored, psychometrically driven symbolic operating system designed to guide users through psychological individuation, moral alignment, and behavioral healing. Built on modular AI systems, post-quantum blockchain architecture, and narrative ritual mechanics, EdenQuest empowers users to become the hero of their own myth.
 
 ---
 
-## II. Core Components
-- **Tree of Life**: Avatar-linked growth tracker, fed by biometric and psychological signals
-- **Avatar Engine**: Identity shaped by psychometric tests (MBTI, IQ, EQ, moral alignment)
-- **MeritCoin**: Soulbound, non-transferable XP-based token (not for sale)
-- **DAO Governance**: Truth-weighted voting tied to actual growth, not speculation
-- **World Tree**: Collective emotional state of the Eden ecosystem — blooms or decays
-- **Modding Framework**: DAO-verified symbolic modules allow healing experts to create new rituals, quests, and paths of transformation
-- **Blockchain Commitment Layer**: Every XP gain, mod, or vote is hashed and stored in an auditable cryptographic log using SHA-256 commitments (zkRollup-ready)
+## 🧠 Core System Components
+
+### 🧬 Avatar Identity Engine
+- MBTI → Class archetype (Builder, Guardian, Healer, Strategist)
+- IQ → Eye and logic traits (Clarity)
+- EQ → Aura quality and interpersonal dynamics (Resonance)
+- Aptitudes → Skill branches (Craft)
+- Interests → Quest paths (Calling)
+- Morality → Aura glyphs and faction access (Conviction)
+
+### 🌳 Tree of Life Engine
+- Six core traits reflect user’s personal wellness branches:
+  - Discipline, Resilience, Mindfulness, Expression, Physical Care, Emotional Regulation
+- Health score governs XP growth and aura clarity
+- Real-world behaviors influence visual state (decay or bloom)
+
+### 🎖️ XP & MeritCoin System
+- XP is earned through verified actions, journaling, rituals, and quests
+- XP decay occurs if symbolic alignment is broken
+- MeritCoin is a non-transferable, soulbound token used for DAO and spiritual economy
+
+### 🌀 EdenQuest Engine
+- AI-generated symbolic quests based on user profile and trauma alignment
+- Each quest acts as a cognitive and emotional healing experience
+- Shadow Quests emerge when XP is locked or moral contradiction is detected
+
+### 🔐 Secure Enclave (Open Enclave SDK)
+- Verifies avatar state and XP transactions using KYBER & Dilithium encryption
+- Stores identity commitments and behavioral proof-of-truth
+- Protects the soulbound integrity of each user
+
+### 🌍 World Tree Engine
+- Aggregates health of all users across the Eden Protocol
+- Global visualization of symbolic ecosystem
+- DAO votes, quest outcomes, and XP ritual chains influence growth
 
 ---
 
-## III. Why Eden Works
-- **Trauma-aware**: Developed by a combat veteran, focused on PTSD, addiction, and moral injury
-- **Gamified healing**: Users complete shadow quests based on subconscious blocks
-- **Privacy-first**: Cryptographic hashing + biometric gates = no data exploitation
-- **Non-fungible**: XP must be earned through truth, verified via symbolic quests
-- **Blockchain-secure**: All actions encoded into a simulated ledger (zk-compatible)
-- **Expandable**: Teachers, therapists, and creators can offer rituals and healing practices to the DAO for global integration
+## 🤝 Symbolic Group Rituals (Phase 12+)
+
+**EdenQuest is not a traditional multiplayer game.**
+
+It is a solitary experience with optional symbolic companionship. Group participation is a sacred opt-in process, where users may engage in **cooperative quests** to:
+- Face shared trauma symbolically
+- Strengthen their own Tree of Life through compassion
+- Earn extra XP through *helping others heal*
+
+### Key Features:
+- Users opt-in via `group_opt_in: true`
+- Group quests are sacred rituals, not lobbies
+- Roles, auras, and moral glyphs must balance
+- Mythic battles (e.g. The Mirror Court, Trial of Fire, The Dragon Sigil) represent communal wounds
 
 ---
 
-## IV. Technical Highlights
-- Python backend w/ modular simulation and AI logic
-- Blockchain ledger using SHA-256 commitments (zkRollup-ready)
-- Integration-ready with:
-  - Unreal Engine 5 (dungeon rendering)
-  - ElevenLabs (voice AI)
-  - bHaptics (immersive trauma feedback)
-  - Apple/Oura/Fitbit (wearables)
+## 🗳️ Eden DAO – Decentralized Archetypal Order
+
+- Voting rights tied to XP, truth integrity, and quest alignment
+- DAO may:
+  - Unlock world events
+  - Trigger symbolic economy shifts
+  - Approve mods, quests, and narrative expansions
+- Group proposals permitted in Phase 12+
 
 ---
 
-## V. Use Cases
-- Veteran rehabilitation (VA / state programs)
-- Trauma-informed education (public/private schools)
-- Institutional trust systems (DAO voting + truth verification)
-- Mental wellness onboarding for high-performance roles (military, elite law, aviation)
-- Community healing initiatives through decentralized symbolic ritual authorship
+## 🔮 System Architecture Summary
+
+- 💾 Python core logic for simulation, user generation, and payloads
+- 🧱 JSON Schemas validate all user inputs
+- 🧠 GPT-4+ and ElevenLabs for AI quest output and narrative voice
+- 🔐 KYBER + Dilithium for quantum-resistant secure transactions
+- 🖥️ Unreal Engine 5 & React for interface and game renderings
 
 ---
 
-## VI. Deployment Readiness
-- MVP backend: ✅ complete
-- DAO structure + Constitution: ✅ complete
-- Blockchain XP encoding and zkStub simulation: ✅ complete
-- Mobile/VR integration docs: ✅ in progress
-- Grant packaging: ✅ aligned (NIH, NSF, DARPA, VA, Epic MegaGrants)
+## ✨ Summary Ethos
 
----
+Eden is not an escape. It is a descent into the self.  
+You do not play to win. You play to **heal**.  
+You are not here to perform. You are here to become.
 
-## VII. Ask
-We are seeking institutional support, public trust access, or venture alignment to:
-- Launch the DAO
-- Deploy the app
-- Scale Eden across trauma communities
+Whether you walk alone or fight a dragon with five wounded warriors, Eden sees you — and helps you see yourself.
 
-**Eden does not want to dominate the world — it wants to help the world dominate its demons.**
+> “The Tree grows when the truth is spoken.  
+> The World Tree thrives when truth is shared.”
