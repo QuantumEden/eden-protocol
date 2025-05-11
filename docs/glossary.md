@@ -18,6 +18,8 @@
 
 **Conviction Glyph** – A symbolic glyph representing the user's dominant moral foundation (e.g. ☯ for Truth, 🜁 for Discipline).
 
+**Sacred Path** – The user’s declared spiritual alignment. Affects aura tint, quest tone, and symbolic access. Must align with the canonical whitelist and is never used for identity profiling.
+
 ---
 
 ## 🌳 Tree of Life System
@@ -52,6 +54,8 @@
 
 **Hero Quest** – The user’s macro narrative arc, often tied to their Calling trait (e.g. RIASEC outcome).
 
+**Group Ritual** – A multiplayer, opt-in cooperative quest where users unite to overcome symbolic archetypes of trauma. Requires group opt-in and aura sync; success is measured through resonance, not performance.
+
 **Voice Roles**:
 - Mentor 🧙 – Wise guide, offers affirmation and direction
 - Echo 🜃 – Antagonist or subconscious fear response
@@ -69,6 +73,8 @@
 
 **ZK Commit** – Zero-Knowledge Proof cryptographic hash to verify growth without exposing private data.
 
+**Truth Synergy** – A resonance score generated during multiplayer rituals that reflects the symbolic cohesion of all participants. High synergy enables deeper quest penetration and sacred content unlocks.
+
 ---
 
 ## 🌍 Systemic Metaphors
@@ -80,6 +86,8 @@
 **Token-Gated Access** – Areas or actions that require symbolic maturity, not fiat or purchase.
 
 **Mythic Dungeon** – A symbolic, procedurally generated VR encounter tied to internal transformation.
+
+**Glyph Chat** – Nonverbal, symbolic messaging system based on conviction glyphs. Allows meaningful communication during quests and DAO rituals without traditional text or speech.
 
 ---
 
