@@ -1,50 +1,47 @@
-# /src/tree_of_life/tree_of_life_engine.py
+# Tree of Life Engine – Avatar Trait Mapping & Health Calculation
 
-"""
-Tree of Life Engine — Symbolic Trait System
+def initialize_tree_of_life():
+    return {
+        "discipline": 50,
+        "resilience": 50,
+        "mindfulness": 50,
+        "expression": 50,
+        "physical_care": 50,
+        "emotional_regulation": 50
+    }
 
-Supports core trait growth, decay, and now mod-based behavioral inputs.
-"""
+def compute_health_score(tree):
+    scores = list(tree.values())
+    return sum(scores) // len(scores)
 
-class TreeOfLife:
-    def __init__(self):
-        self.traits = {
-            "discipline": 50,
-            "empathy": 50,
-            "resilience": 50,
-            "mindfulness": 50,
-            "vitality": 50,
-            "expression": 50
-        }
+# ✅ NEW FUNCTION: Applies symbolic trait adjustments based on disclosures
+def apply_disclosure_adjustments(tree, disclosure_block):
+    """
+    Modulates Tree of Life based on voluntary disclosure of trauma or medical history.
+    """
+    diagnosis = disclosure_block.get("diagnosis", [])
+    tags = disclosure_block.get("trauma_tags", [])
+    service_connected = disclosure_block.get("service_connected", False)
 
-    def apply_core_effect(self, trait: str, delta: int):
-        if trait not in self.traits:
-            raise ValueError("Invalid trait")
-        self.traits[trait] += delta
-        self.traits[trait] = max(0, min(100, self.traits[trait]))
-        return self.traits[trait]
+    # Example logic: boost or weaken based on traits
+    if "PTSD" in diagnosis:
+        tree["resilience"] = max(tree["resilience"] - 10, 0)
+        tree["emotional_regulation"] = max(tree["emotional_regulation"] - 5, 0)
 
-    def apply_mod_effect(self, trait: str, delta: int, mod_id: str, user_id: str):
-        from src.xp.xp_integrity import validate_xp_from_mod
+    if "TBI" in diagnosis:
+        tree["mindfulness"] = max(tree["mindfulness"] - 5, 0)
 
-        if trait not in self.traits:
-            raise ValueError("Invalid trait")
+    if "insomnia" in tags:
+        tree["physical_care"] = max(tree["physical_care"] - 5, 0)
 
-        # Validate symbolic XP change via mod approval
-        if validate_xp_from_mod(user_id, mod_id, abs(delta)):
-            self.traits[trait] += delta
-            self.traits[trait] = max(0, min(100, self.traits[trait]))
-            return self.traits[trait]
+    if "sexual_assault" in tags:
+        tree["expression"] = max(tree["expression"] - 5, 0)
 
-    def get_trait(self, trait: str):
-        return self.traits.get(trait, None)
+    # Symbolic healing bonus for service-connected users
+    if service_connected:
+        tree["discipline"] = min(tree["discipline"] + 10, 100)
+        tree["resilience"] = min(tree["resilience"] + 10, 100)
 
+    return tree
 
-# Example use case
-if __name__ == "__main__":
-    tree = TreeOfLife()
-    print("Original discipline:", tree.get_trait("discipline"))
-    tree.apply_core_effect("discipline", 5)
-    print("After core effect:", tree.get_trait("discipline"))
-    tree.apply_mod_effect("discipline", 10, "tai_chi_001", "user123")
-    print("After mod effect:", tree.get_trait("discipline"))
+# 🔁 Optionally, you may add more tag mappings over time
