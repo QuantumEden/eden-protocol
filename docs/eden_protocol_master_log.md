@@ -98,6 +98,6 @@ Next up:
 
 ---
 
-> “Eden is not software. It is a symbolic architecture for truth. And it’s almost ready.”
+> “Eden is a place we aspire to create. a better world we forge one step at a time. with the stones we have before us we can create a new world if we choose to embrace our shadows. by embracing a perspective techno-optimistic futurism we choose to not define ourselves by how the world sees us, but by how we see ourselves. This is The Eden Protocol.”
 
 Would you like this exported as a downloadable `.md` file or want instructions for how to upload it in a future thread to resume instantly?
