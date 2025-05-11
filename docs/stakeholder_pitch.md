@@ -1,55 +1,54 @@
-# 🎯 Stakeholder Brief: Eden Protocol
+# 🎯 Stakeholder Brief: Eden Protocol (Updated for Blockchain Layer)
 
 ## 🔐 Mission
 Eden Protocol is a trauma-informed, cryptographically secured healing infrastructure built to:
 - Empower veterans, survivors, and institutional outliers
 - Replace legacy bureaucracies like the VA with AI-enhanced therapeutic quests
 - Deliver scalable, symbolic, and biometric-based mental wellness
+- ✅ Now anchored by SHA-256 cryptographic truth logs and zkRollup-ready XP tracking
 
 ---
 
 ## 🔬 Core Technology
-- Soulbound XP system (MeritCoin) for behavioral growth
-- Tree of Life avatar engine linked to biometric health
-- GPT-based psychoanalytic quests (CBT, logotherapy, Jungian shadow)
-- DAO governance tied to real-world healing progress
-- Post-quantum encryption (CRYSTALS-Kyber + Dilithium)
-- **Community-driven symbolic modding system** for new rituals, quests, and integrations
+- 💠 Soulbound XP system (MeritCoin) for behavioral growth
+- 🌳 Tree of Life avatar engine linked to biometric health
+- 🧠 GPT-driven psychoanalytic quests (CBT, logotherapy, Jungian shadow)
+- 🗳️ DAO governance tied to verifiable healing progress
+- 🔐 Post-quantum cryptographic layer (CRYSTALS-Kyber + Dilithium)
+- 🧘 Community-driven symbolic modding system
+- 📜 SHA-256 XP and proposal commitment encoding (zkStub live)
 
 ---
 
 ## 🧩 Veteran-Centric Design
-- Designed by a decorated OIF combat veteran
+- 🪖 Designed by a decorated OIF combat veteran
 - Addresses moral injury, suicidal ideation, PTSD, addiction
-- All behavioral change is verified and tracked symbolically and cryptographically
-- Veterans and clinicians may now submit **rituals and practices** as mods to expand Eden from within
+- Behavioral transformation is cryptographically verified and stored in a local XP ledger
+- Veterans and clinicians may submit symbolic quests via DAO-backed mods
 
 ---
 
 ## 🛠️ Strategic Utility
-- Can operate as a therapeutic overlay to the VA or public health systems
-- Blockchain-based ledger secures outcomes and decision integrity
-- Symbolic modding layer allows integration of:
-  - 🧘 Tai Chi, yoga, meditation paths
-  - 📖 Storytelling, journaling, mythos rituals
-  - 🎓 Vocational and life-skills quests
+- 🔄 Can overlay the VA, education systems, or corporate wellness layers
+- 🧾 Every XP gain and proposal is hashed (tamper-proof DAO governance)
+- 🔗 Mod manifests are digitally signed and verifiable by chain hash
+- 🧬 Community-driven rituals validated through real biometric signals
 
 ---
 
 ## 🏁 Institutional Call to Action
-We are seeking co-development or grant alignment with:
+Seeking co-development or grant alignment with:
 - 🔬 NIH / NIMH (trauma innovation)
-- 🛡️ VA Innovation (veteran recovery infrastructure)
-- 🧠 DARPA (cognitive restoration frameworks)
-- 🪖 DoD / DHS (mental resilience deployment layer)
+- 🛡️ VA Innovation / PTSD Centers
+- 🧠 DARPA (cognitive restoration & decision security)
+- 🪖 DoD / DHS (mental resilience, operational readiness)
 
 ---
 
 ## 🌱 Closing Message
-**Eden is no longer just an OS for healing. It is an ever-growing temple of truth, built by the very people it was designed to save.**
+**Eden is no longer just an operating system for healing. It is a truth-layered temple of transformation.**
 
-DAO-ready. Trauma-aware. Cryptographically verified.
+DAO-ready. Veteran-founded. Cryptographically anchored.
 
 > Eden doesn’t promise happiness.
-> It cultivates harmony.
-> One truth at a time.
+> It cultivates harmony — one soulbound XP at a time. 💎
