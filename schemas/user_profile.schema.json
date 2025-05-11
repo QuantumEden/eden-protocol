@@ -1,28 +1,35 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "User Profile Schema",
+  "title": "UserProfile",
   "type": "object",
+  "required": ["mbti", "iq", "eq", "moral"],
   "properties": {
     "mbti": {
       "type": "string",
-      "description": "16-type Myers-Briggs personality code"
+      "description": "Myers-Briggs type (e.g., INTJ, ENFP)"
     },
     "iq": {
       "type": "integer",
-      "description": "Abstract reasoning score (Raven's Matrices preferred)"
+      "minimum": 50,
+      "maximum": 200,
+      "description": "Cognitive intelligence score"
     },
     "eq": {
       "type": "integer",
-      "description": "Emotional intelligence quotient"
+      "minimum": 50,
+      "maximum": 200,
+      "description": "Emotional intelligence score"
     },
     "moral": {
       "type": "string",
-      "description": "Dominant moral foundation (e.g. care, liberty)"
+      "enum": ["care", "fairness", "loyalty", "authority", "purity", "liberty"],
+      "description": "Dominant moral foundation"
     },
-    "disclosure": {
-      "$ref": "./disclosure_payload.schema.json"
+    "group_opt_in": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the user wishes to participate in group symbolic rituals (co-op quests)"
     }
   },
-  "required": ["mbti", "iq", "eq", "moral"],
   "additionalProperties": false
 }
