@@ -1,24 +1,23 @@
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-
 import json
-from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
+from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-# Minimal payload test with alternate sacred path
-profile = {
-    "mbti": "INTJ",
-    "iq": 140,
-    "eq": 120,
-    "moral": "truth",
-    "sacred_path": "Hermeticism",
-    "group_opt_in": False
+# Sample user profile for full pipeline test
+test_profile = {
+    "mbti": "INFJ",
+    "iq": 135,
+    "eq": 122,
+    "moral": "care",
+    "sacred_path": "Zen Buddhism",
+    "group_opt_in": True
 }
 
-user_id = "observer_000"
-secret_key = "vault_key_123"
+# Simulated user ID and secret key
+user_id = "test_user_001"
+secret_key = "test_secret_key"
 
-payload = generate_eden_payload(user_id, profile, secret_key)
+# Generate payload
+payload = generate_eden_payload(user_id, test_profile, secret_key)
 
-print("\n=== Eden Protocol Payload Diagnostic ===\n")
+# Output for validation
+print("\n=== Eden Payload Simulation ===\n")
 print(json.dumps(payload, indent=2))
