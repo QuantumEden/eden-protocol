@@ -1,5 +1,9 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import json
-from eden_payload_generator import generate_eden_payload
+from src.eden_payload_generator import generate_eden_payload
 
 # Sample user profile for full pipeline test
 test_profile = {
