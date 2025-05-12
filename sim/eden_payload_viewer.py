@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
+from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
 # Sample profile for visual terminal output
 profile = {
