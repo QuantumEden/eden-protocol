@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import json
-from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
+from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
 # Sample user profile for full pipeline test
 test_profile = {
