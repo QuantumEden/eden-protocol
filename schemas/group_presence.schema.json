@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Group Presence Schema",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["unlinked", "linked", "syncing"],
+      "description": "The user's symbolic connectivity to a group ritual instance"
+    },
+    "synergy_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Aura-based resonance score across the group"
+    },
+    "ritual_instance": {
+      "type": "string",
+      "description": "ID of the active shared symbolic quest (optional)"
+    }
+  },
+  "required": ["status", "synergy_score"],
+  "additionalProperties": false
+}
