@@ -1,26 +1,20 @@
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-
 import json
-from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
+from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-# Quick viewer for sacred path diagnostics
+# Visual test for sacred_path propagation
 profile = {
-    "mbti": "ISFP",
-    "iq": 115,
-    "eq": 130,
-    "moral": "care",
-    "sacred_path": "Norse Paganism",
-    "group_opt_in": True
+    "mbti": "INTJ",
+    "iq": 140,
+    "eq": 120,
+    "moral": "truth",
+    "sacred_path": "Hermeticism",
+    "group_opt_in": False
 }
 
-user_id = "viewer_user"
-secret_key = "mirror_vault_key"
+user_id = "observer_000"
+secret_key = "vault_key_123"
 
 payload = generate_eden_payload(user_id, profile, secret_key)
 
-print("\n=== Eden Payload Viewer ===\n")
-print(json.dumps(payload.get("avatar", {}), indent=2))
-print("\nTree of Life:")
-print(json.dumps(payload.get("tree_of_life", {}), indent=2))
+print("\n=== Eden Protocol Payload Diagnostic ===\n")
+print(json.dumps(payload, indent=2))
