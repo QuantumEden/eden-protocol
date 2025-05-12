@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 import json
-from eden_payload_generator.eden_payload_generator import generate_eden_payload
+from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
 
 # Minimal payload test with alternate sacred path
 profile = {
