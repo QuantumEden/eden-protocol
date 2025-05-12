@@ -1,28 +1,21 @@
 import json
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
-
-# Input a simplified viewer profile
-test_profile = {
-    "mbti": "ENTP",
+# Basic visualization of a sacred path payload
+profile = {
+    "mbti": "ENFJ",
     "iq": 128,
-    "eq": 114,
-    "moral": "liberty",
-    "sacred_path": "Stoicism",
+    "eq": 133,
+    "moral": "care",
+    "sacred_path": "Mythic Psychotherapy",
     "group_opt_in": True
 }
 
-user_id = "viewer_test_001"
-secret_key = "secret_token_xyz"
+user_id = "oracle_999"
+secret_key = "glyph_mirror_key"
 
-payload = generate_eden_payload(user_id, test_profile, secret_key)
+payload = generate_eden_payload(user_id, profile, secret_key)
 
-# Print out only the avatar and tree for UI viewer testing
-print("\n=== Eden Viewer Output ===\n")
-print("Avatar Block:")
-print(json.dumps(payload.get("avatar", {}), indent=2))
-print("\nTree of Life Block:")
-print(json.dumps(payload.get("tree_of_life", {}), indent=2))
+print("\n=== Eden Protocol Payload Viewer ===\n")
+for k, v in payload.items():
+    print(f"{k}: {json.dumps(v, indent=2) if isinstance(v, (dict, list)) else v}")
