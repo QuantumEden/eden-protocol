@@ -1,10 +1,10 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-# Sample profile for visual terminal output
+# Profile for symbolic visual output
 profile = {
     "mbti": "ENFP",
     "iq": 128,
@@ -19,7 +19,6 @@ secret_key = "test_key_visual"
 
 payload = generate_eden_payload(user_id, profile, secret_key)
 
-# === ASCII Viewer ===
 print("\n🔍 EDEN PAYLOAD VISUALIZER\n")
 
 print("🎭 AVATAR")
