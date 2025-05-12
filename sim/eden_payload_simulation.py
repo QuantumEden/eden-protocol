@@ -1,8 +1,11 @@
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+
 import json
 from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-# Minimal payload test with sacred path opt-in
-test_profile = {
+# Minimal payload test with alternate sacred path
+profile = {
     "mbti": "INTJ",
     "iq": 140,
     "eq": 120,
@@ -14,7 +17,7 @@ test_profile = {
 user_id = "observer_000"
 secret_key = "vault_key_123"
 
-payload = generate_eden_payload(user_id, test_profile, secret_key)
+payload = generate_eden_payload(user_id, profile, secret_key)
 
 print("\n=== Eden Protocol Payload Diagnostic ===\n")
 print(json.dumps(payload, indent=2))
