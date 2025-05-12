@@ -1,41 +1,27 @@
 import json
-from eden_payload_generator.eden_payload_generator import generate_eden_payload
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-# Looping simulation for iterative payload validation
-user_id = "observer_loop"
-secret_key = "key_loop_test"
+from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-profiles = [
-    {
-        "mbti": "ISTJ",
-        "iq": 120,
-        "eq": 110,
-        "moral": "authority",
-        "sacred_path": "Judaism",
-        "group_opt_in": False
-    },
-    {
-        "mbti": "ENFP",
-        "iq": 128,
-        "eq": 133,
-        "moral": "care",
-        "sacred_path": "Hinduism",
-        "group_opt_in": True
-    },
-    {
-        "mbti": "INTP",
-        "iq": 145,
-        "eq": 102,
-        "moral": "liberty",
-        "sacred_path": "Gnosticism",
-        "group_opt_in": False
-    }
-]
+# Sample user profile for full pipeline test
+test_profile = {
+    "mbti": "INFJ",
+    "iq": 135,
+    "eq": 122,
+    "moral": "care",
+    "sacred_path": "Zen Buddhism",
+    "group_opt_in": True
+}
 
-print("\n=== Eden Payload Loop Simulation ===\n")
+# Simulated user ID and placeholder key
+user_id = "test_user_001"
+secret_key = "test_secret_key"
 
-for i, profile in enumerate(profiles):
-    print(f"--- Payload {i+1} ({profile['mbti']}) ---")
-    payload = generate_eden_payload(user_id, profile, secret_key)
-    print(json.dumps(payload, indent=2))
-    print("\n")
+# Generate full payload
+payload = generate_eden_payload(user_id, test_profile, secret_key)
+
+# Output for validation
+print("\n=== Eden Payload Simulation ===\n")
+print(json.dumps(payload, indent=2))
