@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Eden UI Payload Schema",
+  "type": "object",
+  "properties": {
+    "avatar": {
+      "$ref": "./avatar.schema.json"
+    },
+    "token": {
+      "type": "string",
+      "description": "Encrypted user identity string (ZK enclave token)"
+    },
+    "tree_of_life": {
+      "$ref": "./tree_of_life.schema.json"
+    },
+    "meritcoin": {
+      "$ref": "./xp_meritcoin.schema.json"
+    },
+    "edenquest": {
+      "$ref": "./edenquest.schema.json"
+    },
+    "dao": {
+      "$ref": "./dao.schema.json"
+    },
+    "world_tree": {
+      "$ref": "./world_tree.schema.json"
+    },
+    "group_state": {
+      "$ref": "./group_presence.schema.json"
+    }
+  },
+  "required": [
+    "avatar",
+    "token",
+    "tree_of_life",
+    "meritcoin",
+    "edenquest",
+    "dao",
+    "world_tree"
+  ],
+  "additionalProperties": false
+}
