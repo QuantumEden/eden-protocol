@@ -1,20 +1,28 @@
 import json
-from eden_payload_generator.eden_payload_generator import generate_eden_payload
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-# Visual test for sacred_path propagation
-profile = {
-    "mbti": "INTJ",
-    "iq": 140,
-    "eq": 120,
-    "moral": "truth",
-    "sacred_path": "Hermeticism",
-    "group_opt_in": False
+from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
+
+# Input a simplified viewer profile
+test_profile = {
+    "mbti": "ENTP",
+    "iq": 128,
+    "eq": 114,
+    "moral": "liberty",
+    "sacred_path": "Stoicism",
+    "group_opt_in": True
 }
 
-user_id = "observer_000"
-secret_key = "vault_key_123"
+user_id = "viewer_test_001"
+secret_key = "secret_token_xyz"
 
-payload = generate_eden_payload(user_id, profile, secret_key)
+payload = generate_eden_payload(user_id, test_profile, secret_key)
 
-print("\n=== Eden Protocol Payload Diagnostic ===\n")
-print(json.dumps(payload, indent=2))
+# Print out only the avatar and tree for UI viewer testing
+print("\n=== Eden Viewer Output ===\n")
+print("Avatar Block:")
+print(json.dumps(payload.get("avatar", {}), indent=2))
+print("\nTree of Life Block:")
+print(json.dumps(payload.get("tree_of_life", {}), indent=2))
