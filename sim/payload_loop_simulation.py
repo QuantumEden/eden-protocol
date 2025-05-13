@@ -1,26 +1,24 @@
 import sys, os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
 import json
 from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-# Sample user profile for full pipeline test
-test_profile = {
-    "mbti": "INFJ",
-    "iq": 135,
-    "eq": 122,
-    "moral": "care",
-    "sacred_path": "Zen Buddhism",
-    "group_opt_in": True
-}
+# Loop test for batch payload generation
+for i in range(3):
+    profile = {
+        "mbti": "INTP",
+        "iq": 135 + i,
+        "eq": 115 + i,
+        "moral": "freedom",
+        "sacred_path": "Stoicism",
+        "group_opt_in": i % 2 == 0
+    }
 
-# Simulated user ID and placeholder key
-user_id = "test_user_001"
-secret_key = "test_secret_key"
+    user_id = f"test_subject_{i:03d}"
+    secret_key = f"loop_key_{i:03d}"
 
-# Generate full payload
-payload = generate_eden_payload(user_id, test_profile, secret_key)
+    payload = generate_eden_payload(user_id, profile, secret_key)
 
-# Output for validation
-print("\n=== Eden Payload Simulation ===\n")
-print(json.dumps(payload, indent=2))
+    print(f"\n=== Payload {i} ===\n")
+    print(json.dumps(payload, indent=2))
