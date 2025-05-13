@@ -1,66 +1,78 @@
-# 🔐 Eden Protocol Data Ethics & Sovereignty Manifesto
+# 🔐 Eden Protocol – Data Ethics & Sovereignty Manifesto
 
 > “Eden does not surveil you. Eden reflects you.”
 
-This document outlines the guiding ethical principles and security standards that govern all data within the Eden Protocol, with an emphasis on privacy, trauma-informed design, and user sovereignty. This is not a legal agreement — it is a philosophical and architectural pledge.
+This document outlines the philosophical, symbolic, and technical commitments made by the Eden Protocol regarding data privacy, user autonomy, and trauma-informed infrastructure.
 
 ---
 
-## 🔒 Core Principles
+## 🛡️ Core Ethical Commitments
 
-### 1. **Privacy First**
-- No personally identifiable psychometric or biometric data is stored on-chain.
-- All identity traits are reduced to **zero-knowledge commitments (ZKPs)**.
-- All psychometric data remains client-side or within a secure enclave.
-
-### 2. **Zero-Knowledge Verification (ZK)**
-- User actions (XP, quests, DAO votes) are **verified without exposing source data**.
-- All transformation is **provable but not surveilled**.
-- Truth is a pattern — not a dossier.
-
-### 3. **Biometric Sovereignty**
-- Users retain full control over all physical input data (e.g. from Apple Health, Fitbit, Oura).
-- Eden only accesses biometric information to calculate Tree of Life health indicators and symbolic decay.
-- No biometric information is ever sold, exported, or analyzed outside the symbolic system.
-
-### 4. **Trauma-Safe Design**
-- The system avoids triggering content, uses soft symbolic language, and offers opt-outs from difficult sequences.
-- AI-generated quests are constrained by ethical guardrails that **prioritize emotional safety** over narrative intensity.
-- bHaptics and voice systems include emergency calibration to prevent overstimulation or flashback conditions.
-
-### 5. **Soulbound Records**
-- All MeritCoin, XP, and DAO contributions are **soulbound** — they cannot be traded, sold, or manipulated.
-- Your growth is yours alone. Your story cannot be faked, borrowed, or erased.
+### 1. **Privacy is Sacred**
+- No personally identifiable psychometric or biometric data is ever stored on-chain.
+- All sensitive traits are sealed as **zero-knowledge commitments (ZKPs)**.
+- Raw diagnostic, journal, or biometric data **remains client-side or within a secure enclave.**
 
 ---
 
-## 🧠 Ethical AI Use
-
-- The Eden Protocol uses GPT-based and ElevenLabs systems **strictly as symbolic tools**.
-- No AI is granted autonomous decision-making over a user's health, worth, or access.
-- AI-generated quests are reflective mirrors — not prescriptive mandates.
-
----
-
-## ⚖️ User Bill of Rights (Symbolic)
-
-1. **Right to remain private** – Your shadow is not our concern unless you choose to reveal it.
-2. **Right to forget** – You may reset your Tree, anonymize your history, and begin again.
-3. **Right to audit** – All logic governing your XP, avatar state, and DAO role is open-source.
-4. **Right to non-compliance** – You are never forced to participate. Eden is not punishment. Eden is presence.
+### 2. **Trauma-Informed Sovereignty**
+- Users may voluntarily disclose experiences for symbolic healing — never for diagnosis.
+- Eden rewards truth — it does **not punish imperfection**.
+- All quests and rituals are designed to affirm agency, not induce stress.
 
 ---
 
-## 📜 Compliance and Future Expansion
+### 3. **Zero-Knowledge Verification**
+- Every change in XP, Tree, or DAO access is **provable without revealing content**.
+- Truth is a pattern, not a profile.
+- The system verifies transformation, not trauma.
 
-- Eden aligns with GDPR, HIPAA, and the principle of **least privilege**.
-- Future versions will include: encrypted local vaults, homomorphic processing for biometric input, and community-elected ethics guardians within the DAO.
+---
+
+### 4. **Biometric Dignity**
+- Inputs from Apple Health, Oura, Fitbit, or other trackers are never stored.
+- Used solely for calculating:
+  - Symbolic fatigue
+  - Aura decay
+  - Tree health rhythms
+- All inputs are optional and encrypted
 
 ---
 
-> Eden does not extract your value. It reveals it.
-> You do not serve Eden. Eden reflects your truth.
-> 
-> In Eden, your data is not a commodity — it is a covenant.
+### 5. **Consent is Continuous**
+- Users may revoke consent at any time.
+- You may reset your Tree, anonymize your payload, or begin again.
 
 ---
+
+## 🧠 AI Ethics
+
+- GPT-based and ElevenLabs-style tools are used only as symbolic mirrors — never as health authorities.
+- No AI determines your value, XP, or access.
+- All quests are narrative-based and generated with ethical constraints tuned for trauma-safe metaphor.
+
+---
+
+## 📜 Symbolic User Rights
+
+| Right | Description |
+|-------|-------------|
+| **Right to Forget** | Begin anew without judgment or retention |
+| **Right to Truth** | View your XP path and aura health in real time |
+| **Right to Audit** | All quest logic, DAO code, and scoring criteria are open-source |
+| **Right to Refuse** | No ritual, quest, or prompt is ever forced |
+
+---
+
+## 🧩 Compliance Standards
+
+- Aligned with **HIPAA**, **GDPR**, and **SOC2 principles**
+- Eden uses the principle of **least privilege** in all interface access
+- All logs are opt-in, encrypted, and stored symbolically
+
+---
+
+> You are not a product. You are not a user.  
+> You are a soul in transformation.  
+>  
+> Eden does not extract your data. It reflects your becoming.
