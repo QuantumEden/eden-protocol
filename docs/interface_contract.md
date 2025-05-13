@@ -1,103 +1,96 @@
 # 🧩 Eden Protocol – Interface Contract
 
-> This document defines the data input and output structure between the Eden Protocol backend and all user-facing interfaces (mobile, desktop, web, XR/VR clients, and DAO platforms).
+This document defines the data input and output structure between the Eden Protocol backend and all user-facing interfaces (mobile, desktop, web, XR/VR clients, and DAO platforms).
 
 ---
 
-## 🔽 INPUT STRUCTURE  
+## 🔽 INPUT STRUCTURE
+
 All inputs are passed to the `generate_eden_payload()` function via the `user_profile` dictionary.
 
 ### 📜 Example Input (JSON)
+
 ```json
 {
   "mbti": "INTJ",
   "iq": 140,
   "eq": 120,
   "moral": "care",
+  "sacred_path": "Hermeticism",
   "group_opt_in": true,
-  "sacred_path": "Zen Buddhism"
-}
-```
-
-### 🔍 Accepted Fields
-
-| Field           | Type     | Description                                                                 |
-|----------------|----------|-----------------------------------------------------------------------------|
-| `mbti`          | string   | 16-type Myers-Briggs personality code                                       |
-| `iq`            | integer  | Abstract intelligence score (e.g., Raven’s Matrices)                        |
-| `eq`            | integer  | Emotional intelligence quotient (e.g., MSCEIT)                              |
-| `moral`         | string   | User’s dominant moral foundation (e.g., care, liberty, etc.)                |
-| `group_opt_in`  | boolean  | Whether the user allows symbolic multiplayer rituals                        |
-| `sacred_path`   | string   | Selected spiritual alignment from `/schemas/sacred_path_whitelist.json`     |
-
-✅ Optional Schema: `/schemas/user_profile.schema.json`
-
----
-
-## 🔼 OUTPUT STRUCTURE
-
-**Function Endpoint:** `generate_eden_payload(user_id, profile_dict, secret_key)`
-
-### 📦 Returns a bundled payload as:
-```json
-{
-  "avatar": {...},
-  "token": "...",
-  "tree_of_life": {...},
-  "meritcoin": {...},
-  "edenquest": {...},
-  "dao": {...},
-  "world_tree": {...},
-  "group_state": {
-    "status": "linked",
-    "synergy_score": 0.87
+  "disclosure": {
+    "diagnosis": ["PTSD"],
+    "trauma_tags": ["combat", "insomnia"],
+    "service_connected": true
   }
 }
 ```
 
-### 📂 Output Components & Schemas
+### ✅ Accepted Fields
 
-#### 1. 🎭 `avatar` → `/schemas/avatar.schema.json`
-- MBTI type  
-- EdenQuest archetype (Builder, Guardian, Healer, Strategist)  
-- Elemental affinity (Air, Earth, Fire, Water)  
-- Aura and glyph data
+- `mbti` (string): Myers-Briggs type (e.g. `"INTJ"`)
+- `iq` (integer): Intelligence score
+- `eq` (integer): Emotional intelligence score
+- `moral` (string): Dominant moral alignment (e.g. `"care"`, `"justice"`, `"loyalty"`)
+- `sacred_path` (string): Spiritual or philosophical archetype
+- `group_opt_in` (boolean): Whether the user joins a symbolic guild or operates solo
+- `disclosure` (object): Voluntary trauma and diagnostic information
 
-#### 2. 🔐 `token`
-- Encrypted identity string from Secure Enclave (placeholder in simulation)
+#### 🔐 Disclosure Subfields
 
-#### 3. 🌿 `tree_of_life` → `/schemas/tree_of_life.schema.json`
-- Trait values (0–100 scale)  
-- Holistic health index
-
-#### 4. 🪙 `meritcoin` → `/schemas/xp_meritcoin.schema.json`
-- Current XP level  
-- XP earned and next-level threshold  
-- Lock status (true/false)
-
-#### 5. 🧠 `edenquest` → `/schemas/edenquest.schema.json`
-- AI-assigned symbolic quest  
-- Includes title, theme, metaphor, growth target
-
-#### 6. 🗳️ `dao` → `/schemas/dao.schema.json`
-- Last proposal metadata  
-- Vote tally and outcome status
-
-#### 7. 🌐 `world_tree` → `/schemas/world_tree.schema.json`
-- Global Eden health index  
-- DAO user count  
-- Symbolic world system state
-
-#### 8. 🔗 `group_state` → `/schemas/group_presence.schema.json`
-- Ritual multiplayer state  
-- Includes symbolic linkage status, synergy score, and optional quest instance ID
+- `diagnosis` (string[]): List of medical or psychological diagnoses
+- `trauma_tags` (string[]): Keywords describing trauma (e.g. `"combat"`, `"loss"`)
+- `service_connected` (boolean): Whether trauma is tied to military or public service
 
 ---
 
-## 🧭 INTERFACE DESIGN NOTES
+## 📤 OUTPUT STRUCTURE
 
-- Each output can be rendered independently or displayed as part of a full dashboard  
-- Visual feedback loops can represent real-time symbolic shifts (e.g., tree growth, aura flicker)  
-- Zero-Knowledge Token integration will allow XP and world state verification without exposing raw user data  
-- Sacred Path affects aura visuals, glyphs, and symbolic interface tone  
-- Group ritual access buttons must always be opt-in, aura-gated, and trauma-safe
+The output is a payload object used to generate EdenQuest environments and symbolic state updates.
+
+### 📜 Example Output (JSON)
+
+```json
+{
+  "archetype": "Strategist",
+  "conviction_glyph": "☯",
+  "tree_traits": {
+    "discipline": 88,
+    "resilience": 91,
+    "mindfulness": 72,
+    "expression": 67,
+    "physical_care": 60,
+    "emotional_regulation": 75
+  },
+  "xp_awarded": 100,
+  "quest_unlocked": true,
+  "disclosure_adjustment": {
+    "resilience": 12,
+    "emotional_regulation": 9
+  }
+}
+```
+
+### ✅ Output Field Descriptions
+
+- `archetype` (string): Assigned symbolic class based on MBTI
+- `conviction_glyph` (string): Unicode glyph representing moral alignment
+- `tree_traits` (object): Map of internal growth attributes (0–100 scale)
+- `xp_awarded` (integer): Experience points granted after sync
+- `quest_unlocked` (boolean): Indicates if a quest was generated
+- `disclosure_adjustment` (object): Healing boost applied due to honesty
+
+---
+
+## 🧠 Interpretation
+
+Eden Protocol interfaces (apps, VR clients, web dashboards) should render the output visually using:
+
+- Tree growth animations based on `tree_traits`
+- Symbolic auras or glyphs via `conviction_glyph`
+- Quests or feedback loops initiated via `quest_unlocked`
+- XP visualizations using `xp_awarded`
+
+Interfaces must **never expose disclosure content** to other users or store it externally without explicit consent. Trait bonuses from `disclosure_adjustment` are symbolic reinforcements, not diagnostics.
+
+This contract is versioned alongside the schema and is updated only after full system integration tests.
