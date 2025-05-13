@@ -1,14 +1,6 @@
-# 🌳 Eden Protocol – Tree of Life Engine
-# Manages internal trait state, holistic health score, and symbolic group synchronization
+# Tree of Life Engine – Growth, Decay, Realignment Logic
 
-def initialize_tree_of_life() -> dict:
-    """
-    Initializes a default Tree of Life structure for a new user with balanced baseline traits.
-    These traits reflect key domains of psychological and behavioral well-being.
-
-    Returns:
-        dict: Dictionary of six core trait values
-    """
+def initialize_tree_of_life():
     return {
         "discipline": 50,
         "resilience": 50,
@@ -18,33 +10,47 @@ def initialize_tree_of_life() -> dict:
         "emotional_regulation": 50
     }
 
+def compute_health_score(tree):
+    values = list(tree.values())
+    return sum(values) // len(values)
 
-def compute_health_score(tree: dict) -> float:
+def apply_decay(tree, decay_map):
+    for trait, penalty in decay_map.items():
+        if trait in tree:
+            tree[trait] = max(tree[trait] - penalty, 0)
+    return tree
+
+def grow_branch(tree, branch, amount=5):
     """
-    Computes a user's holistic well-being score by averaging all six trait values.
-
-    Args:
-        tree (dict): Tree of Life structure representing user traits
-
-    Returns:
-        float: Overall health score between 0–100
+    Symbolically increases the strength of a single trait branch.
     """
-    total = sum(tree.values())
-    return round(total / len(tree), 2)
+    if branch in tree:
+        tree[branch] = min(tree[branch] + amount, 100)
+    return tree
 
-
-def sync_tree_health(tree: dict, group_state: dict = None) -> dict:
+def apply_disclosure_adjustments(tree, disclosure_block):
     """
-    Placeholder for symbolic group-based Tree of Life adjustment.
-    In multiplayer rituals, group resonance may affect individual traits.
-
-    Args:
-        tree (dict): The user's current Tree of Life
-        group_state (dict, optional): Metadata from group ritual (aura synergy, roles, status)
-
-    Returns:
-        dict: Adjusted Tree of Life (currently returns unchanged copy)
+    Modulates Tree of Life based on voluntary disclosure of trauma or medical history.
     """
-    # 🧪 Future Implementation:
-    # Apply XP boosts, aura resonance modifiers, or decay mitigation here based on group synergy.
+    diagnosis = disclosure_block.get("diagnosis", [])
+    tags = disclosure_block.get("trauma_tags", [])
+    service_connected = disclosure_block.get("service_connected", False)
+
+    if "PTSD" in diagnosis:
+        tree["resilience"] = max(tree["resilience"] - 10, 0)
+        tree["emotional_regulation"] = max(tree["emotional_regulation"] - 5, 0)
+
+    if "TBI" in diagnosis:
+        tree["mindfulness"] = max(tree["mindfulness"] - 5, 0)
+
+    if "insomnia" in tags:
+        tree["physical_care"] = max(tree["physical_care"] - 5, 0)
+
+    if "sexual_assault" in tags:
+        tree["expression"] = max(tree["expression"] - 5, 0)
+
+    if service_connected:
+        tree["discipline"] = min(tree["discipline"] + 10, 100)
+        tree["resilience"] = min(tree["resilience"] + 10, 100)
+
     return tree
