@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EdenPayload",
+  "type": "object",
+  "required": [
+    "archetype",
+    "conviction_glyph",
+    "tree_traits",
+    "xp_awarded",
+    "quest_unlocked",
+    "disclosure_adjustment"
+  ],
+  "properties": {
+    "archetype": {
+      "type": "string",
+      "description": "The user's assigned symbolic class (e.g. Strategist, Healer)"
+    },
+    "conviction_glyph": {
+      "type": "string",
+      "description": "A symbolic Unicode glyph representing moral alignment"
+    },
+    "tree_traits": {
+      "type": "object",
+      "description": "Symbolic behavioral traits mapped to growth states",
+      "properties": {
+        "discipline": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "resilience": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "mindfulness": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "expression": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "physical_care": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "emotional_regulation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "discipline",
+        "resilience",
+        "mindfulness",
+        "expression",
+        "physical_care",
+        "emotional_regulation"
+      ]
+    },
+    "xp_awarded": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Experience points granted after symbolic processing"
+    },
+    "quest_unlocked": {
+      "type": "boolean",
+      "description": "Whether a new symbolic quest is generated"
+    },
+    "disclosure_adjustment": {
+      "type": "object",
+      "description": "Trait-specific symbolic boosts from voluntary trauma disclosure",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 100
+      }
+    }
+  }
+}
