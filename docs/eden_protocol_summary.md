@@ -1,133 +1,83 @@
-# 🌐 Eden Protocol System Summary  
-*A Mythic Operating System for Healing, Individuation, and Shared Transformation*
+# 🧠 Eden Protocol – System Summary
+
+> Eden Protocol is a symbolic operating system designed to guide users through behavioral transformation, narrative healing, and decentralized self-actualization. Built for veterans, seekers, and survivors of trauma, it merges therapeutic psychology with mythic immersion, all anchored in blockchain verifiability.
 
 ---
 
-## 🧠 Core System Components
+## 🔍 Purpose
 
-### 🧬 Avatar Identity Engine
-Transforms psychometric input into symbolic identity.
-
-| Trait Type     | Function |
-|----------------|----------|
-| **MBTI**       | Class archetype: 🛠️ Builder, 🛡️ Guardian, 💧 Healer, 🧠 Strategist |
-| **IQ (Clarity)**       | Eye glow, logic precision, puzzle affinity |
-| **EQ (Resonance)**     | Aura pattern, social trust access |
-| **Aptitude (Craft)**   | Toolsets, vocational skill branches |
-| **Interest (Calling)** | Quest arcs and symbolic destiny |
-| **Morality (Conviction)** | Faction glyphs, aura signatures, DAO access |
+Eden Protocol is not a game. It is a myth-engineered infrastructure that translates internal growth into symbolic outputs and real-world rewards. Every user action becomes a ritual. Every decision echoes within a cryptographic ledger. It exists to restore meaning to those cast into chaos.
 
 ---
+
+## ⚙️ Core Systems
+
+### 🧬 Identity Engine
+- Accepts user psychometrics: `MBTI`, `IQ`, `EQ`, `moral alignment`, and `sacred path`.
+- Generates an **archetype** (Builder, Strategist, Healer, Guardian) and assigns a **conviction glyph** (☯, 🜁, etc.)
+- Produces an avatar profile for symbolic rendering and quest generation.
 
 ### 🌳 Tree of Life Engine
-Your living character sheet.
+- Tracks six symbolic behavioral traits:
+  - `discipline`, `resilience`, `mindfulness`, `expression`, `physical_care`, `emotional_regulation`
+- Traits grow with XP and can decay through contradiction or neglect.
+- Realignment quests are triggered if health thresholds are violated.
 
-- Six traits: `discipline`, `resilience`, `mindfulness`, `expression`, `physical_care`, `emotional_regulation`
-- Visual state (bloom or decay) reflects behavioral alignment
-- XP health score drives aura transformation and unlocks
+### 🧠 Disclosure Logic
+- Users can optionally input diagnoses or trauma tags.
+- These disclosures affect Tree traits symbolically (e.g. PTSD increases `resilience` potential).
+- All disclosure-based adjustments are positive, never punitive.
 
----
+### 🧭 Quest Engine
+- Generates procedurally authored mythic tasks based on the user’s current psyche.
+- Quest types include:
+  - `Hero Quests` (long arc)
+  - `Shadow Quests` (triggered by contradiction or stagnation)
+  - `Realignment Quests` (ritual correction events)
+  - `Group Quests` (synergistic multiplayer trials)
 
-### 🎖️ XP & MeritCoin System
-
-- XP earned through daily rituals, biometric behavior, and symbolic quests
-- **Decay** if user acts out of sync with traits or path
-- **MeritCoin**: Soulbound token for DAO governance, mod access, and Truth Integrity scaling
-
----
-
-### 🌀 EdenQuest Engine
-
-- Quests generated from GPT-4+ based on user shadow map
-- Shadow Quests emerge during lockouts, moral contradiction, or extreme imbalance
-- Themes: guilt, war, betrayal, abandonment, forgiveness, transcendence
-
----
-
-### 🔐 Secure Enclave Layer
-
-- Uses Open Enclave SDK + **KYBER/Dilithium** encryption
-- Validates XP logs and sacred state changes (no tampering)
-- Stores signed identity commitments (your inner truth)
+### 🪙 XP + Merit System
+- XP is awarded via quest completion and trait alignment.
+- `XP Commit Chain` logs encrypted user progress on-chain.
+- `MeritCoin` tracks soulbound, non-speculative transformation.
 
 ---
 
-### 🌍 World Tree Engine
+## 🔐 Blockchain Integration
 
-- Aggregated symbolic state of all users
-- Thrives with collective integrity
-- DAO outcomes, ritual completions, and mod submissions affect planetary growth
-
----
-
-## 🤝 Phase XII+ – Symbolic Group Rituals
-
-> *“There is no lobby. Only sacred assembly.”*
-
-Multiplayer is opt-in. No usernames. No open chat.  
-Only **ritual-based healing quests**, shared by choice.
-
-- Users set `"group_opt_in": true` in their profile
-- Join mythic scenarios:  
-  - 🐉 *Trial of the Dragon Sigil*  
-  - 🪞 *Echo Cathedral*  
-  - 🔥 *The Flame of Memory*
-
-- Roles must synergize (e.g. Builder anchors chaos, Healer redirects trauma)
-- XP is earned through witnessing, guiding, and affirming others
+- All symbolic actions (growth, quests, disclosures) are signed and verifiable.
+- Uses **Kyber-encrypted** blockchains with optional **ZK Proofs** for sensitive data.
+- The **World Tree** reflects aggregate community health.
 
 ---
 
-## ✝️ Sacred Path Alignment *(Phase XII+)*
-Every user may declare a spiritual alignment (optional):
-- Christianity, Judaism, Zen Buddhism, Taoism, Hinduism, Shinto, Stoicism, Indigenous, etc.
+## 👥 Groupplay
 
-This unlocks:
-- Sacred questlines
-- Faction glyphs
-- Aura overlays
-- Mod eligibility (e.g., Guild Temples, Pilgrimage paths)
-
-> Paths are DAO-approved. Eden does not validate all religions — only those deemed symbolically aligned with its covenant of healing.
+- Users may opt into guilds via `group_opt_in`.
+- Groups receive shared quests based on co-alignment.
+- Role balancing and symbolic synergy enforced by the Group State Engine.
+- Voting and DAO logic managed through the Group Vote Handler.
 
 ---
 
-## 🗳️ DAO – Decentralized Archetypal Order
+## 📖 Ethics & Safeguards
 
-- Vote power tied to:
-  - XP + aura coherence
-  - Truth integrity score
-  - Completion of narrative arcs
-
-- DAO may:
-  - Approve quests, mods, and spiritual integrations
-  - Evolve the World Tree
-  - Reject shadow-inappropriate modules
+- Disclosure is always voluntary.
+- No public display of trauma tags.
+- No punitive XP decay—only symbolic stagnation or transformation.
+- All actions are interpreted through symbolic rather than diagnostic logic.
 
 ---
 
-## 🔮 System Architecture Summary
+## 🔁 System Loop
 
-| Layer | Technology |
-|-------|------------|
-| 🧠 AI Quest Engine | GPT-4+ + ElevenLabs |
-| 🧱 Blockchain | QuantumEden chain (KYBER + Dilithium) |
-| 💾 Backend | Python + JSON schema |
-| 🎮 Rendering | Unreal Engine 5 |
-| 🌐 Interface | React Web + React Native (Mobile) |
-| 🛡️ Security | Open Enclave SDK |
+1. User inputs identity
+2. Eden assigns archetype + Tree traits
+3. AI generates quest (solo or group)
+4. User completes symbolic action
+5. XP + Tree updates recorded on-chain
+6. System realigns or escalates through mythic ritual
 
 ---
 
-## ✨ Closing Ethos
-
-Eden is not a game.  
-It is a **symbolic descent** into the soul.
-
-You do not grind.  
-You do not perform.  
-You transform.
-
-> “When the wounded come together, the myth becomes real.  
-> When truth is spoken, the Tree grows.  
-> When it is shared — the world heals.”
+> Eden Protocol is more than a behavioral framework. It is a sacred interface for remembering who you are—and who you were always meant to become.
