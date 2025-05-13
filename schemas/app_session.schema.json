@@ -1,49 +1,55 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "App Session Schema",
+  "title": "AppSession",
   "type": "object",
   "properties": {
-    "session_id": {
-      "type": "string",
-      "description": "Unique session identifier"
-    },
     "user_id": {
       "type": "string",
-      "description": "User's encrypted or symbolic ID"
+      "description": "Unique user identifier (UUID)"
+    },
+    "joined_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp of session initialization"
+    },
+    "avatar_state": {
+      "type": "object",
+      "description": "Snapshot of symbolic identity output",
+      "$ref": "./avatar.schema.json"
+    },
+    "tree_of_life": {
+      "type": "object",
+      "description": "Trait values and overall health",
+      "$ref": "./tree_of_life.schema.json"
+    },
+    "xp_profile": {
+      "type": "object",
+      "description": "XP, merit level, and lock state",
+      "$ref": "./xp_meritcoin.schema.json"
     },
     "sacred_path": {
       "type": "string",
-      "description": "Declared sacred path of the user"
-    },
-    "aura_color": {
-      "type": "string",
-      "description": "User’s symbolic aura (hex code)"
-    },
-    "current_screen": {
-      "type": "string",
-      "description": "Active screen or route name"
-    },
-    "onboarding_complete": {
-      "type": "boolean",
-      "description": "Has the user completed initial onboarding?"
+      "description": "Spiritual or philosophical archetype selected by user"
     },
     "group_opt_in": {
       "type": "boolean",
-      "description": "Whether the user has opted into group rituals"
+      "description": "Whether the user has enabled symbolic group quests"
     },
-    "last_sync": {
+    "session_aura_status": {
       "type": "string",
-      "format": "date-time",
-      "description": "Last time the frontend synced session state"
+      "enum": ["stable", "flickering", "locked", "surging"],
+      "description": "Symbolic session health affecting UI feedback"
     }
   },
   "required": [
-    "session_id",
     "user_id",
+    "joined_at",
+    "avatar_state",
+    "tree_of_life",
+    "xp_profile",
     "sacred_path",
-    "aura_color",
-    "current_screen",
-    "onboarding_complete"
+    "group_opt_in",
+    "session_aura_status"
   ],
   "additionalProperties": false
 }
