@@ -1,25 +1,46 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Tree of Life",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tree of Life Schema",
   "type": "object",
   "properties": {
-    "discipline": { "type": "integer", "minimum": 0, "maximum": 100 },
-    "empathy": { "type": "integer", "minimum": 0, "maximum": 100 },
-    "resilience": { "type": "integer", "minimum": 0, "maximum": 100 },
-    "craft": { "type": "integer", "minimum": 0, "maximum": 100 },
-    "mindfulness": { "type": "integer", "minimum": 0, "maximum": 100 },
-    "physical_care": { "type": "integer", "minimum": 0, "maximum": 100 },
-    "expression": { "type": "integer", "minimum": 0, "maximum": 100 },
-    "health_score": { "type": "number", "minimum": 0.0, "maximum": 100.0 }
+    "discipline": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "resilience": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "mindfulness": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "expression": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "physical_care": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "emotional_regulation": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    }
   },
   "required": [
     "discipline",
-    "empathy",
     "resilience",
-    "craft",
     "mindfulness",
-    "physical_care",
     "expression",
-    "health_score"
-  ]
+    "physical_care",
+    "emotional_regulation"
+  ],
+  "additionalProperties": false
 }
