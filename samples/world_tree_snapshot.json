@@ -1,0 +1,33 @@
+{
+  "snapshot_time": "2025-05-15T22:15:00Z",
+  "global_health_index": 72,
+  "collective_aura_state": "flickering",
+  "active_user_count": 427,
+  "dao_vote_activity": {
+    "proposals_active": 3,
+    "most_recent_passed": "Add Sacred Path: Stoicism",
+    "most_recent_failed": "Enable Public Leaderboards"
+  },
+  "sacred_path_distribution": {
+    "Hermeticism": 122,
+    "Christianity": 86,
+    "Buddhism": 77,
+    "Gnosticism": 48,
+    "Animism": 39,
+    "Custom": 33,
+    "Undeclared": 22
+  },
+  "world_symbolic_state": "resonant equilibrium",
+  "notable_anomalies": [
+    {
+      "type": "aura_flux",
+      "location": "North America",
+      "impact": "sacred_path shift: Animism ↑12%"
+    },
+    {
+      "type": "tree_decay_spike",
+      "location": "EU",
+      "impact": "mindfulness -8% across 40 users"
+    }
+  ]
+}
