@@ -1,40 +1,66 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Eden UI Payload Schema",
+  "title": "EdenQuest UI Payload",
   "type": "object",
+  "description": "Bundled output used by frontend systems for rendering Tree, XP, avatar, and session UI.",
   "properties": {
-    "avatar": {
-      "$ref": "./avatar.schema.json"
-    },
-    "token": {
+    "user_id": {
       "type": "string",
-      "description": "Encrypted user identity string (ZK enclave token)"
+      "description": "Encrypted user identity (UUID or symbolic token)"
+    },
+    "avatar": {
+      "type": "object",
+      "$ref": "./avatar.schema.json",
+      "description": "Avatar state including archetype, aura, glyph, and sacred path"
     },
     "tree_of_life": {
-      "$ref": "./tree_of_life.schema.json"
+      "type": "object",
+      "$ref": "./tree_of_life.schema.json",
+      "description": "Tree health and trait values"
     },
-    "meritcoin": {
-      "$ref": "./xp_meritcoin.schema.json"
+    "xp_profile": {
+      "type": "object",
+      "$ref": "./xp_meritcoin.schema.json",
+      "description": "Current XP level, lock state, and merit progression"
     },
     "edenquest": {
-      "$ref": "./edenquest.schema.json"
+      "type": "object",
+      "$ref": "./edenquest.schema.json",
+      "description": "Current symbolic quest and metaphoric structure"
+    },
+    "session_aura_status": {
+      "type": "string",
+      "enum": ["stable", "flickering", "surging", "locked"],
+      "description": "Represents symbolic stability of the user session"
+    },
+    "group_opt_in": {
+      "type": "boolean",
+      "description": "Whether the user has joined symbolic multiplayer rituals"
+    },
+    "sacred_path": {
+      "type": "string",
+      "description": "User’s selected sacred path (e.g. Hermeticism, Buddhism)"
     },
     "dao": {
-      "$ref": "./dao.schema.json"
+      "type": "object",
+      "$ref": "./dao.schema.json",
+      "description": "DAO access tier, vote status, last proposal metadata"
     },
     "world_tree": {
-      "$ref": "./world_tree.schema.json"
-    },
-    "group_state": {
-      "$ref": "./group_presence.schema.json"
+      "type": "object",
+      "$ref": "./world_tree.schema.json",
+      "description": "Real-time collective symbolic world state"
     }
   },
   "required": [
+    "user_id",
     "avatar",
-    "token",
     "tree_of_life",
-    "meritcoin",
+    "xp_profile",
     "edenquest",
+    "session_aura_status",
+    "group_opt_in",
+    "sacred_path",
     "dao",
     "world_tree"
   ],
