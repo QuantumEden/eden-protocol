@@ -1,0 +1,54 @@
+[
+  {
+    "mbti": "INTJ",
+    "iq": 140,
+    "eq": 120,
+    "moral": "care",
+    "sacred_path": "Hermeticism",
+    "group_opt_in": true,
+    "disclosure": {
+      "diagnosis": ["PTSD"],
+      "trauma_tags": ["combat", "insomnia"],
+      "service_connected": true
+    }
+  },
+  {
+    "mbti": "ENFP",
+    "iq": 115,
+    "eq": 130,
+    "moral": "liberty",
+    "sacred_path": "Buddhism",
+    "group_opt_in": false,
+    "disclosure": {
+      "diagnosis": ["anxiety"],
+      "trauma_tags": ["childhood_abuse"],
+      "service_connected": false
+    }
+  },
+  {
+    "mbti": "ISFJ",
+    "iq": 105,
+    "eq": 125,
+    "moral": "authority",
+    "sacred_path": "Christianity",
+    "group_opt_in": true,
+    "disclosure": {
+      "diagnosis": [],
+      "trauma_tags": ["betrayal"],
+      "service_connected": true
+    }
+  },
+  {
+    "mbti": "ENTP",
+    "iq": 125,
+    "eq": 110,
+    "moral": "fairness",
+    "sacred_path": "Gnosticism",
+    "group_opt_in": true,
+    "disclosure": {
+      "diagnosis": ["depression"],
+      "trauma_tags": ["substance_dependency", "homelessness"],
+      "service_connected": false
+    }
+  }
+]
