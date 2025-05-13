@@ -1,90 +1,89 @@
-# 🗳️ Eden Protocol – Mod Audit Guidelines
+# 🗳️ Eden Protocol – Mod Proposal Audit Guidelines
 
-> “Eden is a myth, not a modpack. You do not build into Eden. You align with it.”
-
-This document outlines the DAO’s policy for reviewing, approving, and moderating community-created symbolic content — including mods, rituals, glyph sets, quests, voice libraries, and sacred expansions.
-
-Mods are welcome. Chaos is not. Eden is a symbolic operating system — not a playground for ego projection or ideological warfare.
+> This document defines the DAO rules for evaluating proposed modifications to symbolic content, quests, archetypes, or ritual systems in EdenQuest.
 
 ---
 
-## 🔐 Sacred Content Governance
+## 🧭 Purpose
 
-### ✅ All mods must:
-- Respect the Eden Canon and Sacred Path Whitelist  
-- Use only symbolic, mythic, or therapeutic imagery  
-- Avoid any parody, satire, or defilement of sacred themes  
-- Pass a DAO vote if they include:
-  - Custom archetypes
-  - Original quests using religious or metaphysical frameworks
-  - Sacred path-specific glyphs, voice files, or visuals
+The Eden DAO does not legislate efficiency.  
+It stewards **meaning**.
+
+Every proposal must be symbolically coherent, psychospiritually safe, and aligned with Eden’s core covenant:
+> “Transformation must be sacred, voluntary, and soulbound.”
 
 ---
 
-## 🛑 Prohibited Mod Content
+## ✅ What Can Be Proposed
 
-Mods will be automatically rejected if they:
-
-- Use any banned spiritual or ideological symbolism (see `/schemas/sacred_path_whitelist.json`)
-- Include rainbow iconography or symbols repurposed from real-world activist movements
-- Depict inverted, chaotic, or trauma-glorifying entities (e.g., deities of cruelty, blood magic, sexual violation, etc.)
-- Assign XP for confrontation, trolling, or performance-based dominance
-- Bypass ZK privacy mechanics by exposing or indexing identity traits
-
----
-
-## 🧩 Mod Categories Requiring DAO Review
-
-| Category | Example | Requires DAO Vote? |
-|----------|---------|--------------------|
-| ✅ Ritual Add-ons | Shadow Quest expansions | Yes |
-| ✅ Sacred Path Content | Kabbalah questline, Norse animism tree | Yes |
-| ✅ Visuals & Glyphs | New aura sets, conviction glyphs | Yes |
-| ✅ Sound & Voice Packs | Mentor or Inner Voice variants | Yes |
-| 🔁 UI Layout Mods | Cosmetic HUD changes | No |
-| 🔁 UX Customization | Keyboard shortcuts, hotkeys, accessibility scaling | No |
-| 🚫 Meme Sets | Joke glyphs, satire quests, parody voices | Rejected |
-| 🚫 Politicized Mods | National flags, party symbolism, ideological satire | Rejected |
+- 🌀 New Realignment Quests
+- 🧬 Additional Sacred Paths (must meet whitelist policy)
+- 🛡️ Rituals or symbolic boss encounters
+- 🧠 Custom archetypes (requires mythic coherence)
+- 📜 Mythic Dungeon expansions
+- 🔮 Narrative Voice updates (e.g. new Inner Voice personas)
 
 ---
 
-## 🛠️ Submission Requirements
+## ❌ What Cannot Be Proposed
 
-All mods must be submitted with:
-
-- A symbolic intent statement
-- Declaration of sacred path alignment (if applicable)
-- Sample payload result (e.g. XP impact, voice logic, aura effect)
-- Affirmation of ZK compliance (no personal data storage)
-
-Mods that touch sacred themes must undergo an additional symbolic ethics audit from a DAO guardian or elder.
+- Gamified monetization (e.g. paid XP boosts, cosmetics)
+- Non-trauma-informed content (coercive, triggering, or violent language)
+- Banned sacred paths (see `/schemas/sacred_path_whitelist.json`)
+- Personal data exposure or surveillance-based quests
+- Leaderboards or performance rankings
 
 ---
 
-## 🔄 DAO Review Protocol
+## 🧾 Required Metadata
 
-1. **Submission Queue** → `/mods/` with tagging system
-2. **Community Audit** → Early feedback via merit-based contributors
-3. **DAO Vote** → Verified users only
-4. **Sacred Content Review** → Only triggered if flagged by guardian or mod includes sacred_path hooks
-5. **Approval or Rejection** → Immutable result with rationale posted to `/logs/mod_decisions/`
+All proposals must include:
 
----
-
-## 📜 Permanent Bans & Blacklist Enforcement
-
-Mods that attempt to:
-
-- Subvert sacred glyphs
-- Trivialize trauma
-- Break multiplayer ritual harmony
-- Force opt-in mechanics
-- Mimic real-world social credit or advertising systems
-
-...will be permanently blacklisted, and their creators may be suspended from DAO participation based on Truth Integrity regression.
+| Field | Required |
+|-------|----------|
+| `title` | ✅ |
+| `symbolic_justification` | ✅ |
+| `xp_threshold` | ✅ |
+| `truth_commit_hash` | ✅ |
+| `sacred_path_alignment` | ✅ |
+| `archetype_impact` | ✅ |
+| `ritual_test_case` | Optional |
+| `ZK validation` | ✅ if user-based |
 
 ---
 
-> Eden is not a skin. It is a soul.
-> Your mod is not content. It is a ritual.
-> To create within Eden is to walk the path — not rewrite it.
+## 🧠 Evaluation Criteria
+
+Proposals will be reviewed based on:
+
+- **Mythic Coherence** – Is it symbolically consistent?
+- **Therapeutic Integrity** – Is it safe for trauma-informed play?
+- **Sacred Path Alignment** – Does it contradict any path already canonized?
+- **Truth Integrity Score** – Was the proposer acting in alignment with their journey?
+
+---
+
+## 🧩 Voting Requirements
+
+| Proposal Type | Required XP | Truth Integrity |
+|---------------|-------------|-----------------|
+| Minor (ritual only) | 200 | 60% |
+| Major (new path or archetype) | 500 | 80% |
+| System-Level Update | 1000 | 95% soulbound verified |
+
+All proposals are **soulbound** — no delegation, no purchase, no proxy.
+
+---
+
+## 🕊️ Ethics Review Clause
+
+The DAO may elect a 3-member ethics circle to privately review and debate any proposal that:
+- Alters sacred path rules
+- References active sociopolitical trauma
+- Involves potential abuse vectors
+
+Their review is final unless vetoed by a 95% symbolic quorum.
+
+---
+
+> “The DAO is not a legislature. It is a mirror. And mirrors do not lie — they reflect what stands before them.”
