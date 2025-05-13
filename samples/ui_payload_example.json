@@ -1,0 +1,49 @@
+{
+  "user_id": "3fd8b3e0-ea8b-4c1a-bf4f-9c11e2d7450e",
+  "avatar": {
+    "mbti": "INTJ",
+    "archetype": "Strategist",
+    "element": "Air",
+    "aura_color": "violet-silver",
+    "sacred_path": "Hermeticism",
+    "conviction_glyph": "☯"
+  },
+  "tree_of_life": {
+    "discipline": 88,
+    "resilience": 91,
+    "mindfulness": 72,
+    "expression": 67,
+    "physical_care": 60,
+    "emotional_regulation": 75,
+    "health_index": 75
+  },
+  "xp_profile": {
+    "level": 6,
+    "xp": 580,
+    "xp_threshold": 700,
+    "locked": false
+  },
+  "edenquest": {
+    "title": "The Labyrinth of Mirrors",
+    "theme": "Confronting Inner Doubt",
+    "metaphor": "Navigate a dreamworld of false selves",
+    "growth_target": "expression",
+    "difficulty": "moderate",
+    "quest_type": "daily"
+  },
+  "session_aura_status": "stable",
+  "group_opt_in": true,
+  "sacred_path": "Hermeticism",
+  "dao": {
+    "vote_eligibility": true,
+    "last_proposal_title": "Add Shadow Quest: Trial of Silence",
+    "user_vote": "approve",
+    "proposal_passed": true
+  },
+  "world_tree": {
+    "global_health_index": 68,
+    "active_users": 421,
+    "collective_aura": "surging",
+    "symbolic_state": "resonant equilibrium"
+  }
+}
