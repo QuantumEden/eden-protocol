@@ -1,60 +1,75 @@
-from src.avatar_identity_engine.identity_engine import generate_avatar
-from src.tree_of_life.tree_of_life import initialize_tree_of_life, compute_health_score
-from src.leveling_system.leveling_system import initialize_merit_profile
-from src.paths.sacred_path_engine import apply_sacred_path_effects
-from src.groupplay.group_state_engine import generate_group_state
+import random
 
-def generate_eden_payload(user_id, profile, secret_key):
+def generate_eden_payload(user_profile: dict) -> dict:
     """
-    Generates a full symbolic Eden payload for a given user profile.
-    This includes avatar traits, Tree of Life, XP, DAO role, and aura metadata.
+    Generates a symbolic payload from the user's psychometric profile.
     """
-    # === Avatar Setup ===
-    avatar = generate_avatar(profile)
-    sacred_path = profile.get("sacred_path", "Undeclared")
-    group_opt_in = profile.get("group_opt_in", False)
+    mbti = user_profile.get("mbti", "INTJ")
+    iq = user_profile.get("iq", 100)
+    eq = user_profile.get("eq", 100)
+    moral = user_profile.get("moral", "care")
+    sacred_path = user_profile.get("sacred_path", "None")
+    group_opt_in = user_profile.get("group_opt_in", False)
+    disclosure = user_profile.get("disclosure", {})
 
-    # === Tree Initialization ===
-    tree = initialize_tree_of_life()
-    tree = apply_sacred_path_effects(tree, sacred_path)
-    tree["health_index"] = compute_health_score(tree)
-
-    # === XP & Merit ===
-    meritcoin = initialize_merit_profile()
-
-    # === Quest Stub ===
-    edenquest = {
-        "title": "Crossing the First Threshold",
-        "theme": "Beginnings",
-        "metaphor": "The Mirror Awakens",
-        "growth_target": "Choose Sacred Path and Face First Reflection"
+    # Archetype classification logic
+    archetype_map = {
+        "NT": "Strategist",
+        "NF": "Healer",
+        "SJ": "Guardian",
+        "SP": "Builder"
     }
 
-    # === DAO Stub ===
-    dao = {
-        "last_proposal": "Expand Glyph Library for Healer Class",
-        "status": "eligible",
-        "vote_weight": 1
+    prefix = mbti[1:3]
+    archetype = archetype_map.get(prefix, "Strategist")
+
+    # Conviction glyph map (simplified)
+    glyph_map = {
+        "care": "💖",
+        "justice": "⚖️",
+        "loyalty": "🛡️",
+        "truth": "☯",
+        "liberty": "🗽"
     }
 
-    # === World Tree Stub ===
-    world_tree = {
-        "symbolic_state": "Harmonic",
-        "eden_health": 0.93,
-        "active_dao_users": 42
+    conviction_glyph = glyph_map.get(moral.lower(), "☯")
+
+    # Default trait scores (0–100 scale)
+    base_traits = {
+        "discipline": min(100, iq + 10),
+        "resilience": min(100, eq + 5),
+        "mindfulness": min(100, int(eq * 0.8)),
+        "expression": min(100, int(eq * 0.75)),
+        "physical_care": 50,
+        "emotional_regulation": min(100, int(eq * 0.85))
     }
 
-    # === Group Ritual State ===
-    group_state = generate_group_state(user_id, group_opt_in)
+    # Disclosure adjustments (healing bonus)
+    disclosure_adjustment = {}
 
-    # === Compile Payload ===
-    return {
-        "avatar": avatar,
-        "token": f"{user_id}.{secret_key}.eden",
-        "tree_of_life": tree,
-        "meritcoin": meritcoin,
-        "edenquest": edenquest,
-        "dao": dao,
-        "world_tree": world_tree,
-        "group_state": group_state
+    if "diagnosis" in disclosure:
+        if "PTSD" in disclosure["diagnosis"]:
+            base_traits["resilience"] += 10
+            base_traits["emotional_regulation"] += 7
+            disclosure_adjustment["resilience"] = 10
+            disclosure_adjustment["emotional_regulation"] = 7
+
+        if "depression" in disclosure["diagnosis"]:
+            base_traits["expression"] += 6
+            base_traits["mindfulness"] += 4
+            disclosure_adjustment["expression"] = 6
+            disclosure_adjustment["mindfulness"] = 4
+
+    # Cap all traits at 100
+    tree_traits = {trait: min(100, value) for trait, value in base_traits.items()}
+
+    payload = {
+        "archetype": archetype,
+        "conviction_glyph": conviction_glyph,
+        "tree_traits": tree_traits,
+        "xp_awarded": random.randint(80, 120),
+        "quest_unlocked": True,
+        "disclosure_adjustment": disclosure_adjustment
     }
+
+    return payload
