@@ -1,53 +1,66 @@
-# 🖼️ EdenQuest UI Mock Screens – Overview
+# 🖼️ EdenQuest UI Mock Screens – Design Blueprint
 
-This folder is a symbolic UI staging ground. It contains reference layouts, interface breakdowns, and design guidance for building the EdenQuest experience across mobile, desktop, and XR platforms.
-
----
-
-## 🔧 Purpose
-
-- To visualize how users **interact with their inner world** symbolically
-- To align screen designs with the outputs of `/schemas/*.json`, `/src/`, and `/sim/`
-- To create a design language where every interface reflects a **mythic psychological state**
+> This folder will contain future wireframes, Figma exports, or concept sketches for all Eden user interfaces. Even without visuals, this document serves as a symbolic bridge between backend truth and frontend expression.
 
 ---
 
-## 📱 Mobile Screens (React Native Targets)
+## 📱 MOBILE INTERFACE CONCEPTS (React Native)
 
-| Screen | Description |
-|--------|-------------|
-| `tree_of_life_ui.png` | Interactive visual HUD for branches, decay, XP growth |
-| `daily_quest_journal.png` | Quest log with journaling, decisions, and rewards |
-| `aura_status_view.png` | Avatar display with aura effects and moral glyphs |
-| `xp_progression.png` | XP meter, merit level, soulbound token history |
-| `dao_portal.png` | Proposal viewer and voting interface |
+### 🌳 Tree of Life Screen
+- Radial or vertical Tree visualization
+- Tap = Trait info | Long-press = Trait history
+- Auras flicker when growth or decay occurs
 
----
+### 🧙 Quest Prompt Modal
+- AI voice overlay + quest summary
+- Accept / Decline buttons
+- Visual theme changes with archetype + path
 
-## 🧠 Voice UI & Symbolic Overlays
+### 💠 Avatar Viewer
+- Floating glyph display with sacred path overlay
+- Sacred ring background based on disclosure status
+- Swipe through personality echoes or path resonance
 
-- Mentorship cues (e.g. glow around buttons with voice activation)
-- Inner Voice narration track
-- Echo response zones (combat or decision tension)
-
----
-
-## 🌍 Public Web Dashboard Screens
-
-| Screen | Description |
-|--------|-------------|
-| `world_tree_view.png` | Collective Eden growth map & symbolic vitality meter |
-| `proposal_archive.png` | DAO vote archive with XP-weighted logs |
-| `mod_creation_portal.png` | Interface for submitting symbolic mods |
+### 🗳️ DAO Vote Screen
+- List of proposals
+- Yes / No with merit confirmation
+- Visual scale based on user’s XP weight
 
 ---
 
-## 🧩 Contribution Notes
+## 🌐 WEB INTERFACE CONCEPTS (React.js / Next.js)
 
-- All mockups must reflect **symbolic UX** — not efficiency-first gamification
-- Use aura cues, glyph iconography, and subtle animations to reflect state
-- Do not overdesign — Eden is sacred space, not app clutter
+### 🪙 XP Ledger & Leveling
+- Graph of past actions vs XP thresholds
+- History of Shadow Quests, locks, and disclosures
+
+### 🌍 World Tree Dashboard
+- Global branch pulse animation (per trait)
+- Symbolic system health from all users combined
+- DAO climate gauge (truth alignment)
+
+### 🔐 Disclosure Vault Access
+- Symbolic upload portal
+- Encrypted SHA token view (never raw text)
+- Journal entries tied to previous quests
 
 ---
 
-> “A screen in Eden is not just a UI — it’s a mirror. Design like you're holding someone's soul in your hands.”
+## 🧪 DESIGN NOTES
+
+- **No point scores. No avatars with stats.**  
+  Symbolism is the UX.
+
+- **Every screen should feel like a ritual**, not a task.
+
+- **Use color theory sparingly** – sacred paths determine hue shifts:
+  - Hermeticism = Indigo / Gold
+  - Buddhism = Saffron / White
+  - Animism = Earth / Green / Mist
+
+- All haptic feedback should feel **ceremonial**, not arcade.
+
+---
+
+> Visuals in Eden are myth made touchable.  
+> Until they manifest, let this space be the altar.
