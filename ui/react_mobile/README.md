@@ -1,87 +1,89 @@
-# 📱 EdenQuest Mobile UI – React Native Design Blueprint
+# 📱 EdenQuest Mobile Interface – React Native
 
-> This document outlines the core mobile user interface logic and layout for EdenQuest. It serves as a guide for implementing the symbolic healing experience on mobile devices via React Native.
-
----
-
-## 🎯 Primary Goals
-
-- Render symbolic feedback in a trauma-safe, non-gamified interface
-- Reflect avatar state, Tree of Life, XP level, and daily quests
-- Provide access to DAO proposals (read-only or vote if eligible)
-- Integrate voice-driven symbolic quest guidance (optional)
+> This folder contains the modular components and screen logic for the **EdenQuest mobile app**, built in **React Native**. It translates the symbolic backend payloads into touch-based immersive interactions.
 
 ---
 
-## 🧩 Core UI Components
+## 🧱 Key Screens
 
-### 1. **Tree of Life Screen**
-- 🌳 Vertical tree diagram with animated branches
-- Each branch represents a trait (Discipline, Expression, etc.)
-- Branches animate or flicker based on health values (0–100)
-- Tap to view symbolic breakdown and growth history
+### 🌳 Tree of Life HUD
+- Visual trait rings or branches for:
+  - `discipline`, `resilience`, `mindfulness`, `expression`, `physical_care`, `emotional_regulation`
+- XP overlay and dynamic animations for growth or decay
+- Auras and glyphs change based on avatar state
 
-### 2. **Avatar & Aura Panel**
-- 🧬 Displays archetype class, aura glyph, and sacred path
-- Aura pulse reflects current alignment or shadow flicker
-- Optional toggle for voice reflection ("Inner Voice" journal mode)
+### 🧠 Daily Quest Interface
+- Accept/decline ritual prompt
+- Voice playback integration (Mentor, Echo, Inner Voice)
+- Quest timer, journal link, and “complete reflection” button
 
-### 3. **XP Tracker**
-- 🪙 XP meter shows progress toward next merit level
-- Locked if user has triggered a symbolic violation
-- XP earned shown in session summary
+### 💖 Avatar & Aura Viewer
+- Animated avatar rendered based on archetype + glyph
+- Sacred path displayed with symbolic resonance
+- Gesture or scroll-based transitions between glyphs
 
-### 4. **Daily Quest Interface**
-- 📜 Displays current EdenQuest assignment
-- Shows:
-  - Quest title
-  - Theme (e.g. “Reclaiming Discipline”)
-  - Metaphor (e.g. “Walk the Labyrinth”)
-  - Completion ritual
-- Mark as complete triggers soft voice narration or reflection
-
-### 5. **DAO Feed (Optional)**
-- 🗳️ Read-only DAO updates (proposals, votes, group ritual triggers)
-- Unlocks voting if truth integrity or XP thresholds are met
+### 🗳️ DAO Proposal Viewer
+- List of symbolic proposals
+- Voting modal (token-gated)
+- Truth-weighted vote confirmation animation
 
 ---
 
-## 🔐 Additional Features
-
-- Biometric unlock for session resume (Face ID/Touch ID)
-- Token-gated access to deeper quests based on Tree health
-- Aura emergency override (for user-triggered cooldown/reset)
-
----
-
-## 🧠 Technical Notes
-
-- Built with **React Native** and optional **Expo** framework
-- Uses payloads from `/schemas/ui_payload.schema.json`
-- Can be simulated using mocked JSON until backend connection is live
-
----
-
-## 📁 Directory Structure
+## ⚙️ Component Structure
 
 ```
 /ui/react_mobile/
 ├── components/
-│   ├── TreeVisualizer.js
-│   ├── QuestPanel.js
-│   ├── XPTracker.js
-│   ├── AuraDisplay.js
+│   ├── TreeDisplay.tsx
+│   ├── XPBar.tsx
+│   ├── QuestPrompt.tsx
+│   ├── VoicePlayer.tsx
+│   ├── AvatarView.tsx
+│   ├── DAOProposalList.tsx
 ├── screens/
-│   ├── HomeScreen.js
-│   ├── QuestScreen.js
-│   ├── TreeScreen.js
-│   ├── DAODashboard.js
+│   ├── HomeScreen.tsx
+│   ├── QuestScreen.tsx
+│   ├── TreeScreen.tsx
+│   ├── DAOScreen.tsx
 ├── assets/
-│   ├── glyphs/
-│   ├── auras/
-│   ├── icons/
+│   └── icons, fonts, sigils/
+├── utils/
+│   └── payloadParser.ts
+└── App.tsx
 ```
 
 ---
 
-> “Your phone is not a window — it is a mirror. EdenQuest renders your soul in light and branch and breath.”
+## 🔐 Data Input
+
+All screen rendering is based on:
+
+- `/schemas/eden_payload.schema.json`
+- `/schemas/app_session.schema.json`
+
+Data is parsed using:
+- `generate_eden_payload()` (simulated or real API)
+- Local cache for Tree + XP states
+- Optional: Voice synthesis (stubbed or ElevenLabs key)
+
+---
+
+## 🛡️ Symbolic UX Requirements
+
+- No points, leaderboards, or gamification
+- All touch interactions must reflect internal transformation
+- Long-press or swipe = ritual gesture, not arcade tap
+- All XP and growth must originate from narrative reflection
+
+---
+
+## 🔮 Future Enhancements
+
+- haptic feedback via TactSuit pairing
+- voice command trigger for Shadow Quests
+- modal for disclosure upload ritual
+- calendar-based journaling tied to quests
+
+---
+
+> The mobile interface is the user’s sacred mirror. It must be quiet, reverent, and mythic in tone.
