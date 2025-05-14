@@ -1,88 +1,85 @@
-# 🌐 EdenQuest Web Interface – DAO & System Overview Portal
+# 🌐 EdenQuest Web Interface – React.js / Next.js
 
-> This document outlines the symbolic web dashboard for Eden Protocol, built using React.js or Next.js. It will serve as a decentralized mirror for user state, DAO governance, XP history, and the living World Tree.
-
----
-
-## 🎯 Primary Functions
-
-- Visualize collective health of the Eden system
-- Present DAO proposals, votes, and mythic outcomes
-- Allow users to explore their XP, Tree growth, and quest history
-- Render real-time symbolic signals (aura surges, world state shifts)
+> This folder defines the structure for the web-based Eden dashboard. It focuses on DAO participation, XP tracking, avatar identity review, and global system visualization via the World Tree.
 
 ---
 
-## 🧩 Core Web Modules
+## 🧱 Core Modules
 
-### 1. **World Tree Dashboard**
-- 🌍 Visual representation of collective Tree health
-- Branches represent each user trait averaged across DAO
-- Real-time animated states: decay, bloom, flicker
-- Collective aura pulses when major symbolic events occur
+### 🗳️ DAO Proposal Panel
+- List of recent symbolic proposals
+- Truth-weighted vote system
+- Voter glyph + merit score preview
+- “Soulbound Proposal” submission form
 
-### 2. **XP & Quest Ledger**
-- 📈 Historical log of user XP gains, level unlocks, and quest completions
-- Color-coded by archetype class (Builder, Healer, etc.)
-- Includes symbolic badge display for completed Realignment Quests
+### 🌍 World Tree Dashboard
+- Global user metrics (aggregate Tree health)
+- Visual health branches (per trait across users)
+- Heatmap of recent growth, decay, quests completed
+- Pulse animation for system resonance
 
-### 3. **DAO Proposal Feed**
-- 🗳️ Proposal stream with title, archetype tag, vote tally
-- Locked/Unlocked based on XP or soulbound merit level
-- Votes require cryptographic integrity checks (ZK Commit system)
-- Soulbound Proposal actions tagged and immutable
+### 🪙 XP & MeritCoin Explorer
+- User XP chart + level history
+- XP lockout log
+- Disclosure token history (symbolic, non-identifying)
+- MeritCoin soulbound index
 
-### 4. **Sacred Path Registry**
-- 🧭 Visual gallery of canonical sacred paths
-- Includes:
-  - Path symbol
-  - Color theory
-  - DAO proposal history (if any)
-- Submission portal for proposing new paths (mod gated)
-
-### 5. **Group Quest Log**
-- 🌀 Displays opt-in multiplayer ritual events
-- Symbolic outcome: e.g. "Echo Cathedral Cleansed"
-- Voting, aura, and DAO entries reflected here
+### 🧬 Avatar Viewer + Audit Trail
+- Avatar history (sacred path, glyph, archetype)
+- Quest completion logs
+- Symbolic Tree state over time
 
 ---
 
-## 🔐 User State Management
-
-- Pulls from `/schemas/ui_payload.schema.json`
-- Includes aura status, XP, sacred path, and disclosure boost effects
-- Token-gated view tiers based on Truth Integrity and level
-
----
-
-## 🧠 Technical Details
-
-- Built with **React.js** or **Next.js** framework
-- May include **Socket.io** or polling to reflect real-time world state
-- Secure identity pulled from encrypted `user_id` token
-
----
-
-## 📁 Directory Structure
+## ⚙️ Component Structure
 
 ```
 /ui/react_web_portal/
 ├── components/
-│   ├── WorldTreeDisplay.js
-│   ├── DAOFeed.js
-│   ├── XPLog.js
-│   ├── ProposalViewer.js
+│   ├── DAOVotePanel.tsx
+│   ├── XPChart.tsx
+│   ├── WorldTreeMap.tsx
+│   ├── AvatarAudit.tsx
+│   ├── DisclosureLog.tsx
 ├── pages/
-│   ├── index.js
-│   ├── world-tree.js
-│   ├── dao.js
-│   ├── profile.js
-├── assets/
-│   ├── sacred_paths/
-│   ├── glyphs/
-│   ├── icons/
+│   ├── index.tsx
+│   ├── dao.tsx
+│   ├── avatar.tsx
+│   ├── worldtree.tsx
+├── utils/
+│   └── sessionParser.ts
+└── App.tsx
 ```
 
 ---
 
-> “This is not a dashboard. This is a mythic map of your civilization. Eden does not track data — it reflects devotion.”
+## 🔐 Data Sources
+
+Pulls from:
+
+- `/schemas/eden_payload.schema.json`
+- `/schemas/app_session.schema.json`
+- DAO commit logs + XP commit chain (optional stubs)
+
+---
+
+## 🛡️ UX Design Philosophy
+
+- DAO votes are solemn — not competitive
+- World Tree should feel mythic, not gamified
+- All logs must be symbolic — no raw data exposure
+- Navigation flow: *XP → Avatar → DAO → World Tree*
+
+---
+
+## 🔮 Future Capabilities
+
+- Public DAO proposal explorer
+- Guest user simulation mode
+- Modular merit-based mod submission (admin-only)
+- Live XP resonance graph from new user commits
+
+---
+
+> The web dashboard is Eden’s temple of memory.  
+> It records who we’ve become — and who we are becoming together.
