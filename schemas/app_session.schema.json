@@ -2,54 +2,47 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "AppSession",
   "type": "object",
+  "required": [
+    "user_id",
+    "joined_at",
+    "avatar",
+    "tree_of_life",
+    "xp_profile",
+    "group_opt_in",
+    "sacred_path"
+  ],
   "properties": {
     "user_id": {
       "type": "string",
-      "description": "Unique user identifier (UUID)"
+      "description": "Unique UUID identifier for the user"
     },
     "joined_at": {
       "type": "string",
       "format": "date-time",
-      "description": "UTC timestamp of session initialization"
+      "description": "ISO timestamp of first session initialization"
     },
-    "avatar_state": {
+    "avatar": {
       "type": "object",
-      "description": "Snapshot of symbolic identity output",
+      "description": "User’s symbolic avatar profile",
       "$ref": "./avatar.schema.json"
     },
     "tree_of_life": {
       "type": "object",
-      "description": "Trait values and overall health",
+      "description": "Behavioral trait structure",
       "$ref": "./tree_of_life.schema.json"
     },
     "xp_profile": {
       "type": "object",
-      "description": "XP, merit level, and lock state",
+      "description": "XP level, lock status, and threshold tracking",
       "$ref": "./xp_meritcoin.schema.json"
-    },
-    "sacred_path": {
-      "type": "string",
-      "description": "Spiritual or philosophical archetype selected by user"
     },
     "group_opt_in": {
       "type": "boolean",
-      "description": "Whether the user has enabled symbolic group quests"
+      "description": "Whether user participates in group-based quests"
     },
-    "session_aura_status": {
+    "sacred_path": {
       "type": "string",
-      "enum": ["stable", "flickering", "locked", "surging"],
-      "description": "Symbolic session health affecting UI feedback"
+      "description": "User’s chosen spiritual/philosophical alignment"
     }
-  },
-  "required": [
-    "user_id",
-    "joined_at",
-    "avatar_state",
-    "tree_of_life",
-    "xp_profile",
-    "sacred_path",
-    "group_opt_in",
-    "session_aura_status"
-  ],
-  "additionalProperties": false
+  }
 }
