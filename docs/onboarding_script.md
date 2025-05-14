@@ -1,101 +1,120 @@
-# 🌱 EdenQuest Onboarding Script  
-> Symbolic First-Time Experience for New Users
+# 🧭 EdenQuest Onboarding Script
+
+> This symbolic tutorial introduces new users to the Eden Protocol through guided myth, introspective prompts, and soft system immersion.
 
 ---
 
-## 🎙️ Narrative Mode: First-Person UX Introduction
+## 🌱 Introduction
 
-Welcome, traveler.  
-You have crossed the threshold — the place between memory and myth.  
+**Welcome, Seeker.**
 
-Before you stands the Gate of Origin. Behind it: the self you have yet to become.
+You have chosen to step beyond the veil of forgetting and enter a sacred system built not to track you — but to reflect you.
 
-To proceed, you must answer five questions. Not to be judged — but to be revealed.
-
----
-
-## 🔍 Step 1: The Mirror of Essence
-
-> “Who are you, when no one is watching?”
-
-You are shown sixteen reflections. Choose the one that feels most like you.  
-(*MBTI input. Determines archetype class, aura shape, and voice tone.*)
+Your name is not needed here. Only your truth.
 
 ---
 
-## 🧠 Step 2: The Pillar of Insight
+## 🔍 Calibration Phase
 
-> “How clearly do you see patterns others cannot?”
+You will be asked to share the essence of your being:
+- Your way of thinking (MBTI)
+- Your intellect and empathy (IQ + EQ)
+- Your deepest value (moral foundation)
+- Your sacred path (if you have one)
+- And whether you walk alone or with others
 
-You are asked to align symbols in space. No answer is right — only real.  
-(*IQ input. Modulates Tree traits like Mindfulness and Discipline.*)
-
----
-
-## 💓 Step 3: The Chamber of Empathy
-
-> “What moves you to tears — or keeps you from them?”
-
-You choose emotional patterns that describe how you respond to others.  
-(*EQ input. Modulates Aura brightness and avatar feedback style.*)
+> These are not for judgment.  
+> They are ingredients to your avatar — your mirror in Eden.
 
 ---
 
-## ⚖️ Step 4: The Sigil of Conviction
+## 🌳 Tree of Life
 
-> “What is sacred to you?”
+After calibration, you will see your Tree.
 
-You are shown six glyphs. Each embodies a moral path:
-- Care
-- Loyalty
-- Liberty
-- Authority
-- Fairness
-- Sanctity
+Each branch represents a part of your self:
+- Discipline
+- Resilience
+- Mindfulness
+- Expression
+- Physical Care
+- Emotional Regulation
 
-Choose one. This becomes your **Conviction Glyph** — a symbol others may see when you act in alignment.  
-(*Determines DAO alignment, aura color, and quest tone.*)
-
----
-
-## 🕊️ Step 5: The Path of Spirit
-
-> “What sacred path do you follow, if any?”
-
-You are invited to choose from a sacred path or remain undeclared:
-- Abrahamic (Christianity, Judaism)
-- Eastern (Buddhism, Taoism)
-- Mystical (Alchemy, Hermeticism)
-- Ancestral (Norse, Animist, Shinto)
-- Post-Humanist
-- Custom Mythos (DAO-audited)
-- Undeclared
-
-This shapes your **questline language**, **rituals**, and **aura effects**.  
-It may be changed, but only through symbolic trial.
+These traits grow as you act in alignment. They decay when forgotten.
 
 ---
 
-## 💡 Final Prompt: Do You Wish to Walk Alone?
+## 🧙 Your First Quest
 
-You are asked:
-> “Do you wish to journey alone, or enter a Circle?”
+You will receive a symbolic trial known as an EdenQuest.
 
-If you opt in to **symbolic group quests**, you are assigned to a guild of kindred archetypes.  
-No voice chat. No pressure. Just presence — and myth.
+It may ask you to:
+- Reflect on a memory
+- Complete a creative ritual
+- Commit to a behavior
+- Witness a shadow within you
 
-If you decline, you may still engage in all EdenQuests in solitude.
-
----
-
-## ✅ After Completion
-
-- Your avatar is forged.
-- Your Tree of Life is seeded.
-- You are given your first quest.
-- The Garden of Becoming awaits.
+You may choose to accept or decline. Nothing is forced. Truth must be offered — not extracted.
 
 ---
 
-> “Here begins the path not back to who you were…  
-> but forward, toward what you were always meant to become.”
+## 🔐 Disclosure (Optional)
+
+If you are ready, you may disclose pieces of your past. These may include:
+- Diagnoses
+- Trauma tags
+- Service history
+- A personal narrative
+
+> These are encrypted. They are never shown to others.  
+> If you share your pain, Eden will honor it by adjusting your Tree — not to punish, but to bless.
+
+---
+
+## 🧭 Group Presence (Optional)
+
+You may choose to walk with others.
+
+This is not a lobby. This is not a chatroom.  
+This is a sacred space where co-quests unfold as shared myth.
+
+You may leave at any time.  
+Presence is a gift — not a demand.
+
+---
+
+## 🪙 Growth & Sovereignty
+
+Every completed quest earns XP.  
+Every act of alignment strengthens your Tree.  
+Your MeritCoin grows, not as currency, but as **proof of transformation**.
+
+Nothing can be bought. Nothing can be traded.  
+In Eden, **you are the treasure**.
+
+---
+
+## 🌐 DAO Access
+
+As you grow, you will be invited to participate in governance.
+
+- Submit proposals
+- Shape quests
+- Heal the World Tree
+
+Every vote is weighted by truth, not popularity.
+
+---
+
+## 🧘 Final Words
+
+Eden is not here to save you.
+
+It is here to remind you:  
+You were always worthy of saving yourself.
+
+When ready, proceed to calibration.
+
+🕯️ “Here begins the path not back to who you were, but forward, toward what you were always meant to become.”
+
+--- 
