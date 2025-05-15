@@ -5,7 +5,9 @@ def initialize_merit_profile():
         "level": 1,
         "xp": 0,
         "xp_threshold": 100,
-        "locked": False
+        "locked": False,
+        "meritcoin_score": 0.0,
+        "soulform_xp_multiplier": 1.0  # Default neutral multiplier
     }
 
 # ✅ NEW FUNCTION: XP bonus for truthful disclosure
@@ -40,3 +42,23 @@ def calculate_disclosure_xp(disclosure_block):
 
     # Cap max XP from single upload
     return min(xp, 150)
+
+# ✅ NEW FUNCTION: Apply XP and handle leveling logic
+def apply_xp(profile, base_xp):
+    """
+    Applies XP to profile and handles leveling, merit boost, and soulform multipliers.
+    """
+    multiplier = profile.get("soulform_xp_multiplier", 1.0)
+    earned_xp = int(base_xp * multiplier)
+    profile["xp"] += earned_xp
+
+    while profile["xp"] >= profile["xp_threshold"]:
+        profile["xp"] -= profile["xp_threshold"]
+        profile["level"] += 1
+        profile["xp_threshold"] = int(profile["xp_threshold"] * 1.25)  # Scaling curve
+
+    # Optional: boost meritcoin score
+    if "meritcoin_score" in profile:
+        profile["meritcoin_score"] += earned_xp * 0.05  # Conversion rate: XP to Merit
+
+    return profile
