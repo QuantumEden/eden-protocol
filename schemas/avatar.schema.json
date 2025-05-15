@@ -14,7 +14,7 @@
     },
     "eyes": { "type": "string" },
 
-    // 🧬 Soulform Integration
+    // Soulform Integration
     "current_soulform": {
       "type": "object",
       "properties": {
