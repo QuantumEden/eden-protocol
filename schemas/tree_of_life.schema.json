@@ -32,6 +32,19 @@
       "type": "integer",
       "minimum": 0,
       "maximum": 100
+    },
+    "soulform_unlock_thresholds": {
+      "type": "object",
+      "description": "Minimum trait values required to initiate soulform transformation.",
+      "properties": {
+        "discipline": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "resilience": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "mindfulness": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "expression": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "physical_care": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "emotional_regulation": { "type": "integer", "minimum": 0, "maximum": 100 }
+      },
+      "additionalProperties": false
     }
   },
   "required": [
