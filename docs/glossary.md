@@ -18,6 +18,12 @@
 
 **Conviction Glyph** – A symbolic glyph representing the user's dominant moral foundation (e.g. ☯ for Truth, 🜁 for Discipline).
 
+**Soulform** – A metamorphic transformation unlocked by alignment, discipline, and voluntary disclosure. It is not a costume, but a consequence.
+
+**Soulform Visuals** – Dynamic visual FX rendered in the avatar: shimmer overlays, elemental body shaders, aura pulses, and movement changes based on soulform state.
+
+**Transformation Threshold** – The trait-based and narrative requirements needed to unlock a soulform, tied to the Tree of Life, XP, and personal quests.
+
 ---
 
 ## 🌳 Tree of Life System
@@ -52,6 +58,8 @@
 
 **MeritCoin** – A soulbound, non-tradable proof of transformation recorded on-chain.
 
+**zkXP Commit** – A Zero-Knowledge Proof recording of symbolic experience gain used to validate truth without exposing personal data.
+
 ---
 
 ## 🧙 Quest System
@@ -62,10 +70,14 @@
 
 **Hero Quest** – The user's overarching character arc, often aligned with their sacred path and vocation.
 
+**Legacy Trial** – A high-difficulty narrative arc available only to those who have completed a soulform transformation.
+
+**Ash Realm** – A procedurally generated dungeon unlocked by Phoenix-class soulforms, testing emotional regulation, sacrifice, and rebirth.
+
 **Voice Roles**:
-- Mentor 🧙 – Wise guide
-- Echo 🜃 – Shadow or resistance voice
-- Inner Voice 🧬 – Reflective narrative overlay
+- Mentor 🧙 – Wise guide  
+- Echo 🜃 – Shadow or resistance voice  
+- Inner Voice 🧬 – Reflective narrative overlay  
 
 ---
 
