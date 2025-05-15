@@ -3,10 +3,37 @@
   "title": "XP and MeritCoin",
   "type": "object",
   "properties": {
-    "level": { "type": "integer", "minimum": 0 },
-    "xp": { "type": "integer", "minimum": 0 },
-    "next_level": { "type": "integer", "minimum": 0 },
-    "locked": { "type": "boolean" }
+    "level": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "xp": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "next_level": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "meritcoin_score": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Dynamic, soulbound score representing truth-based growth. Decays over time without meaningful action."
+    },
+    "meritcoin_decay_rate": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Weekly percentage decay (e.g. 0.01 = 1%) for idle or disconnected users."
+    },
+    "soulform_xp_multiplier": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Optional modifier to XP earned while transformed. Boosts or penalizes XP gains based on current soulform."
+    }
   },
   "required": ["level", "xp", "next_level", "locked"]
 }
