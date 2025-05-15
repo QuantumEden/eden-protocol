@@ -42,13 +42,15 @@ EYE_EFFECTS = {
     "low": "Dim Shimmer"
 }
 
-def generate_avatar(profile: Dict[str, any]) -> Dict[str, str]:
+def generate_avatar(profile: Dict[str, any]) -> Dict[str, any]:
     mbti = profile.get("mbti", "INTJ")
     iq = profile.get("iq", 100)
     eq = profile.get("eq", 100)
     moral = profile.get("moral", "care")
 
-    archetype, subtype, secondary_aura = ARCHETYPE_DATA.get(mbti.upper(), ("Strategist", "The Architect / Magician", "Ivory"))
+    archetype, subtype, secondary_aura = ARCHETYPE_DATA.get(
+        mbti.upper(), ("Strategist", "The Architect / Magician", "Ivory")
+    )
     aura_primary = PRIMARY_AURA[archetype]
     element = ELEMENT[archetype]
 
@@ -74,6 +76,15 @@ def generate_avatar(profile: Dict[str, any]) -> Dict[str, str]:
         "Level": 1
     }
 
+    # Optional: attach soulform state if present in profile
+    if "current_soulform" in profile:
+        avatar["CurrentSoulform"] = {
+            "ID": profile["current_soulform"].get("id"),
+            "Name": profile["current_soulform"].get("name"),
+            "ElementalAffinity": profile["current_soulform"].get("elemental_affinity"),
+            "ActivatedAt": profile["current_soulform"].get("activated_at")
+        }
+
     return avatar
 
 # Optional CLI test
@@ -82,7 +93,13 @@ if __name__ == "__main__":
         "mbti": "INFJ",
         "iq": 126,
         "eq": 115,
-        "moral": "fairness"
+        "moral": "fairness",
+        "current_soulform": {
+            "id": "phoenix",
+            "name": "Ashborn Phoenix",
+            "elemental_affinity": "Fire",
+            "activated_at": "2025-05-14T16:00:00Z"
+        }
     }
 
     avatar = generate_avatar(test_profile)
