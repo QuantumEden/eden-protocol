@@ -13,8 +13,6 @@
       "items": { "type": "string" }
     },
     "eyes": { "type": "string" },
-
-    // Soulform Integration
     "current_soulform": {
       "type": "object",
       "properties": {
