@@ -54,3 +54,22 @@ def apply_disclosure_adjustments(tree, disclosure_block):
         tree["resilience"] = min(tree["resilience"] + 10, 100)
 
     return tree
+
+def check_soulform_eligibility(tree, thresholds):
+    """
+    Determines whether a user's Tree of Life meets or exceeds all required thresholds
+    to initiate soulform transformation.
+    
+    Parameters:
+        tree (dict): current trait values
+        thresholds (dict): required minimums for transformation
+    
+    Returns:
+        bool: True if all thresholds met or exceeded
+    """
+    for trait, required_value in thresholds.items():
+        if trait not in tree:
+            return False
+        if tree[trait] < required_value:
+            return False
+    return True
