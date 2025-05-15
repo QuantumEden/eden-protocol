@@ -54,6 +54,19 @@
       "additionalProperties": {
         "type": "integer"
       }
+    },
+    "soulform_visuals": {
+      "type": "object",
+      "description": "Frontend-renderable state of user's current soulform",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "elemental_affinity": { "type": "string" },
+        "aura_effect": { "type": "string" },
+        "body_shader": { "type": "string" },
+        "animation_override": { "type": "string" }
+      },
+      "required": ["id", "name", "elemental_affinity"]
     }
   }
 }
