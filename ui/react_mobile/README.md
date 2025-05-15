@@ -11,6 +11,7 @@
   - `discipline`, `resilience`, `mindfulness`, `expression`, `physical_care`, `emotional_regulation`
 - XP overlay and dynamic animations for growth or decay
 - Auras and glyphs change based on avatar state
+- 🌬️ **Soulform Overlay**: reactive shimmer effects when a transformation is active
 
 ### 🧠 Daily Quest Interface
 - Accept/decline ritual prompt
@@ -19,6 +20,8 @@
 
 ### 💖 Avatar & Aura Viewer
 - Animated avatar rendered based on archetype + glyph
+- **Soulform visuals (if active)**:
+  - aura shimmer, body shader, idle animation override
 - Sacred path displayed with symbolic resonance
 - Gesture or scroll-based transitions between glyphs
 
@@ -31,7 +34,6 @@
 
 ## ⚙️ Component Structure
 
-```
 /ui/react_mobile/
 ├── components/
 │   ├── TreeDisplay.tsx
@@ -50,7 +52,6 @@
 ├── utils/
 │   └── payloadParser.ts
 └── App.tsx
-```
 
 ---
 
@@ -60,6 +61,7 @@ All screen rendering is based on:
 
 - `/schemas/eden_payload.schema.json`
 - `/schemas/app_session.schema.json`
+- `soulform_visuals` field injected via `/infra/token_router_stub.py`
 
 Data is parsed using:
 - `generate_eden_payload()` (simulated or real API)
@@ -74,16 +76,19 @@ Data is parsed using:
 - All touch interactions must reflect internal transformation
 - Long-press or swipe = ritual gesture, not arcade tap
 - All XP and growth must originate from narrative reflection
+- Soulform states must feel **earned**, not toggled
 
 ---
 
 ## 🔮 Future Enhancements
 
-- haptic feedback via TactSuit pairing
-- voice command trigger for Shadow Quests
-- modal for disclosure upload ritual
-- calendar-based journaling tied to quests
+- haptic feedback via TactSuit pairing  
+- voice command trigger for Shadow Quests  
+- modal for disclosure upload ritual  
+- calendar-based journaling tied to quests  
+- full-body aura rendering for Soulform evolution stages
 
 ---
 
-> The mobile interface is the user’s sacred mirror. It must be quiet, reverent, and mythic in tone.
+> The mobile interface is the user’s sacred mirror.  
+> It must be quiet, reverent, and mythic in tone.
