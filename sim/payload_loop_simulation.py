@@ -15,6 +15,15 @@ for i in range(3):
         "group_opt_in": i % 2 == 0
     }
 
+    # Inject soulform test state on final loop
+    if i == 2:
+        profile["current_soulform"] = {
+            "id": "phoenix",
+            "name": "Ashborn Phoenix",
+            "elemental_affinity": "Fire",
+            "activated_at": "2025-05-14T16:00:00Z"
+        }
+
     user_id = f"test_subject_{i:03d}"
     secret_key = f"loop_key_{i:03d}"
 
