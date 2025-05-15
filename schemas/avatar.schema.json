@@ -12,7 +12,33 @@
       "type": "array",
       "items": { "type": "string" }
     },
-    "eyes": { "type": "string" }
+    "eyes": { "type": "string" },
+
+    // 🧬 Soulform Integration
+    "current_soulform": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "elemental_affinity": { "type": "string" },
+        "activated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "elemental_affinity", "activated_at"]
+    },
+    "soulform_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "elemental_affinity": { "type": "string" },
+          "activated_at": { "type": "string", "format": "date-time" },
+          "retired_at": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "name", "activated_at"]
+      }
+    }
   },
   "required": ["mbti", "archetype", "element"]
 }
