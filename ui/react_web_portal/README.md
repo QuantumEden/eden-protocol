@@ -17,23 +17,26 @@
 - Visual health branches (per trait across users)
 - Heatmap of recent growth, decay, quests completed
 - Pulse animation for system resonance
+- 🔁 **Soulform Sync Pulse** — reflects active global transformations
 
 ### 🪙 XP & MeritCoin Explorer
 - User XP chart + level history
 - XP lockout log
 - Disclosure token history (symbolic, non-identifying)
 - MeritCoin soulbound index
+- Soulform-based XP multiplier audit (if applicable)
 
 ### 🧬 Avatar Viewer + Audit Trail
 - Avatar history (sacred path, glyph, archetype)
 - Quest completion logs
 - Symbolic Tree state over time
+- 🌬️ **Soulform Visual Log**:
+  - transformation names, timestamps, elemental affinities
 
 ---
 
 ## ⚙️ Component Structure
 
-```
 /ui/react_web_portal/
 ├── components/
 │   ├── DAOVotePanel.tsx
@@ -49,7 +52,6 @@
 ├── utils/
 │   └── sessionParser.ts
 └── App.tsx
-```
 
 ---
 
@@ -59,6 +61,7 @@ Pulls from:
 
 - `/schemas/eden_payload.schema.json`
 - `/schemas/app_session.schema.json`
+- `soulform_visuals` object from `/infra/token_router_stub.py`
 - DAO commit logs + XP commit chain (optional stubs)
 
 ---
@@ -68,16 +71,18 @@ Pulls from:
 - DAO votes are solemn — not competitive
 - World Tree should feel mythic, not gamified
 - All logs must be symbolic — no raw data exposure
+- Soulform presence must feel like a global ripple, not a badge
 - Navigation flow: *XP → Avatar → DAO → World Tree*
 
 ---
 
 ## 🔮 Future Capabilities
 
-- Public DAO proposal explorer
-- Guest user simulation mode
-- Modular merit-based mod submission (admin-only)
-- Live XP resonance graph from new user commits
+- Public DAO proposal explorer  
+- Guest user simulation mode  
+- Modular merit-based mod submission (admin-only)  
+- Live XP resonance graph from new user commits  
+- Soulform constellation overlays on World Tree  
 
 ---
 
