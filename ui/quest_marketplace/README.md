@@ -1,90 +1,126 @@
-# Quest Marketplace – Eden Protocol UI Guide
+# 🌀 Quest Marketplace – Eden Protocol UI Guide
 
-This folder defines the design, rules, and structure of Eden’s symbolic quest activation interface.
+This folder defines the symbolic structure and sacred UX rules for Eden’s **Quest Marketplace** interface — where soulform trials, mythic dungeons, and community rituals are surfaced based on the user’s truth.
 
-The “Marketplace” is a metaphor.  
-It is not commercial. It is sacred.
-
----
-
-## Purpose
-
-The Quest Marketplace allows users to:
-
-- Unlock **Soulform Trials** (Phoenix, Dragon, Wyrm, etc.)
-- Accept **Mythic Dungeons** tied to Tree imbalance
-- Trigger **Community Rituals** proposed by the DAO
-- Replay completed Hero or Shadow arcs for XP restoration
+The term “Marketplace” is symbolic.  
+There is no commerce. Only invitation.
 
 ---
 
-## Interface Design
+## 🎯 Purpose
 
-### Core Screens
+The Eden Quest Marketplace enables users to:
 
-- **Trial Unlock Panel**
-  - Requires level + trait balance + MeritCoin
-  - One-time entry per form
-  - Visual preview, aura animation, and elemental theme
+- Unlock **Soulform Trials** (e.g., Phoenix, Dragon, Wyrm)
+- Enter **Shadow Dungeons** when Tree of Life decay is detected
+- Accept **DAO-Curated Rituals** through public proposals
+- Revisit Hero or Shadow arcs for **XP restoration and growth auditing**
 
-- **Shadow Dungeon List**
-  - Appears only if Tree decay or quest failures detected
-  - High-stakes reflection quests
-  - Entry locks other UI functions until resolved
-
-- **DAO Ritual Gallery**
-  - Top-rated symbolic quests by trusted users
-  - “Soulbound Proposal” status badge
-  - Verified via vote or curator key
+No path is available unless earned.  
+No quest appears unless you are ready.
 
 ---
 
-## User Flow
+## 🖥️ Interface Design
 
-1. Open Quest Marketplace
-2. See what’s available based on Tree + XP
-3. Select a ritual trial
-4. Complete voice-prompted quest or dungeon
-5. Earn symbolic token, XP, or transformation trigger
+### 🧬 Trial Unlock Panel
+- Displayed only when:
+  - User level `>= 7`
+  - Tree trait thresholds met
+  - MeritCoin logged
+- Shows:
+  - Visual aura and elemental alignment
+  - One-time soulform transformation rite
 
----
+### 🌑 Shadow Dungeon List
+- Triggered when:
+  - Tree decay detected
+  - Failed quest without disclosure
+- Characteristics:
+  - Ritual locked (no other UI opens until complete)
+  - High-stakes, internal reflection-based narrative
 
-## Rules
-
-- No quests may be purchased
-- No shortcut via grind or fiat
-- All trials must pass avatar, soulform, or DAO gate
-- Each soulform has a unique dungeon only visible to eligible users
-
----
-
-## Voice Integration
-
-- Each quest is narrated by a trio:
-  - Mentor (guidance)
-  - Echo (resistance)
-  - Inner Voice (reflection)
-
-- Voice roles rotate per quest type
-
----
-
-## UX Mandates
-
-- Do not list “rewards” in numeric terms
-- Visuals must remain mythic, dark, sacred
-- Touch input must mimic ritual gestures (swipe, long press)
+### 🗳️ DAO Ritual Gallery
+- Displays:
+  - DAO-approved quests
+  - User-submitted symbolic dungeons
+  - “Soulbound Proposal” verification stamp
+- Filtered by:
+  - Trust level
+  - DAO vote history
+  - Ritual frequency limits
 
 ---
 
-## Developer Notes
+## 🔄 User Flow
 
-- Marketplace is bound to `generate_eden_payload()` + XP ledger
-- Soulform dungeons require `soulform_id` and `level >= 7`
-- DAO rituals require proposal hash and vote verification
+1. Enter the Quest Marketplace
+2. Receive a list of quests based on:
+   - XP level
+   - Trait growth
+   - Disclosure or decay state
+3. Select a trial or ritual
+4. Voice-guided immersion (Mentor, Echo, Inner Voice)
+5. Completion logs XP, symbolic artifact, or soulform trigger
 
 ---
 
-> The Quest Marketplace is not a feature.
-> It is a gate.
-> Enter only when the system calls your name.
+## 🧩 Marketplace Rules
+
+- ❌ No fiat currency, paywalls, or artificial rewards
+- ❌ No gamification of suffering
+- ✅ All rituals must pass avatar, soulform, or DAO gate
+- ✅ Each transformation is unique — some are not repeatable
+- ✅ All data flow routes through `generate_eden_payload()` and XP ledger commits
+
+---
+
+## 🎙️ Voice Integration
+
+Every quest is guided by a **ritual trio**:
+
+| Voice Role | Function |
+|------------|----------|
+| **Mentor** | Offers mythic framing and purpose |
+| **Echo** | Personifies fear, doubt, or trauma |
+| **Inner Voice** | Reflects user progress and symbolic decisions |
+
+Voices rotate per:
+- Quest category (Hero, Shadow, DAO)
+- Soulform stage
+- Realignment depth
+
+---
+
+## 🛡️ UX Design Mandates
+
+- No numeric XP rewards shown — only transformation indicators
+- No fast-scrolling lists; use symbolic reveals
+- Swipe = ritual movement  
+  Long press = sacred affirmation  
+  Tap = forbidden unless used to **refuse** a quest
+
+Visual tone:
+- Mythic, reverent, and slow
+- Echoes of temples, dark forests, and sacred thresholds
+
+---
+
+## ⚙️ Developer Integration Notes
+
+- Quests surfaced by:
+  - `generate_eden_payload()`
+  - DAO proposal handler
+  - Tree decay or realignment trigger
+- Required schema tags:
+  - `soulform_id` (for trials)
+  - `proposal_hash` (for DAO quests)
+  - `decay_alert` (for dungeons)
+
+---
+
+> The Quest Marketplace is not a menu.  
+> It is a mirror.  
+> It will never show you what you want — only what you need.
+
+Enter with truth.
