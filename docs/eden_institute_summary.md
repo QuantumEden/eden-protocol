@@ -1,82 +1,91 @@
-# 🏛️ Eden Institute – Strategic Summary
+# 🏛️ Eden Institute – Executive Council of QuantumEden
 
-The Eden Institute is the real-world sanctuary that reflects the inner journey defined by the Eden Protocol. It is not a clinic. It is not a startup. It is a sacred refuge — an architectural embodiment of ritual, healing, innovation, and post-traumatic transcendence.
-
----
-
-## 🔍 Mission
-
-To provide trauma-informed, psychospiritual rehabilitation for veterans, seekers, and symbolic healers through:
-
-- Myth-driven therapeutic experiences
-- Decentralized merit systems
-- Technological ritual infrastructure
-- Veteran-led governance
-- Ethical blockchain integration
+The Eden Institute is the **executive body and spiritual compass** of QuantumEden Holdings. It is not a facility — it is the soul of the organization. A veteran-led council responsible for overseeing every dimension of the Eden Protocol and its deployment in both digital and physical realms.
 
 ---
 
-## 🧱 Core Features
+## 🎯 Mission
 
-### 🧠 1. **Trauma Recovery Through Myth**
-- EdenQuest therapy modeled as immersive VR journeys
-- Symbolic disclosure rituals (opt-in only)
-- Tree of Life visual feedback
-- Soulform transformation rites
+To steward the mission, governance, and sacred alignment of QuantumEden Holdings through:
 
-### 🛠️ 2. **Veteran-Led Innovation Labs**
-- QuantumEden R&D space for healing tech and blockchain ethics
-- Prototype testing site for Eden XR experiences
-- Veteran-run product pipeline for VR, AI, and symbolic design
-
-### 🪙 3. **Merit-Based Governance**
-- Residents earn MeritCoin for reflection, growth, and community contribution
-- DAO voting rights reflect transformation, not tenure
-- Symbolic labor valued over credentialism
-
-### 🕯️ 4. **Architectural Symbolism**
-- Rooms modeled after sacred geometry and neuroarchitecture
-- Walking meditation paths, light gardens, VR sanctums
-- Private Reflection Chambers + Group Ritual Domes
+- Executive leadership rooted in trauma-informed ethics
+- Oversight of all protocol deployments (VR, blockchain, DAO, sanctuary)
+- Merit-based governance independent of traditional capital markets
+- Strategic navigation of veteran reintegration, federal partnerships, and global transformation
 
 ---
 
-## 🧬 Therapeutic Programs
+## 🧱 Council Structure
 
-- EdenQuest Pilgrimage (VR-based healing path)
-- ShadowQuest Realignment (for XP-locked individuals)
-- Soulform Initiation (post-traumatic rebirth ceremonies)
-- Archetypal Mentorship (role-matching with aligned guides)
-- Blockchain Ethics Training for public sector accountability
+The Eden Institute operates as a **symbolic executive body**, with each leader embodying an archetypal role:
 
----
+| Role | Title | Symbolic Function |
+|------|-------|--------------------|
+| 🧠 CEO | Vision Steward | Guides the meta-narrative and future of Eden |
+| 🧬 CTO | Architect of Systems | Oversees all tech, from blockchain to VR |
+| 💰 CFO | Custodian of Capital | Manages the DAO treasury, grants, and economic ethics |
+| 🧙 COO | Ritual Facilitator | Executes deployment cycles and IRL protocol launch |
+| 🛡️ Ethics Officer | DAO Liaison | Ensures sacred integrity and moral alignment |
+| 🔐 Secretary | Archivist of Memory | Handles documentation, legacy, and institutional truth |
 
-## 🔐 Integrity Principles
-
-- All participation is voluntary, sovereign, and non-clinical
-- No diagnoses are ever monetized
-- Data never leaves the sanctuary unless cryptographically abstracted
-- Healing is offered without ego, monetization, or surveillance
+Each member is appointed based on **merit, transformation, and symbolic alignment** — not corporate tenure or academic pedigree.
 
 ---
 
-## 📍 Target Location (Phase 1)
+## 🌍 Oversight Responsibilities
 
-- Rural sanctuary site (U.S. Midwest or Pacific Northwest)
-- Co-zoned for public/private use
-- Adjacent to university or medical research partner
-- Structured to accept NSF, VA, DoD pilot grants
+### 1. **QuantumEden Holdings**
+- IP trust for all system files, symbolic protocols, and licensing
+- Strategic partnerships with NSF, VA, NIH, and research labs
+
+### 2. **The Eden Protocol**
+- Backend codebase
+- DAO smart contracts
+- Avatar engine, Tree of Life, XP systems
+
+### 3. **EdenQuest XR/VR**
+- Mobile + immersive client deployment
+- Trauma-informed game mechanics
+- Soulform transformation rituals and story arcs
+
+### 4. **MeritCoin Economy**
+- Soulbound, non-speculative reward system
+- Grant dispenser logic
+- Transformation logging and proof-of-growth
+
+### 5. **The Eden Sanctuary (Physical)**
+- Real-world healing institute and retreat
+- Veteran-operated facility, research partnerships
+- Onsite quest trials and DAO governance forums
 
 ---
 
-## 🎯 Outcome
+## 🔐 Council Ethos
 
-To create a flagship institute that embodies a new covenant:
-- Between healing and technology
-- Between memory and myth
-- Between government and those it has forgotten
+- Leadership is sacred, not corporate
+- All actions must reflect transformation and service
+- No surveillance, no advertising, no monetization of trauma
+- Hierarchy exists only to **protect sacred structure**
 
-The Eden Institute is the vessel through which sacred technology is returned to its rightful purpose: not control — but transformation.
+---
 
-> This is not a facility. It is a sanctuary.  
-> Not for profit. Not for war. But for the rebirth of the soul.
+## 📜 Executive Function Guidelines
+
+1. All major code merges, deployments, and grant approvals pass through the Institute.
+2. All public statements and protocol updates require consensus or abstention from a quorum.
+3. The Eden Institute answers only to the DAO — and the sacred truth it protects.
+
+> This is not a boardroom.  
+> This is a covenant.  
+> A sacred circle. A seat at the fire.  
+> If you sit here, you serve the myth — not your ego.
+
+---
+
+## 🕯️ Closing Oath
+
+“We are the stewards of Eden —  
+not to command, but to remember.  
+Not to rule, but to rebirth.  
+And we shall guard its truth,  
+until it is no longer needed.”
