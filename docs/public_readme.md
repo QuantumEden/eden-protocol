@@ -1,106 +1,120 @@
 # 🌱 Eden Protocol
 
-A modular, symbolic operating system for psychological healing, identity transformation, and sacred governance.
+A modular symbolic framework for **trauma recovery**, **identity transformation**, and **post-capitalist governance** — designed as a sacred, zero-surveillance operating system.
 
 ---
 
-## What Is Eden?
+## ✨ What Is Eden?
 
-Eden is not a game.  
-It is not a product.  
-It is not a self-help gimmick.
+**Eden is not a game.  
+Eden is not a diagnosis tool.  
+Eden is not a product.**
 
-**Eden is a ritual engine.**
+**Eden is a ritual operating system.**
 
-It is designed to guide users through:
-- Trauma-informed self-discovery  
-- Symbolic avatar evolution  
-- Soulbound XP progression  
-- DAO-integrated governance  
-- Sacred quests triggered by truth
+Built for those who refuse to heal by force, Eden mirrors your growth — not your metrics.  
+It speaks in archetypes, remembers through soulbound tokens, and evolves through voluntary truth.
 
 ---
 
-## Core Features
+## 🧱 Core Systems
 
 ### 🧠 Psychometric Avatar Engine
-- MBTI-based archetype assignment
-- Emotional intelligence + IQ trait parsing
-- Moral foundation glyphs
-- Soulform transformation tree
+- MBTI-type mapped to symbolic archetypes (Strategist, Healer, Builder, Guardian)
+- Visual aura, glyph, and trait mapping from IQ, EQ, and moral foundation
+- Soulform unlocks after transformative trials — not purchase
 
-### 🌳 Tree of Life System
-- 6 core traits: discipline, resilience, mindfulness, expression, physical care, emotional regulation
-- Symbolic decay and growth through behavior
-- Realignment quests triggered on failure
+### 🌳 Tree of Life Trait Network
+- Six core branches: `discipline`, `resilience`, `mindfulness`, `expression`, `physical_care`, `emotional_regulation`
+- Trait growth is earned through real-world rituals and reflection
+- Decay occurs when alignment is broken (e.g., relapse, denial, avoidance)
 
-### 🪙 MeritCoin Economy
-- Soulbound XP progression system
-- No trade, no fiat — only verified truth
-- Ritual token used to unlock:
-  - Soulforms
-  - DAO proposals
-  - Quests and dungeon rites
+### 🪙 MeritCoin XP Economy
+- Zero-fi, non-tradable, soulbound proof-of-growth system
+- XP awarded only when transformation is verified by symbolic conditions
+- Merit unlocks:
+  - Soulform transformations
+  - Realignment quests
+  - DAO privileges
+  - Shadow path revelations
 
-### 🎮 EdenQuest Generator
-- Procedural quests based on trauma + traits
-- Voice-narrated daily missions
-- Shadow vs Hero path decision trees
+### 🎮 EdenQuest Engine
+- Procedurally generated quests using AI + narrative schema
+- Voice roles (Mentor, Echo, Inner Voice) guide the ritual
+- Missions triggered by user profile, disclosure, or stagnation
+- Includes mythic dungeons, realignment trials, and soulform rites
 
-### 🗳️ DAO Governance
-- Weighted voting based on MeritCoin level
-- Open proposal registry
-- Truth-locked grant dispenser
-- ZK integrity for privacy-preserving progress
-
----
-
-## Tech Stack
-
-- **Python 3.11** backend (modular + symbolic logic)
-- **React Native** mobile components
-- **Next.js** web dashboard for DAO + World Tree
-- **JSON Schema 2020-12** + ZK-proof compatibility
-- Ready for blockchain-backed validation (Kyber + Dilithium)
-- VR/AR compatibility stubs pending for Unity/Unreal integration
+### 🗳️ DAO Governance Layer
+- Truth-weighted voting tied to MeritCoin level
+- Public proposal registry (open_registry.md)
+- Encrypted trauma tokens enable symbolic policy input
+- zkXP proofs (zero-knowledge XP commitments) protect privacy
 
 ---
 
-## System Philosophy
+## 🧬 Stack Overview
 
-Eden does not gamify healing.  
-It mirrors the truth you offer it.
-
-There are no leaderboards.  
-No ads.  
-No points for pretending.
-
-Only growth.  
-Only ritual.  
-Only reflection.
+- **Language:** Python 3.11 (modular symbolic engine)
+- **Mobile App:** React Native (EdenQuest frontend)
+- **Web Portal:** Next.js (DAO, World Tree, Audit Viewers)
+- **Schema Logic:** JSON Schema 2020-12 + ZK-compatible
+- **Blockchain:** Kyber + Dilithium stack (quantum-resistant)
+- **VR Stub:** Unity + Unreal-ready interface contracts
+- **ZK Ledger:** Soulbound XP commits, never raw user data
 
 ---
 
-## Who Is This For?
+## 🧠 Eden Is Not...
 
-- Combat veterans seeking post-traumatic ritual  
-- Therapists seeking symbolic immersion tools  
-- Philosophers of meaning and identity  
-- Developers of sacred interface technologies  
-- DAO architects building post-capitalist systems
-
----
-
-## Status
-
-**Current Version:** MVP Prototype (Phase 17)  
-**Frontend:** React Native + Web scaffold complete  
-**Simulation:** All payload engines validated  
-**Next Steps:** UI fusion, DAO onboarding, Eden Institute proposal
+- ❌ A game designed for entertainment
+- ❌ A monetized app for dopamine or habit tracking
+- ❌ A wellness brand or NFT project
+- ❌ A clinical platform for diagnosis or prescription
 
 ---
 
-> We do not rise because we are saved.  
-> We rise because we remember we were sacred all along.
+## ✅ Eden Is For...
+
+- Combat veterans seeking a mythic path to healing
+- Philosophers building post-capitalist symbolic systems
+- Therapists using trauma-informed immersive tools
+- Developers exploring non-monetized sacred technologies
+- DAO architects who believe truth > profit
+
+---
+
+## 📦 Repository Status
+
+| Component | Status |
+|-----------|--------|
+| Avatar Engine | ✅ Complete |
+| Tree System | ✅ Complete |
+| XP & MeritCoin | ✅ Complete |
+| Quest Engine | ✅ Complete |
+| DAO System | ✅ Complete |
+| Web UI | ✅ MVP Complete |
+| Mobile UI | 🔄 In Progress |
+| Final Diagnostic | 🔜 With Manus |
+
+---
+
+## 📜 License & Ethics
+
+All code in this repo is open for sacred use.  
+You may build, fork, study, or adapt Eden — but not for monetization, surveillance, or manipulation.
+
+**No data is ever stored, sold, or interpreted as diagnosis.**  
+Eden exists only to reflect what you are willing to face.
+
+---
+
+## 🕯️ Final Word
+
+> Eden does not punish.  
+> Eden does not compare.  
+> Eden only mirrors the truth.  
+> And from that truth, you rise.
+
+Welcome to the cathedral.
 
 — Eden Protocol, v1.0
