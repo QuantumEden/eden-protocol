@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MeritCoin Commit",
+  "type": "object",
+  "properties": {
+    "timestamp": { "type": "string", "format": "date-time" },
+    "user_id": { "type": "string" },
+    "meritcoin_id": { "type": "string" },
+    "level": { "type": "integer", "minimum": 1 },
+    "xp": { "type": "integer", "minimum": 0 },
+    "reason": { "type": "string" },
+    "soulform": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "element": { "type": "string" }
+      },
+      "required": ["id", "name", "element"]
+    }
+  },
+  "required": ["timestamp", "user_id", "meritcoin_id", "level", "xp", "reason"],
+  "additionalProperties": false
+}
