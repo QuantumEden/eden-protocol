@@ -1,6 +1,6 @@
 # Eden Protocol Budget Breakdown – MVP Phase (v1.0)
 
-This document outlines the real-world costs of building Eden Protocol’s minimum viable product — combining symbolic architecture, trauma-informed design, and responsible AI acceleration.
+This document outlines the projected minimum real-world costs of building Eden Protocol’s minimum viable product — combining symbolic architecture, trauma-informed design, and responsible AI acceleration.
 
 This is a lean, founder-led build focused on purpose, not polish.
 
