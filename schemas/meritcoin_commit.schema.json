@@ -3,22 +3,76 @@
   "title": "MeritCoin Commit",
   "type": "object",
   "properties": {
-    "timestamp": { "type": "string", "format": "date-time" },
-    "user_id": { "type": "string" },
-    "meritcoin_id": { "type": "string" },
-    "level": { "type": "integer", "minimum": 1 },
-    "xp": { "type": "integer", "minimum": 0 },
-    "reason": { "type": "string" },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time of commit"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Hashed or anonymized user ID"
+    },
+    "meritcoin_id": {
+      "type": "string",
+      "description": "Soulbound token identifier"
+    },
+    "level": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Current level at time of commit"
+    },
+    "xp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "XP amount committed"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Trigger or context for XP award (e.g. 'edenquest', 'realignment', 'dao_vote')"
+    },
+    "verified_by": {
+      "type": "string",
+      "description": "Hash or signature from ZKXP verification or local audit"
+    },
     "soulform": {
       "type": "object",
       "properties": {
         "id": { "type": "string" },
         "name": { "type": "string" },
-        "element": { "type": "string" }
+        "element": { "type": "string" },
+        "transformed_at": { "type": "string", "format": "date-time" }
       },
       "required": ["id", "name", "element"]
+    },
+    "traits_snapshot": {
+      "type": "object",
+      "properties": {
+        "discipline": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "resilience": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "mindfulness": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "expression": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "physical_care": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "emotional_regulation": { "type": "integer", "minimum": 0, "maximum": 100 }
+      },
+      "required": [
+        "discipline",
+        "resilience",
+        "mindfulness",
+        "expression",
+        "physical_care",
+        "emotional_regulation"
+      ]
     }
   },
-  "required": ["timestamp", "user_id", "meritcoin_id", "level", "xp", "reason"],
+  "required": [
+    "timestamp",
+    "user_id",
+    "meritcoin_id",
+    "level",
+    "xp",
+    "reason",
+    "verified_by",
+    "traits_snapshot"
+  ],
   "additionalProperties": false
 }
