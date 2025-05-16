@@ -27,6 +27,10 @@ print(json.dumps(payload, indent=2))
 # === Group Payload Export ===
 
 def get_all_mock_payloads():
+    """
+    Returns a list of payloads for mock users to feed into system-wide modules
+    like world_tree_sync.py, DAO merit maps, or UI simulators.
+    """
     mock_users = [
         {
             "user_id": "seer_011",
@@ -68,7 +72,11 @@ def get_all_mock_payloads():
 
     payloads = []
     for mock in mock_users:
-        p = generate_eden_payload(mock["user_id"], mock["profile"], mock["secret_key"])
-        payloads.append(p)
+        payload = generate_eden_payload(
+            user_id=mock["user_id"],
+            profile=mock["profile"],
+            secret_key=mock["secret_key"]
+        )
+        payloads.append(payload)
 
     return payloads
