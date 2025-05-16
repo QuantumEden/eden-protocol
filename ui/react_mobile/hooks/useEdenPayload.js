@@ -11,9 +11,10 @@ export function useEdenPayload(simulate = false) {
     async function fetchPayload() {
       try {
         if (simulate) {
-          const mock = await import('../../../../sim/eden_payload_viewer');
-          const mockPayload = mock.getMockPayload(); // ensure this exports correctly
-          setPayload(mockPayload);
+          const mockModule = await import('../../../../sim/eden_payload_viewer');
+          const allPayloads = mockModule.get_all_mock_payloads?.();
+          const selected = Array.isArray(allPayloads) ? allPayloads[0] : null;
+          setPayload(selected);
         } else {
           const response = await fetch('https://eden-api.yourdomain.com/payload');
           const data = await response.json();
