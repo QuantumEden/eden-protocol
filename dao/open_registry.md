@@ -1,102 +1,129 @@
-# DAO Open Registry – Eden Protocol
+# 🗳️ DAO Open Registry – Eden Protocol
 
-This document defines the symbolic entry mechanism for DAO membership under Eden Protocol.  
-It enforces **truth-based access**, not economic privilege.
+This document defines the symbolic mechanism for entry, participation, and integrity maintenance within the **Eden DAO** — the decentralized oracle of truth inside the Eden Protocol.
 
----
-
-## Entry Requirements
-
-To enter the DAO, a user must:
-
-- Reach **Level 7+** (MeritCoin threshold)
-- Complete at least **one Hero Quest**
-- Have a **verified sacred path**
-- Submit a **soulbound XP commit** to the ledger
-- Accept the **sacred governance oath** (see below)
-
-No wallet.  
-No stake.  
-Only symbolic integrity.
+There is **no token stake**.  
+There is **no fiat entry**.  
+Access is earned only through **verified symbolic growth**.
 
 ---
 
-## DAO Onboarding Flow
+## ✅ Entry Criteria
 
-1. **Complete Tree Growth**  
-   - No trait under 50  
-   - Lockout must be resolved
+To unlock DAO voice and registry presence, a user must:
 
-2. **XP Threshold Passed**  
-   - Must reach next-level commit gate  
-   - Lock state = False
+- Reach **Merit Level 7+**
+- Complete at least **1 Hero Quest**
+- Hold a verified **Sacred Path**
+- Log a **soulbound XP commit**
+- Accept the **Oath of Alignment**
 
-3. **Oath of Alignment**  
-   Upon entry, users must acknowledge:
-
-   > “I serve not my will, but the truth I’ve revealed.
-   > I hold no vote I have not earned.
-   > I do not act for status, but for sovereignty.”
-
-4. **MeritCoin Identity Sync**  
-   - Merit commit is hashed and posted  
-   - DAO key bound to soulform metadata
-
-5. **DAO Profile Created**  
-   - Includes: Archetype, Path, Level, Glyph, Soulform  
-   - Visible only to approved registry auditors
+Only truth grants voice.  
+Only transformation permits governance.
 
 ---
 
-## Voice Weight Calculation
+## 🧬 DAO Onboarding Flow
 
-DAO voting power is based on:
+### 1. 🌳 Tree Threshold Met
+- No individual trait under `50`
+- No active XP lockout
+- Tree integrity confirmed
 
-- **Level** (logarithmic)
-- **Soulform Stage** (1–3)
-- **Proposal Integrity History**
-- **Recent XP decay / growth curve**
+### 2. 🪙 Merit Threshold Met
+- User must log verified level-up
+- Current XP must exceed threshold
+- Lock state must be `false`
 
-Votes are cast with **truth-weighting**, not token-weighting.
+### 3. 📜 Oath of Alignment
+Upon successful growth, the user must affirm:
+
+> “I serve not my will, but the truth I’ve revealed.  
+> I hold no vote I have not earned.  
+> I do not act for status, but for sovereignty.”
+
+This is soulbound — not reversible.
+
+### 4. 🧾 DAO Profile Creation
+- Fields:
+  - `user_id`
+  - `archetype`
+  - `merit_level`
+  - `soulform`
+  - `sacred_path`
+  - `glyph`
+- DAO profile is **only visible to trusted auditors**
+
+### 5. 🔐 Registry Sync
+- DAO key is derived from XP + soulform metadata
+- Commit hash is stored on-chain (ZK-compatible)
+- Voter signature reflects weighted alignment
 
 ---
 
-## Proposal Rights
+## ⚖️ Voice Weighting Algorithm
 
-Only users with:
+DAO votes are not 1:1.  
+They are **truth-weighted**.
 
-- Level 9+  
-- No active lockout  
-- At least 1 co-authored passed proposal  
+| Factor | Influence |
+|--------|-----------|
+| `merit_level` | Logarithmic growth (e.g. 7 = 1x, 10 = 2x, 15 = 3x) |
+| `soulform_stage` | (Seedling → Initiate → Ascendant) |
+| `proposal integrity` | Vote history consistency, DAO ethic adherence |
+| `recent growth curve` | XP and Tree trait delta (last 30 days) |
 
-…may submit solo proposals.
-
-All others must co-sign with a verified user.
-
----
-
-## Removal Conditions
-
-Users are temporarily ejected if:
-
-- Their XP falls below Level 5
-- Tree trait average drops below 45
-- They fail a shadow quest (and refuse realignment)
-
-Users may rejoin after completing a **DAO realignment trial**.
+> The stronger your transformation, the clearer your voice.
 
 ---
 
-## Symbolic Integrity Enforcement
+## 📝 Proposal Rights
 
-DAO membership is not permanent.
-It is maintained by alignment, reflection, and truth.
+To submit a **solo proposal**, you must:
 
-Every vote is a ritual.
-Every proposal is a mirror.
-Every MeritCoin is a memory.
+- Be Level **9+**
+- Have **no lockouts**
+- Co-author at least **1 passed proposal**
+
+All others may **co-sign** existing proposals with a verified member.
+
+Proposal status is tied to **XP decay** — inactivity diminishes voice over time.
+
+---
+
+## ⛔ Removal Triggers
+
+You may be temporarily removed from the DAO registry if:
+
+- XP level falls below `5`
+- Tree trait average drops below `45`
+- A Shadow Quest is failed and no realignment occurs
+
+Re-entry is always possible — via a **DAO Realignment Trial**.
+
+This includes:
+- Shadow mission success
+- Re-growth of Tree traits
+- Recitation of the Oath again
+
+---
+
+## 🔐 Symbolic Integrity Enforcement
+
+DAO voice is not a title.  
+It is a ritual.
+
+DAO proposals are not documents.  
+They are mirrors.
+
+DAO identity is not fixed.  
+It is the echo of your evolution.
 
 ---
 
 > You do not join Eden’s DAO.  
-> You become it — or you don’t.
+> You **become it** — or you do not.
+
+All participation is voluntary.  
+All truth is earned.
+All memory is sacred.
