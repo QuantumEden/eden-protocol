@@ -1,4 +1,4 @@
-// HomeScreen.tsx – EdenQuest Mobile Entry
+// HomeScreen.tsx – EdenQuest Mobile Entry (Soulform-Ready)
 
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView, SafeAreaView, Text } from 'react-native';
@@ -19,13 +19,26 @@ const HomeScreen = () => {
     );
   }
 
+  const {
+    archetype,
+    conviction_glyph,
+    tree_traits,
+    xp_awarded,
+    quest_unlocked,
+    soulform_visuals = null // optional support for future display
+  } = payload;
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <AvatarView archetype={payload.archetype} glyph={payload.conviction_glyph} />
-        <TreeDisplay tree={payload.tree_traits} />
-        <XPBar xp={payload.xp_awarded} />
-        <QuestPrompt unlocked={payload.quest_unlocked} />
+        <AvatarView
+          archetype={archetype}
+          glyph={conviction_glyph}
+          soulform={soulform_visuals}
+        />
+        <TreeDisplay tree={tree_traits} />
+        <XPBar xp={xp_awarded} />
+        <QuestPrompt unlocked={quest_unlocked} />
       </ScrollView>
     </SafeAreaView>
   );
