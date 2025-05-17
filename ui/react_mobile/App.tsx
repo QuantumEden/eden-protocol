@@ -1,10 +1,11 @@
 // ui/react_mobile/App.tsx
-// Entry point for the EdenQuest Mobile App
+// EdenQuest Mobile App Entry – Phase 18 Initialization
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+// Import primary screens
 import HomeScreen from './screens/HomeScreen';
 import QuestScreen from './screens/QuestScreen';
 import TreeScreen from './screens/TreeScreen';
@@ -20,6 +21,7 @@ export default function App() {
         screenOptions={{
           headerShown: false,
           animation: 'fade',
+          gestureEnabled: true,
         }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
