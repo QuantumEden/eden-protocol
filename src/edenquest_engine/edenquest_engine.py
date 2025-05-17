@@ -4,7 +4,7 @@
 from typing import Dict, Any
 from quest_modifier import apply_quest_modifiers  # Phase 14 modifier overlay
 
-# === Step 1: Sample symbolic quest pool (can be swapped with AI layer) ===
+# === Step 1: Sample symbolic quest pool (replaceable by AI generator) ===
 QUEST_LIBRARY = {
     "discipline": [
         {
@@ -29,11 +29,42 @@ QUEST_LIBRARY = {
             "symbol": "A tower rising from a volcanic crater",
             "goal": "Climb while weathering storms of memory"
         }
+    ],
+    "mindfulness": [
+        {
+            "title": "The Stillwater Sanctum",
+            "theme": "Inner silence and present awareness",
+            "symbol": "A floating lotus amidst shifting waves",
+            "goal": "Meditate to dispel illusionary distractions"
+        }
+    ],
+    "expression": [
+        {
+            "title": "The Echoing Stage",
+            "theme": "Truthful communication and emotional release",
+            "symbol": "A hall of mirrors that echo unspoken thoughts",
+            "goal": "Speak words that collapse false reflections"
+        }
+    ],
+    "physical_care": [
+        {
+            "title": "The Body Temple Trial",
+            "theme": "Health, rest, and physical reverence",
+            "symbol": "A shrine built from sinew and bone",
+            "goal": "Navigate terrain while honoring bodily signals"
+        }
+    ],
+    "emotional_regulation": [
+        {
+            "title": "The Flame Cage",
+            "theme": "Navigating fear and emotional control",
+            "symbol": "A fireproof chamber with shifting walls",
+            "goal": "Remain centered while the environment destabilizes"
+        }
     ]
-    # Add future branches here...
 }
 
-# === Step 2: Accept symbolic imbalance and generate quest object ===
+# === Step 2: Accept symbolic imbalance and generate quest ===
 def generate_quest(tree: Dict[str, Dict[str, int]], user_profile: Dict[str, Any] = None) -> Dict[str, Any]:
     weakest = min(tree.items(), key=lambda item: item[1]["score"])[0]
     quest_options = QUEST_LIBRARY.get(weakest, [])
@@ -44,26 +75,27 @@ def generate_quest(tree: Dict[str, Dict[str, int]], user_profile: Dict[str, Any]
             "reason": f"No quest available for branch: {weakest}"
         }
 
-    quest = {
+    base_quest = {
         "title": quest_options[0]["title"],
         "theme": quest_options[0]["theme"],
         "symbol": quest_options[0]["symbol"],
         "goal": quest_options[0]["goal"]
     }
 
+    # Base structure
     result = {
         "status": "quest_assigned",
         "target_branch": weakest,
-        "quest": quest
+        "quest": base_quest
     }
 
-    # Apply user-based modifiers if profile is provided
+    # Step 3: Apply modifiers (archetype, soulform, disclosure)
     if user_profile:
-        result["quest"] = apply_quest_modifiers(quest, user_profile)
+        result["quest"] = apply_quest_modifiers(base_quest, user_profile)
 
     return result
 
-# === Optional: CLI test ===
+# === Optional CLI test ===
 if __name__ == "__main__":
     sample_tree = {
         "discipline": {"score": 80},
@@ -78,6 +110,11 @@ if __name__ == "__main__":
     mock_profile = {
         "archetype": "Healer",
         "sacred_path": "Taoism",
+        "group_opt_in": True,
+        "disclosure": {
+            "diagnosis": ["PTSD"],
+            "trauma_tags": ["loss"]
+        },
         "current_soulform": {
             "id": "phoenix",
             "name": "Ashborn Phoenix",
