@@ -1,8 +1,16 @@
-import random
+# eden_payload_generator.py – Eden Protocol Payload Core
+# Phase 17 final version with DAO, soulform, and zk compatibility
 
-def generate_eden_payload(user_profile: dict) -> dict:
+import random
+from typing import Dict
+
+DAO_LEVEL_MIN = 7
+DAO_TRAIT_MIN = 50
+
+def generate_eden_payload(user_id: str, user_profile: Dict[str, any], secret_key: str = "") -> Dict[str, any]:
     """
-    Generates a symbolic payload from the user's psychometric profile.
+    Generates a symbolic Eden payload from the user's psychometric profile.
+    Supports DAO eligibility check, soulform injection, and healing bonuses.
     """
     mbti = user_profile.get("mbti", "INTJ")
     iq = user_profile.get("iq", 100)
@@ -11,6 +19,7 @@ def generate_eden_payload(user_profile: dict) -> dict:
     sacred_path = user_profile.get("sacred_path", "None")
     group_opt_in = user_profile.get("group_opt_in", False)
     disclosure = user_profile.get("disclosure", {})
+    current_soulform = user_profile.get("current_soulform", None)
 
     # Archetype classification logic
     archetype_map = {
@@ -19,11 +28,10 @@ def generate_eden_payload(user_profile: dict) -> dict:
         "SJ": "Guardian",
         "SP": "Builder"
     }
-
     prefix = mbti[1:3]
     archetype = archetype_map.get(prefix, "Strategist")
 
-    # Conviction glyph map (simplified)
+    # Moral glyphs
     glyph_map = {
         "care": "💖",
         "justice": "⚖️",
@@ -31,10 +39,9 @@ def generate_eden_payload(user_profile: dict) -> dict:
         "truth": "☯",
         "liberty": "🗽"
     }
-
     conviction_glyph = glyph_map.get(moral.lower(), "☯")
 
-    # Default trait scores (0–100 scale)
+    # Base traits
     base_traits = {
         "discipline": min(100, iq + 10),
         "resilience": min(100, eq + 5),
@@ -44,7 +51,6 @@ def generate_eden_payload(user_profile: dict) -> dict:
         "emotional_regulation": min(100, int(eq * 0.85))
     }
 
-    # Disclosure adjustments (healing bonus)
     disclosure_adjustment = {}
 
     if "diagnosis" in disclosure:
@@ -53,23 +59,33 @@ def generate_eden_payload(user_profile: dict) -> dict:
             base_traits["emotional_regulation"] += 7
             disclosure_adjustment["resilience"] = 10
             disclosure_adjustment["emotional_regulation"] = 7
-
         if "depression" in disclosure["diagnosis"]:
             base_traits["expression"] += 6
             base_traits["mindfulness"] += 4
             disclosure_adjustment["expression"] = 6
             disclosure_adjustment["mindfulness"] = 4
 
-    # Cap all traits at 100
-    tree_traits = {trait: min(100, value) for trait, value in base_traits.items()}
+    tree_traits = {k: min(100, v) for k, v in base_traits.items()}
+    xp_awarded = random.randint(80, 120)
+
+    # Calculate merit level (symbolic approximation)
+    merit_level = 1 + xp_awarded // 100
+    trait_pass = all(v >= DAO_TRAIT_MIN for v in tree_traits.values())
+    eligible_for_dao = merit_level >= DAO_LEVEL_MIN and trait_pass
 
     payload = {
+        "user_id": user_id,
         "archetype": archetype,
         "conviction_glyph": conviction_glyph,
         "tree_traits": tree_traits,
-        "xp_awarded": random.randint(80, 120),
+        "xp_awarded": xp_awarded,
         "quest_unlocked": True,
-        "disclosure_adjustment": disclosure_adjustment
+        "disclosure_adjustment": disclosure_adjustment,
+        "eligible_for_dao": eligible_for_dao,
+        "zk_ready": True
     }
+
+    if current_soulform:
+        payload["soulform_id"] = current_soulform.get("id", "unknown")
 
     return payload
