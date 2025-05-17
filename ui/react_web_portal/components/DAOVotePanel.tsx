@@ -1,8 +1,7 @@
 // ui/react_web_portal/components/DAOVotePanel.tsx
-// Renders active proposals and symbolic vote buttons
+// Renders active proposals with symbolic metadata and truth-weighted vote actions
 
 import React from 'react';
-import { useState } from 'react';
 
 type Proposal = {
   id: string;
@@ -21,8 +20,8 @@ type Props = {
 
 const DAOVotePanel: React.FC<Props> = ({ proposals, onVote }) => {
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>🗳️ DAO Proposal Panel</h2>
+    <section style={styles.container}>
+      <h2 style={styles.heading}>🗳️ Symbolic Proposal Gallery</h2>
       {proposals.map((p) => (
         <div key={p.id} style={styles.card}>
           <div style={styles.header}>
@@ -31,39 +30,40 @@ const DAOVotePanel: React.FC<Props> = ({ proposals, onVote }) => {
           </div>
           <p style={styles.summary}>{p.summary}</p>
           <div style={styles.meta}>
-            Proposed by <strong>{p.author}</strong> [{p.archetype} | Merit {p.meritLevel}]
+            By <strong>{p.author}</strong> [{p.archetype} | Merit {p.meritLevel}]
           </div>
           <div style={styles.buttons}>
-            <button onClick={() => onVote(p.id, 'yes')} style={styles.yes}>✅ Yes</button>
-            <button onClick={() => onVote(p.id, 'no')} style={styles.no}>❌ No</button>
+            <button onClick={() => onVote(p.id, 'yes')} style={styles.yes}>✅ Affirm</button>
+            <button onClick={() => onVote(p.id, 'no')} style={styles.no}>❌ Reject</button>
           </div>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     padding: '2rem',
-    color: '#eee',
-    fontFamily: 'inherit'
+    fontFamily: 'inherit',
+    color: '#eeeeee'
   },
   heading: {
     fontSize: '1.6rem',
-    marginBottom: '1.2rem'
+    marginBottom: '1.4rem',
+    color: '#cdeaff'
   },
   card: {
-    backgroundColor: '#1e1e1e',
+    backgroundColor: '#1b1b1b',
     border: '1px solid #333',
     borderRadius: '8px',
-    padding: '1rem',
-    marginBottom: '1.5rem'
+    padding: '1.2rem',
+    marginBottom: '1.6rem'
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginBottom: '0.5rem'
+    marginBottom: '0.6rem'
   },
   title: {
     fontWeight: 'bold',
@@ -74,31 +74,33 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   summary: {
     fontSize: '0.95rem',
-    color: '#ccc',
+    color: '#cccccc',
     marginBottom: '0.5rem'
   },
   meta: {
     fontSize: '0.85rem',
-    color: '#888'
+    color: '#aaaaaa'
   },
   buttons: {
-    marginTop: '0.8rem',
+    marginTop: '0.9rem',
     display: 'flex',
-    gap: '0.5rem'
+    gap: '0.75rem'
   },
   yes: {
-    padding: '0.4rem 1rem',
-    backgroundColor: '#0a4',
-    color: '#fff',
+    padding: '0.4rem 1.1rem',
+    backgroundColor: '#117744',
+    color: '#ffffff',
     border: 'none',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    cursor: 'pointer'
   },
   no: {
-    padding: '0.4rem 1rem',
-    backgroundColor: '#a00',
-    color: '#fff',
+    padding: '0.4rem 1.1rem',
+    backgroundColor: '#aa2222',
+    color: '#ffffff',
     border: 'none',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    cursor: 'pointer'
   }
 };
 
