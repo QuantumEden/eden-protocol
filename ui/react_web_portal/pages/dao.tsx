@@ -47,18 +47,23 @@ const styles: { [key: string]: React.CSSProperties } = {
     padding: '2rem',
     maxWidth: '800px',
     margin: '0 auto',
-    color: '#eee',
-    fontFamily: 'inherit'
+    color: '#eeeeee',
+    fontFamily: 'system-ui, sans-serif',
+    backgroundColor: '#0c0c0c',
+    borderRadius: '10px',
+    boxShadow: '0 0 20px rgba(255, 255, 255, 0.05)'
   },
   header: {
     fontSize: '1.8rem',
-    marginBottom: '0.6rem',
-    color: '#cceeff'
+    marginBottom: '1rem',
+    color: '#bfeeff',
+    textAlign: 'center'
   },
   description: {
     fontSize: '0.95rem',
     marginBottom: '1.5rem',
-    color: '#aaa'
+    color: '#bbbbbb',
+    textAlign: 'center'
   }
 };
 
