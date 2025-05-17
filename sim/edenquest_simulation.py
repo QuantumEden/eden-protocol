@@ -1,6 +1,7 @@
+# sim/edenquest_simulation.py
 # EdenQuest Simulation – Therapeutic Quest Generation Test
 
-from src.edenquest_engine.edenquest_engine import generate_quest
+from src.edenquest_engine.edenquest_engine import generate_quest  # ✅ Fixed import path
 
 print("\n=== EdenQuest Simulation: Adaptive Quest Assignment ===\n")
 
