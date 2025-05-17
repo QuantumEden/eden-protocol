@@ -1,8 +1,9 @@
+# sim/meritcoin_simulation.py
 # MeritCoin Simulation – XP, Leveling, Decay, Lock Cycle
 
 from src.leveling_system.leveling_system import (
     initialize_merit_profile,
-    add_xp,
+    apply_xp as add_xp,  # ✅ Fixed alias
     apply_decay,
     lock_progress,
     unlock_progress,
