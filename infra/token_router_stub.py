@@ -1,26 +1,29 @@
-# Token Router Stub – Simulated Soulform Payload Injector
-# Phase 14 – Eden Protocol
+# token_router_stub.py – Eden Protocol Token Injector
+# Injects symbolic soulform visual metadata into outbound payloads
+# Phase 17 – Finalized for ZK readiness and frontend harmonization
 
 import json
 from typing import Dict
 
 def inject_soulform_payload(payload: Dict[str, any], user_profile: Dict[str, any]) -> Dict[str, any]:
     """
-    Appends soulform visuals to outbound payload if current_soulform is present in the user profile.
+    Adds soulform visuals and zk_ready flag to outbound payload if user has an active transformation.
     """
     soulform = user_profile.get("current_soulform", None)
     if not soulform:
-        return payload  # No transformation active
+        payload["zk_ready"] = False
+        return payload
 
     payload["soulform_visuals"] = {
         "id": soulform.get("id"),
-        "name": soulform.get("name"),
-        "elemental_affinity": soulform.get("elemental_affinity"),
+        "name": soulform.get("name", "Unnamed Form"),
+        "elemental_affinity": soulform.get("elemental_affinity", "Void"),
         "aura_effect": "Flare Pulse" if soulform.get("elemental_affinity") == "Fire" else "Wave Ripple",
         "body_shader": "Iridescent Ash" if soulform.get("id") == "phoenix" else "Default Shroud",
         "animation_override": "Ascend_SlowLoop"
     }
 
+    payload["zk_ready"] = True
     return payload
 
 # Optional CLI test
