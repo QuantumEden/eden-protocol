@@ -1,7 +1,13 @@
+# sim/eden_payload_viewer.py – Eden Protocol Simulation Utility
+# Provides mock payloads for UI testing, DAO simulation, and system-wide symbolic audits
+
 import sys, os
+import json
+from typing import List, Dict
+
+# Route to src/ modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
-import json
 from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
 # === Single Payload Viewer ===
@@ -23,13 +29,24 @@ payload = generate_eden_payload(user_id, profile, secret_key)
 print("\n=== Eden Payload Structure View ===\n")
 print(json.dumps(payload, indent=2))
 
-
 # === Group Payload Export ===
 
-def get_all_mock_payloads():
+def get_all_mock_payloads() -> List[Dict]:
     """
-    Returns a list of payloads for mock users to feed into system-wide modules
-    like world_tree_sync.py, DAO merit maps, or UI simulators.
+    Returns a list of enriched mock payloads for use in:
+    - DAO eligibility audits
+    - Tree of Life synchronization
+    - XP/MeritCoin ledger alignment
+    - UI symbolic rendering
+
+    Each mock includes all current Eden payload fields, including:
+    - archetype
+    - tree_traits
+    - conviction_glyph
+    - quest_unlocked
+    - disclosure_adjustment
+    - (optional) soulform_id
+    - xp_awarded
     """
     mock_users = [
         {
@@ -72,11 +89,12 @@ def get_all_mock_payloads():
 
     payloads = []
     for mock in mock_users:
-        payload = generate_eden_payload(
+        enriched = generate_eden_payload(
             user_id=mock["user_id"],
             profile=mock["profile"],
             secret_key=mock["secret_key"]
         )
-        payloads.append(payload)
+        enriched["user_id"] = mock["user_id"]
+        payloads.append(enriched)
 
     return payloads
