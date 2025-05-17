@@ -1,4 +1,4 @@
-# /sim/mod_validation_simulation.py
+# sim/mod_validation_simulation.py
 
 """
 Mod Validation Simulation — Test and Verify Community Mod Effects
@@ -13,13 +13,12 @@ This simulation runs mock mod entries through:
 import json
 import os
 from jsonschema import validate, ValidationError
-from schemas import mod_manifest  # Assumes schema is importable in project scope
+from schemas.mod_manifest import mod_manifest  # ✅ Explicit path assumed
 from src.tree_of_life.tree_of_life_engine import TreeOfLife
 from src.xp.xp_integrity import validate_xp_from_mod
-from dao.mod_registry import is_mod_approved
+from src.dao.mod_registry import is_mod_approved  # ✅ Fixed DAO import
 
 MOD_TEST_PATH = "infra/mod_manifest_template.json"
-
 
 def simulate_mod_activation(manifest_path):
     try:
