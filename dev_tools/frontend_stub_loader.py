@@ -1,13 +1,15 @@
-# frontend_stub_loader.py
+# frontend_stub_loader.py – Eden Protocol UI Sync Simulation
+# Simulates Eden Protocol backend payload generation for frontend display
 
-"""
-Simulates Eden Protocol backend payload generation for frontend development.
-Use this script to generate real-time test data for UI rendering engines.
-"""
-
+import os
+import sys
 import json
 import random
-from eden_payload_generator import generate_eden_payload  # Fixed import path
+
+# Adjust path for local module access (assuming standard repo layout)
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
+from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
 # Simulated user session (normally captured during onboarding)
 sample_user_id = f"user_{random.randint(1000, 9999)}"
@@ -23,10 +25,15 @@ sample_profile = {
         "diagnosis": ["PTSD"],
         "trauma_tags": ["combat", "insomnia"],
         "service_connected": True
+    },
+    "current_soulform": {
+        "id": "phoenix",
+        "name": "Ashborn Phoenix",
+        "elemental_affinity": "Fire",
+        "activated_at": "2025-05-17T10:00:00Z"
     }
 }
 
-# Generate payload for frontend display
 def main():
     print("\n🔄 Generating Eden Payload for Frontend...\n")
     payload = generate_eden_payload(
@@ -35,7 +42,6 @@ def main():
         secret_key="dev_stub_key_123"
     )
 
-    # Pretty print for developer testing
     print(json.dumps(payload, indent=2))
 
 
