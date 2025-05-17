@@ -7,7 +7,7 @@ Use this script to generate real-time test data for UI rendering engines.
 
 import json
 import random
-from src.eden_payload_generator import generate_eden_payload
+from eden_payload_generator import generate_eden_payload  # Fixed import path
 
 # Simulated user session (normally captured during onboarding)
 sample_user_id = f"user_{random.randint(1000, 9999)}"
