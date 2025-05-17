@@ -1,9 +1,12 @@
-# 🔐 Group Vote Handler – Symbolic DAO Ritual Voting Engine
+# group_vote_handler.py – Eden Protocol DAO Ritual Voting Engine
+# Symbolic proposal and truth-weighted voice system for group ritual governance
 
 import random
 import hashlib
 from datetime import datetime
 
+MIN_PROPOSAL_LEVEL = 7
+SOULFORM_WEIGHT_BONUS = 1.5
 
 class GroupVoteHandler:
     def __init__(self):
@@ -16,10 +19,16 @@ class GroupVoteHandler:
         seed = f"{group_id}_{proposal_title}_{datetime.utcnow().isoformat()}"
         return hashlib.sha256(seed.encode("utf-8")).hexdigest()
 
-    def submit_proposal(self, group_id: str, proposal_title: str, proposal_type: str, proposed_by: str) -> dict:
+    def submit_proposal(self, group_id: str, proposal_title: str, proposal_type: str, proposed_by: str, merit_level: int, soulform_id: str = None) -> dict:
         """
-        Submits a new symbolic group proposal.
+        Submits a new symbolic group proposal if proposer meets level requirement.
         """
+        if merit_level < MIN_PROPOSAL_LEVEL:
+            return {
+                "status": "rejected",
+                "reason": "Proposer does not meet minimum MeritCoin level"
+            }
+
         proposal_id = self.generate_proposal_id(group_id, proposal_title)
         proposal = {
             "proposal_id": proposal_id,
@@ -29,47 +38,66 @@ class GroupVoteHandler:
             "votes": {},
             "status": "pending",
             "proposed_by": proposed_by,
-            "created_at": datetime.utcnow().isoformat()
+            "merit_threshold": MIN_PROPOSAL_LEVEL,
+            "created_at": datetime.utcnow().isoformat(),
+            "soulform_required": soulform_id if soulform_id else None
         }
         self.vote_log.append(proposal)
         return proposal
 
-    def cast_vote(self, proposal_id: str, user_id: str, vote: bool) -> bool:
+    def cast_vote(self, proposal_id: str, user_id: str, vote: bool, merit_level: int, soulform_id: str = None) -> bool:
         """
-        Casts a vote on a given proposal (True = Yes, False = No).
+        Casts a merit-weighted symbolic vote.
         """
         for proposal in self.vote_log:
             if proposal["proposal_id"] == proposal_id:
                 if user_id in proposal["votes"]:
                     return False  # already voted
-                proposal["votes"][user_id] = vote
+
+                weight = merit_level
+                if soulform_id and soulform_id == proposal.get("soulform_required"):
+                    weight *= SOULFORM_WEIGHT_BONUS
+
+                proposal["votes"][user_id] = {
+                    "vote": vote,
+                    "weight": round(weight, 2),
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "soulform": soulform_id
+                }
                 return True
         return False
 
     def tally_votes(self, proposal_id: str) -> dict:
         """
-        Tally votes and update proposal status.
+        Tally truth-weighted votes and update status.
         """
         for proposal in self.vote_log:
             if proposal["proposal_id"] == proposal_id:
-                votes = list(proposal["votes"].values())
-                yes = votes.count(True)
-                no = votes.count(False)
-                total = yes + no
-                if total == 0:
+                votes = proposal["votes"]
+                yes_total = sum(v["weight"] for v in votes.values() if v["vote"])
+                no_total = sum(v["weight"] for v in votes.values() if not v["vote"])
+
+                if yes_total + no_total == 0:
                     return {"result": "no quorum", "yes": 0, "no": 0}
-                if yes > no:
+
+                if yes_total > no_total:
                     proposal["status"] = "approved"
                     result = "approved"
                 else:
                     proposal["status"] = "rejected"
                     result = "rejected"
-                return {"result": result, "yes": yes, "no": no}
+
+                return {
+                    "result": result,
+                    "yes_weight": round(yes_total, 2),
+                    "no_weight": round(no_total, 2),
+                    "total_votes": len(votes)
+                }
         return {"result": "not found"}
 
     def get_proposal_status(self, proposal_id: str) -> str:
         """
-        Returns the current status of a proposal.
+        Returns current status of a proposal.
         """
         for proposal in self.vote_log:
             if proposal["proposal_id"] == proposal_id:
@@ -78,6 +106,6 @@ class GroupVoteHandler:
 
     def get_vote_log(self) -> list:
         """
-        Returns all recorded group proposals and votes.
+        Returns entire DAO ritual vote history.
         """
         return self.vote_log
