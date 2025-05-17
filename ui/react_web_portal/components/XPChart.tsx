@@ -1,5 +1,5 @@
 // ui/react_web_portal/components/XPChart.tsx
-// Renders symbolic XP progress and level status
+// Renders symbolic XP progress and level status for Eden Protocol
 
 import React from 'react';
 
@@ -14,15 +14,15 @@ const XPChart: React.FC<Props> = ({ xp, nextLevel, locked }) => {
 
   return (
     <div style={styles.container}>
-      <h3 style={styles.title}>🧬 Experience Progress</h3>
+      <h3 style={styles.title}>🧬 Soulbound XP Progress</h3>
       {locked ? (
-        <p style={styles.locked}>XP is locked — Realignment Required</p>
+        <p style={styles.locked}>XP Locked – Realignment Ritual Required</p>
       ) : (
         <>
           <div style={styles.barOuter}>
             <div style={{ ...styles.barInner, width: `${percent}%` }} />
           </div>
-          <p style={styles.percent}>{percent}% to next level</p>
+          <p style={styles.percent}>{percent}% toward next transformation</p>
         </>
       )}
     </div>
@@ -31,35 +31,37 @@ const XPChart: React.FC<Props> = ({ xp, nextLevel, locked }) => {
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    marginTop: '1rem',
-    backgroundColor: '#1c1c1c',
-    padding: '1rem',
-    borderRadius: '6px',
-    border: '1px solid #333'
+    marginTop: '1.5rem',
+    backgroundColor: '#161616',
+    padding: '1.2rem',
+    borderRadius: '8px',
+    border: '1px solid #2f2f2f',
+    boxShadow: '0 0 6px rgba(0, 255, 255, 0.1)'
   },
   title: {
-    fontSize: '1.2rem',
-    marginBottom: '0.5rem',
-    color: '#ccc'
+    fontSize: '1.25rem',
+    color: '#cdeaff',
+    marginBottom: '0.6rem'
   },
   locked: {
-    color: '#f55',
-    fontWeight: 'bold'
+    color: '#ff5555',
+    fontWeight: 600,
+    fontSize: '0.95rem'
   },
   barOuter: {
     width: '100%',
-    height: '10px',
+    height: '12px',
     backgroundColor: '#333',
-    borderRadius: '5px',
+    borderRadius: '6px',
     overflow: 'hidden'
   },
   barInner: {
     height: '100%',
-    backgroundColor: '#0cf',
+    backgroundColor: '#22eaff',
     transition: 'width 0.4s ease'
   },
   percent: {
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     color: '#aaa',
     marginTop: '0.4rem',
     textAlign: 'right'
