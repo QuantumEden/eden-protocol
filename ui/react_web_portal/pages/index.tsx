@@ -1,5 +1,5 @@
 // ui/react_web_portal/pages/index.tsx
-// EdenQuest Dashboard Homepage – Overview of Avatar + DAO Status
+// Eden Protocol Web Dashboard – Overview Interface
 
 import React from 'react';
 import DAOVotePanel from '../components/DAOVotePanel';
@@ -79,15 +79,19 @@ const HomePage = () => {
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     padding: '2rem',
-    maxWidth: '900px',
+    maxWidth: '960px',
     margin: '0 auto',
-    fontFamily: 'inherit',
-    color: '#eee'
+    fontFamily: 'system-ui, sans-serif',
+    color: '#eeeeee',
+    backgroundColor: '#0d0d0d',
+    borderRadius: '8px',
+    boxShadow: '0 0 30px rgba(100, 200, 255, 0.05)'
   },
   title: {
     fontSize: '2rem',
-    marginBottom: '1.5rem',
-    color: '#9ef'
+    marginBottom: '2rem',
+    color: '#9ef',
+    textAlign: 'center'
   }
 };
 
