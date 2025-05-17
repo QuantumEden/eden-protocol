@@ -1,30 +1,36 @@
 // ui/react_web_portal/pages/avatar.tsx
-// User Avatar Profile View – Archetype, Soulform, History
+// Avatar & Soulform Progression Log – Eden Protocol User History
 
 import React from 'react';
 import AvatarAudit from '../components/AvatarAudit';
 
 const mockAuditTrail = [
   {
-    timestamp: '2025-02-01T15:00:00Z',
+    timestamp: '2025-05-10T16:00:00Z',
     archetype: 'Strategist',
-    level: 10,
+    level: 12,
     soulform: {
-      id: 'seraph',
-      name: 'Wings of Conviction',
+      id: 'wyrm',
+      name: 'Chrono Wyrm',
       element: 'Air',
-      transformed_at: '2025-02-14T14:30:00Z'
+      transformed_at: '2025-05-06T18:10:00Z'
     }
   },
   {
-    timestamp: '2025-01-11T09:45:00Z',
+    timestamp: '2025-04-14T12:15:00Z',
     archetype: 'Strategist',
-    level: 6
+    level: 9,
+    soulform: {
+      id: 'phoenix',
+      name: 'Ashborn Phoenix',
+      element: 'Fire',
+      transformed_at: '2025-04-12T07:40:00Z'
+    }
   },
   {
-    timestamp: '2024-12-30T13:10:00Z',
+    timestamp: '2025-03-08T10:05:00Z',
     archetype: 'Strategist',
-    level: 3
+    level: 5
   }
 ];
 
@@ -33,7 +39,7 @@ const AvatarPage = () => {
     <div style={styles.container}>
       <h1 style={styles.title}>🧠 Avatar & Soulform History</h1>
       <p style={styles.subtitle}>
-        Your journey is more than XP — it is who you’ve become through ritual, reflection, and myth.
+        This is the symbolic audit trail of your transformation. It tracks every archetype, soulform, and milestone.
       </p>
       <AvatarAudit history={mockAuditTrail} />
     </div>
@@ -46,17 +52,17 @@ const styles: { [key: string]: React.CSSProperties } = {
     maxWidth: '800px',
     margin: '0 auto',
     fontFamily: 'inherit',
-    color: '#eee'
+    color: '#eeeeee'
   },
   title: {
-    fontSize: '1.7rem',
-    color: '#9ef',
-    marginBottom: '0.4rem'
+    fontSize: '1.8rem',
+    color: '#aee2ff',
+    marginBottom: '0.5rem'
   },
   subtitle: {
-    fontSize: '0.95rem',
+    fontSize: '1rem',
     color: '#aaa',
-    marginBottom: '1.4rem'
+    marginBottom: '1.5rem'
   }
 };
 
