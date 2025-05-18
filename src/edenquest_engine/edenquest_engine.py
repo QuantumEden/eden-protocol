@@ -1,8 +1,8 @@
-# edenquest_engine.py – Eden Protocol Quest Generator Core
+# src/edenquest_engine/edenquest_engine.py – Eden Protocol Quest Generator Core
 # Accepts user psychometric data and symbolic imbalance to generate therapeutic AI quests
 
 from typing import Dict, Any
-from quest_modifier import apply_quest_modifiers  # Phase 14 modifier overlay
+from src.quest_engine.quest_modifier import apply_quest_modifiers  # ✅ Updated import path
 
 # === Step 1: Sample symbolic quest pool (replaceable by AI generator) ===
 QUEST_LIBRARY = {
@@ -82,7 +82,6 @@ def generate_quest(tree: Dict[str, Dict[str, int]], user_profile: Dict[str, Any]
         "goal": quest_options[0]["goal"]
     }
 
-    # Base structure
     result = {
         "status": "quest_assigned",
         "target_branch": weakest,
