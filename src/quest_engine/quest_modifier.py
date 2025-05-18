@@ -43,8 +43,10 @@ def apply_quest_modifiers(quest: Dict[str, Any], user_profile: Dict[str, Any]) -
 
     return quest
 
-# Optional CLI test
+# ✅ Optional CLI test (fully qualified for import diagnostics)
 if __name__ == "__main__":
+    from src.quest_engine.quest_modifier import apply_quest_modifiers
+
     mock_quest = {
         "title": "The Ashen Spire",
         "theme": "Pain endurance and symbolic rebirth",
