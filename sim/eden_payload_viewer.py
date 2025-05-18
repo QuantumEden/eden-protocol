@@ -47,6 +47,8 @@ def get_all_mock_payloads() -> List[Dict]:
     - disclosure_adjustment
     - (optional) soulform_id
     - xp_awarded
+    - eligible_for_dao
+    - zk_ready
     """
     mock_users = [
         {
@@ -91,7 +93,7 @@ def get_all_mock_payloads() -> List[Dict]:
     for mock in mock_users:
         enriched = generate_eden_payload(
             user_id=mock["user_id"],
-            profile=mock["profile"],
+            user_profile=mock["profile"],
             secret_key=mock["secret_key"]
         )
         enriched["user_id"] = mock["user_id"]
