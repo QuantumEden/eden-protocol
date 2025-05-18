@@ -6,14 +6,14 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'src')))
 
-# Core Imports
-from eden_payload_generator.eden_payload_generator import generate_eden_payload
-from xp.leveling_system import initialize_merit_profile, apply_xp, lock_progress, unlock_progress
-from xp.meritcoin_minter import mint_meritcoin
-from xp.meritcoin_ledger import log_commit
-from edenquest_engine.edenquest_engine import generate_quest
-from quest_engine.quest_modifier import apply_quest_modifiers
-from biometrics.biometric_integrity_check import log_biometric_event, verify_biometric_signature
+# ✅ FIXED IMPORTS
+from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
+from src.leveling_system.leveling_system import initialize_merit_profile, apply_xp, lock_progress, unlock_progress
+from infra.xp.meritcoin_minter import mint_meritcoin
+from infra.xp.meritcoin_ledger import log_commit
+from src.edenquest_engine.edenquest_engine import generate_quest
+from src.quest_engine.quest_modifier import apply_quest_modifiers
+from src.biometrics.biometric_integrity_check import log_biometric_event, verify_biometric_signature
 
 # === Phase 17 Diagnostic Run ===
 
