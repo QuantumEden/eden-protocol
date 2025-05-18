@@ -1,0 +1,89 @@
+# tests/integration/full_protocol_diagnostic.py
+# Integration Diagnostic – Validates core Eden Protocol components in unison
+
+import sys, os, json
+from datetime import datetime
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'src')))
+
+from eden_payload_generator.eden_payload_generator import generate_eden_payload
+from xp.leveling_system import initialize_merit_profile, add_xp, lock_progress, unlock_progress
+from xp.meritcoin_minter import mint_meritcoin
+from xp.meritcoin_ledger import log_commit
+from biometrics.biometric_integrity_check import log_biometric_event, verify_biometric_signature
+from edenquest_engine.edenquest_engine import generate_quest
+from quest_engine.quest_modifier import apply_quest_modifiers
+
+# === Step 1: Generate initial payload with soulform declared ===
+mock_profile = {
+    "mbti": "INFJ",
+    "iq": 138,
+    "eq": 118,
+    "moral": "truth",
+    "sacred_path": "Taoism",
+    "group_opt_in": True,
+    "disclosure": {
+        "diagnosis": ["PTSD"],
+        "trauma_tags": ["combat"],
+        "service_connected": True
+    },
+    "current_soulform": {
+        "id": "phoenix",
+        "name": "Ashborn Phoenix",
+        "elemental_affinity": "Fire",
+        "activated_at": datetime.utcnow().isoformat() + "Z"
+    }
+}
+
+user_id = "seer_diag_001"
+secret_key = "diagnostic_key_999"
+
+payload = generate_eden_payload(user_id, mock_profile, secret_key)
+print("\n🌱 Payload Generated:")
+print(json.dumps(payload, indent=2))
+
+# === Step 2: XP System Test ===
+profile = initialize_merit_profile()
+add_xp(profile, 150)
+print("\n📈 Merit Profile After XP:")
+print(json.dumps(profile, indent=2))
+
+# === Step 3: Attempt MeritCoin Minting ===
+tree = payload["tree_traits"]
+mint = mint_meritcoin(user_id, level=8, tree_traits=tree, soulform_id="phoenix")
+print("\n🪙 MeritCoin Mint Result:")
+print(json.dumps(mint, indent=2))
+
+# === Step 4: Log XP Commit with Soulform ===
+if mint["success"]:
+    commit = log_commit(
+        user_id=user_id,
+        level=8,
+        xp=1100,
+        reason="Passed Soulform Trial",
+        soulform=mock_profile["current_soulform"]
+    )
+    print("\n📜 XP Commit Logged:")
+    print(json.dumps(commit, indent=2))
+
+# === Step 5: Quest Generation with Modifiers ===
+sample_tree = {
+    "discipline": {"score": 70},
+    "empathy": {"score": 82},
+    "resilience": {"score": 48},  # weakest
+    "expression": {"score": 74},
+    "mindfulness": {"score": 72},
+    "physical_care": {"score": 66},
+    "emotional_regulation": {"score": 69}
+}
+
+quest = generate_quest(sample_tree, mock_profile)
+print("\n🧠 Therapeutic Quest Assigned:")
+print(json.dumps(quest, indent=2))
+
+# === Step 6: Biometric Logging Test ===
+bio_log = log_biometric_event(user_id, "My sacred phrase for DAO onboarding", context="DAO oath")
+verified = verify_biometric_signature("My sacred phrase for DAO onboarding", bio_log["signature_hash"])
+print("\n🔐 Biometric Event Log + Verification:")
+print(json.dumps(bio_log, indent=2))
+print("✅ Signature Verified:", verified)
