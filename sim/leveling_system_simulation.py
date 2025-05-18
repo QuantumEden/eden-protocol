@@ -2,7 +2,10 @@
 # MeritCoin Leveling Simulation
 # Tests XP gain, decay, and lock mechanisms from leveling_system module
 
-from src.leveling_system.leveling_system import (
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
+from leveling_system.leveling_system import (
     initialize_merit_profile,
     apply_xp as add_xp,  # ✅ Fixed import alias
     apply_decay,
