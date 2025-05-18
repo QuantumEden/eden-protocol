@@ -1,4 +1,4 @@
-# quest_modifier.py – Eden Protocol Quest Customizer
+# src/quest_engine/quest_modifier.py – Eden Protocol Quest Customizer
 # Applies soulform, archetype, and disclosure modifiers to generated quests
 
 from typing import Dict, Any
