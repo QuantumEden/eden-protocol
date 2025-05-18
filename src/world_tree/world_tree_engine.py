@@ -1,23 +1,20 @@
-# World Tree Engine
+# src/world_tree/world_tree_engine.py – Global Eden Vitality Report Engine
 # Aggregates individual Trees of Life into a collective Eden Vitality Index
 
-from typing import List, Dict
+from typing import List, Dict, Any
 
 # Step 1: Normalize individual user tree scores into health metrics
 def compute_tree_health(tree: Dict[str, Dict[str, int]]) -> float:
-    scores = [data['score'] for data in tree.values()]
-    return sum(scores) / len(scores)
+    scores = [branch["score"] for branch in tree.values()]
+    return sum(scores) / len(scores) if scores else 0.0
 
 # Step 2: Aggregate all user trees to form a global vitality index
 def compute_global_health(all_trees: List[Dict[str, Dict[str, int]]]) -> float:
     if not all_trees:
         return 0.0
 
-    total = 0
-    for tree in all_trees:
-        total += compute_tree_health(tree)
-
-    return round(total / len(all_trees), 2)
+    total_health = sum(compute_tree_health(tree) for tree in all_trees)
+    return round(total_health / len(all_trees), 2)
 
 # Step 3: Classify Eden status by symbolic thresholds
 def classify_eden_status(global_health: float) -> str:
@@ -33,12 +30,12 @@ def classify_eden_status(global_health: float) -> str:
         return "Dying (Eden in Collapse)"
 
 # Step 4: Render symbolic state object
-def generate_world_tree_report(all_trees: List[Dict[str, Dict[str, int]]]) -> Dict[str, any]:
-    health = compute_global_health(all_trees)
-    status = classify_eden_status(health)
+def generate_world_tree_report(all_trees: List[Dict[str, Dict[str, int]]]) -> Dict[str, Any]:
+    vitality = compute_global_health(all_trees)
+    status = classify_eden_status(vitality)
 
     return {
-        "eden_vitality_index": health,
+        "eden_vitality_index": vitality,
         "status": status,
         "user_count": len(all_trees)
     }
@@ -53,7 +50,7 @@ if __name__ == "__main__":
             "craft": {"score": 65},
             "mindfulness": {"score": 90},
             "physical_care": {"score": 85},
-            "expression": {"score": 78},
+            "expression": {"score": 78}
         },
         {
             "discipline": {"score": 60},
@@ -62,11 +59,11 @@ if __name__ == "__main__":
             "craft": {"score": 55},
             "mindfulness": {"score": 60},
             "physical_care": {"score": 40},
-            "expression": {"score": 50},
+            "expression": {"score": 50}
         }
     ]
 
     report = generate_world_tree_report(sample_trees)
-    print("\n=== World Tree Report ===")
-    for k, v in report.items():
-        print(f"{k}: {v}")
+    print("\n=== 🌍 World Tree Vitality Report ===")
+    for key, value in report.items():
+        print(f"{key}: {value}")
