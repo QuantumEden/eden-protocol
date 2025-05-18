@@ -1,11 +1,11 @@
-# final_system_test.py – Full Eden Protocol Simulation Pass
+# sim/final_system_test.py – Full Eden Protocol Simulation Pass
 # Ensures DAO, XP, Soulform, and Tree logic are integrated properly
 
 import json
 from datetime import datetime
 from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
-from infra.xp.meritcoin_minter import mint_meritcoin
-from infra.xp.meritcoin_ledger import log_commit
+from infra.xp.meritcoin_minter import mint_meritcoin  # ✅ correct path
+from infra.xp.meritcoin_ledger import log_commit      # ✅ correct path
 
 def run_full_test():
     print("\n🧪 Starting Full Protocol Integration Test\n")
@@ -53,6 +53,7 @@ def run_full_test():
         level=8,
         xp=payload["xp_awarded"],
         reason="Integrated DAO Trial Complete",
+        traits_snapshot=payload["tree_traits"],
         soulform=profile["current_soulform"]
     )
 
