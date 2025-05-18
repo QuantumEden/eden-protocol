@@ -1,10 +1,13 @@
-# full_protocol_simulation.py – Eden Protocol Integration Test
+# tests/integration/full_protocol_simulation.py – Eden Protocol Integration Test
 # Simulates full user lifecycle: traits → XP → Merit → Soulform → DAO → Quest
 
-import json
+import sys, os, json
 from datetime import datetime
 
-# Import all required components
+# Fix pathing for Codespaces and CI runners
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'src')))
+
+# ✅ FIXED IMPORTS
 from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
 from infra.xp.meritcoin_minter import mint_meritcoin
 from infra.xp.meritcoin_ledger import log_commit
@@ -70,9 +73,7 @@ print(json.dumps(commit, indent=2))
 
 # Step 5: Generate quest from tree imbalance
 print("\n🧭 Generating therapeutic quest...")
-symbolic_tree = {
-    k: {"score": v} for k, v in tree.items()
-}
+symbolic_tree = {k: {"score": v} for k, v in tree.items()}
 raw_quest = generate_quest(symbolic_tree)
 modified_quest = apply_quest_modifiers(raw_quest["quest"], user_profile)
 
