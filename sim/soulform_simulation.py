@@ -1,4 +1,4 @@
-# soulform_simulation.py – Eden Protocol Symbolic Transformation Tester
+# sim/soulform_simulation.py – Eden Protocol Symbolic Transformation Tester
 # Stress-tests soulform logic integration with XP, Tree, and DAO systems
 
 import sys, os
@@ -8,8 +8,8 @@ from datetime import datetime
 # === Import path fix ===
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from infra.xp.meritcoin_minter import mint_meritcoin
-from infra.xp.meritcoin_ledger import log_commit
+from infra.xp.meritcoin_minter import mint_meritcoin  # ✅ Correct path
+from infra.xp.meritcoin_ledger import log_commit      # ✅ Correct path
 from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
 
 # === Mock Tree with threshold-passing values
@@ -46,6 +46,7 @@ if mint_result["success"]:
         level=level,
         xp=950,
         reason="Completed Soulform Trial",
+        traits_snapshot=valid_tree,
         soulform=mock_soulform
     )
 
@@ -54,7 +55,7 @@ if mint_result["success"]:
 
 else:
     print("\n❌ Minting Failed:\n")
-    print(mint_result)
+    print(json.dumps(mint_result, indent=2))
 
 # === Optional: Generate payload with soulform included
 mock_profile = {
