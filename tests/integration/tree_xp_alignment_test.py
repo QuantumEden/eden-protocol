@@ -1,14 +1,16 @@
-# Tree XP Alignment Test – Eden Protocol Integration Test
+# tests/integration/tree_xp_alignment_test.py – Eden Protocol Integration Test
 # Validates that trait growth aligns with XP gain and soulform eligibility logic
 
 import sys, os, json
 from datetime import datetime
 
+# ✅ Patch for relative imports
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'src')))
 
-from eden_payload_generator.eden_payload_generator import generate_eden_payload
-from xp.meritcoin_minter import mint_meritcoin
-from xp.meritcoin_ledger import log_commit
+# ✅ Import corrected
+from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
+from infra.xp.meritcoin_minter import mint_meritcoin
+from infra.xp.meritcoin_ledger import log_commit
 
 # === Constants
 DAO_LEVEL_MIN = 7
@@ -39,7 +41,7 @@ mock_profile = {
 }
 
 # === Step 1: Generate payload
-payload = generate_eden_payload(user_id, mock_profile)
+payload = generate_eden_payload(user_id, mock_profile, secret_key="tree_align_secret")
 tree = payload["tree_traits"]
 
 print("\n🌳 Tree of Life from Payload:")
@@ -53,8 +55,8 @@ mint = mint_meritcoin(user_id, level, tree, soulform_id=soulform_id)
 print("\n🪙 Mint Result:")
 print(json.dumps(mint, indent=2))
 
+# === Step 3: Log to Ledger if minting successful
 if mint["success"]:
-    # === Step 3: Log to Ledger
     commit = log_commit(
         user_id=user_id,
         level=level,
@@ -67,11 +69,12 @@ if mint["success"]:
 else:
     print("\n❌ Soulform minting failed — check trait thresholds.")
 
-# === Step 4: Validation
+# === Step 4: Validate tree meets minimum symbolic thresholds
 for trait, required in TREE_PASS_THRESHOLD.items():
     actual = tree.get(trait, 0)
     assert actual >= required, f"❌ Trait '{trait}' below threshold: {actual} < {required}"
 
-assert mint["success"], "❌ Soulform minting failed despite passing level."
+# === Final assertion
+assert mint["success"], "❌ Soulform minting failed despite level and tree being valid."
 
 print("\n✅ Tree alignment test passed.\n")
