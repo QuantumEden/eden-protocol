@@ -5,11 +5,12 @@ import sys, os
 import json
 from datetime import datetime
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+# === Import path fix ===
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from infra.xp.meritcoin_minter import mint_meritcoin
 from infra.xp.meritcoin_ledger import log_commit
-from eden_payload_generator.eden_payload_generator import generate_eden_payload
+from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
 
 # === Mock Tree with threshold-passing values
 valid_tree = {
