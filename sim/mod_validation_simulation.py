@@ -10,13 +10,18 @@ This simulation runs mock mod entries through:
 - Tree of Life interaction simulation
 """
 
+import sys, os
 import json
-import os
 from jsonschema import validate, ValidationError
-from schemas.mod_manifest import mod_manifest  # ✅ Explicit path assumed
-from src.tree_of_life.tree_of_life_engine import TreeOfLife
-from src.xp.xp_integrity import validate_xp_from_mod
-from src.dao.mod_registry import is_mod_approved  # ✅ Fixed DAO import
+
+# Fix for Codespaces and relative imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from schemas.mod_manifest import mod_manifest
+from tree_of_life.tree_of_life_engine import TreeOfLife
+from xp.xp_integrity import validate_xp_from_mod
+from dao.mod_registry import is_mod_approved
 
 MOD_TEST_PATH = "infra/mod_manifest_template.json"
 
@@ -41,7 +46,7 @@ def simulate_mod_activation(manifest_path):
         tree.apply_mod_effect(manifest['target_trait'], manifest['xp_value'], manifest['mod_id'], "test_user")
         post = tree.get_trait(manifest['target_trait'])
 
-        print(f"✅ Mod simulation successful! {manifest['target_trait']} increased from {pre} to {post}.")
+        print(f"\n✅ Mod simulation successful! {manifest['target_trait']} increased from {pre} to {post}.\n")
 
     except ValidationError as ve:
         print("❌ Schema validation failed:", ve.message)
