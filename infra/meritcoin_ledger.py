@@ -1,5 +1,5 @@
 # infra/xp/meritcoin_ledger.py – Eden Protocol Infra
-# Logs soulbound XP commits and symbolic milestone events
+# Logs soulbound XP commits and symbolic milestone events with zkXP compatibility
 
 import os
 import json
@@ -9,40 +9,41 @@ from uuid import uuid4
 LEDGER_PATH = os.path.join(os.path.dirname(__file__), 'meritcoin_commit_log.json')
 
 
-def load_ledger():
+def load_ledger() -> list:
     """Load the existing MeritCoin ledger from file."""
     if os.path.exists(LEDGER_PATH):
-        with open(LEDGER_PATH, 'r') as f:
+        with open(LEDGER_PATH, 'r', encoding='utf-8') as f:
             return json.load(f)
     return []
 
 
-def save_ledger(log):
+def save_ledger(log: list):
     """Write the current log state to disk."""
-    with open(LEDGER_PATH, 'w') as f:
+    with open(LEDGER_PATH, 'w', encoding='utf-8') as f:
         json.dump(log, f, indent=2)
 
 
-def generate_commit_id():
+def generate_commit_id() -> str:
     """Generate a unique symbolic MeritCoin ID."""
     return f"MERIT-{uuid4().hex[:8].upper()}"
 
 
-def log_commit(user_id, level, xp, reason, traits_snapshot, soulform=None, verified_by="zkXP_stub_hash"):
+def log_commit(user_id: str, level: int, xp: int, reason: str, traits_snapshot: dict,
+               soulform: dict = None, verified_by: str = "zkXP_stub_hash") -> dict:
     """
     Append a verified XP/MeritCoin event to the soulbound commit ledger.
 
-    Arguments:
-        user_id (str): ID of the user.
-        level (int): Current level of the user.
-        xp (int): XP awarded during this commit.
-        reason (str): Description of what triggered the commit.
-        traits_snapshot (dict): Tree of Life traits at the time of logging.
-        soulform (dict): Optional soulform object representing current transformation.
-        verified_by (str): Signature or proof of verification.
+    Args:
+        user_id: ID of the user.
+        level: Level of the user at time of commit.
+        xp: XP awarded.
+        reason: Description of the milestone.
+        traits_snapshot: Tree of Life traits at the time of commit.
+        soulform: Optional soulform data.
+        verified_by: zkXP proof or signature string.
 
     Returns:
-        dict: The full commit object logged.
+        The commit entry object.
     """
     entry = {
         "timestamp": datetime.utcnow().isoformat() + "Z",
