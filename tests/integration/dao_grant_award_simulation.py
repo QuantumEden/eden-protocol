@@ -4,12 +4,13 @@
 import sys, os, json
 from datetime import datetime
 
+# Fix relative import path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'src')))
 
-from infra.dao.grant_dispenser import grant_xp, grant_meritcoin, get_grant_log
-from xp.meritcoin_ledger import log_commit
-from xp.meritcoin_minter import mint_meritcoin
-from eden_payload_generator.eden_payload_generator import generate_eden_payload
+from src.infra.dao.grant_dispenser import grant_xp, grant_meritcoin, get_grant_log
+from infra.xp.meritcoin_ledger import log_commit  # ✅ FIXED: Corrected import path
+from infra.xp.meritcoin_minter import mint_meritcoin  # ✅ FIXED: Corrected import path
+from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
 
 # === Step 1: Simulate grant recipient profile
 user_id = "builder_trial_005"
