@@ -1,4 +1,4 @@
-# meritcoin_ledger.py – Eden Protocol Infra
+# infra/xp/meritcoin_ledger.py – Eden Protocol Infra
 # Logs soulbound XP commits and symbolic milestone events
 
 import os
@@ -8,6 +8,7 @@ from uuid import uuid4
 
 LEDGER_PATH = os.path.join(os.path.dirname(__file__), 'meritcoin_commit_log.json')
 
+
 def load_ledger():
     """Load the existing MeritCoin ledger from file."""
     if os.path.exists(LEDGER_PATH):
@@ -15,16 +16,34 @@ def load_ledger():
             return json.load(f)
     return []
 
+
 def save_ledger(log):
     """Write the current log state to disk."""
     with open(LEDGER_PATH, 'w') as f:
         json.dump(log, f, indent=2)
 
+
 def generate_commit_id():
+    """Generate a unique symbolic MeritCoin ID."""
     return f"MERIT-{uuid4().hex[:8].upper()}"
 
+
 def log_commit(user_id, level, xp, reason, traits_snapshot, soulform=None, verified_by="zkXP_stub_hash"):
-    """Appends a validated MeritCoin commit to the ledger."""
+    """
+    Append a verified XP/MeritCoin event to the soulbound commit ledger.
+
+    Arguments:
+        user_id (str): ID of the user.
+        level (int): Current level of the user.
+        xp (int): XP awarded during this commit.
+        reason (str): Description of what triggered the commit.
+        traits_snapshot (dict): Tree of Life traits at the time of logging.
+        soulform (dict): Optional soulform object representing current transformation.
+        verified_by (str): Signature or proof of verification.
+
+    Returns:
+        dict: The full commit object logged.
+    """
     entry = {
         "timestamp": datetime.utcnow().isoformat() + "Z",
         "user_id": user_id,
@@ -47,9 +66,10 @@ def log_commit(user_id, level, xp, reason, traits_snapshot, soulform=None, verif
 
     return entry
 
-# CLI test
+
+# === CLI Test Mode ===
 if __name__ == "__main__":
-    print("Simulating MeritCoin commit...")
+    print("🪙 Simulating MeritCoin commit...\n")
 
     traits = {
         "discipline": 72,
