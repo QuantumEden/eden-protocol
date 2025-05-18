@@ -1,5 +1,5 @@
 # eden_payload_generator.py – Eden Protocol Payload Core
-# Phase 17 final version with DAO, soulform, and zk compatibility
+# Phase 17 Final – DAO, soulform, and zk compatibility
 
 import random
 from typing import Dict
@@ -21,7 +21,7 @@ def generate_eden_payload(user_id: str, user_profile: Dict[str, any], secret_key
     disclosure = user_profile.get("disclosure", {})
     current_soulform = user_profile.get("current_soulform", None)
 
-    # Archetype classification logic
+    # === Archetype classification ===
     archetype_map = {
         "NT": "Strategist",
         "NF": "Healer",
@@ -31,7 +31,7 @@ def generate_eden_payload(user_id: str, user_profile: Dict[str, any], secret_key
     prefix = mbti[1:3]
     archetype = archetype_map.get(prefix, "Strategist")
 
-    # Moral glyphs
+    # === Conviction Glyphs ===
     glyph_map = {
         "care": "💖",
         "justice": "⚖️",
@@ -41,7 +41,7 @@ def generate_eden_payload(user_id: str, user_profile: Dict[str, any], secret_key
     }
     conviction_glyph = glyph_map.get(moral.lower(), "☯")
 
-    # Base traits
+    # === Trait computation ===
     base_traits = {
         "discipline": min(100, iq + 10),
         "resilience": min(100, eq + 5),
@@ -68,11 +68,12 @@ def generate_eden_payload(user_id: str, user_profile: Dict[str, any], secret_key
     tree_traits = {k: min(100, v) for k, v in base_traits.items()}
     xp_awarded = random.randint(80, 120)
 
-    # Calculate merit level (symbolic approximation)
+    # === DAO Eligibility ===
     merit_level = 1 + xp_awarded // 100
     trait_pass = all(v >= DAO_TRAIT_MIN for v in tree_traits.values())
     eligible_for_dao = merit_level >= DAO_LEVEL_MIN and trait_pass
 
+    # === Final Payload ===
     payload = {
         "user_id": user_id,
         "archetype": archetype,
