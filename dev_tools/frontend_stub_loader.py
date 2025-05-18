@@ -38,7 +38,7 @@ def main():
     print("\n🔄 Generating Eden Payload for Frontend...\n")
     payload = generate_eden_payload(
         user_id=sample_user_id,
-        profile_dict=sample_profile,
+        user_profile=sample_profile,  # ✅ Corrected parameter name
         secret_key="dev_stub_key_123"
     )
 
