@@ -1,15 +1,27 @@
-# sim/soulform_simulation.py – Eden Protocol Symbolic Transformation Tester
-# Stress-tests soulform logic integration with XP, Tree, and DAO systems
+# Modified soulform_simulation.py for Eden Protocol
+# This version uses absolute imports to resolve the module not found issue
 
 import sys, os
 import json
 from datetime import datetime
 
-# === Import path fix ===
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# === Import path fix with absolute paths ===
+# Get the repository root directory
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# Add it to sys.path if not already there
+if repo_root not in sys.path:
+    sys.path.insert(0, repo_root)
 
-from infra.xp.meritcoin_minter import mint_meritcoin  # ✅ Correct path
-from infra.xp.meritcoin_ledger import log_commit      # ✅ Correct path
+# Get the absolute path to the infra/xp directory
+xp_path = os.path.abspath(os.path.join(repo_root, 'infra', 'xp'))
+# Add it to sys.path if not already there
+if xp_path not in sys.path:
+    sys.path.insert(0, xp_path)
+
+# Now import using module names that will be found in the paths we added
+from infra.xp.meritcoin_minter import mint_meritcoin
+# Import directly from the module in the xp_path we added
+from meritcoin_ledger import log_commit
 from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
 
 # === Mock Tree with threshold-passing values
