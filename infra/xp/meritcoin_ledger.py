@@ -6,26 +6,11 @@ import json
 from datetime import datetime
 from uuid import uuid4
 
+# Import from parent directory's version
+from ..meritcoin_ledger import load_ledger, save_ledger, generate_commit_id
+
+# Keep the original path definition
 LEDGER_PATH = os.path.join(os.path.dirname(__file__), 'meritcoin_commit_log.json')
-
-
-def load_ledger() -> list:
-    """Load the existing MeritCoin ledger from file."""
-    if os.path.exists(LEDGER_PATH):
-        with open(LEDGER_PATH, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    return []
-
-
-def save_ledger(log: list):
-    """Write the current log state to disk."""
-    with open(LEDGER_PATH, 'w', encoding='utf-8') as f:
-        json.dump(log, f, indent=2)
-
-
-def generate_commit_id() -> str:
-    """Generate a unique symbolic MeritCoin ID."""
-    return f"MERIT-{uuid4().hex[:8].upper()}"
 
 
 def log_commit(user_id: str, level: int, xp: int, reason: str, traits_snapshot: dict,
