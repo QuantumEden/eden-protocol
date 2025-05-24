@@ -1,5 +1,5 @@
 # DAO Ritual Eligibility Test – Eden Protocol Integration Test
-# Simulates DAO entry logic under varying conditions
+# Simulates DAO entry logic under varying soulform, trait, and ritual thresholds
 
 import sys, os, json
 from datetime import datetime
@@ -9,11 +9,12 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 
 from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-# === Constants for Thresholds
+# === Constants for DAO Onboarding
 DAO_LEVEL_MIN = 7
 DAO_TRAIT_MIN = 50
+DAO_REQUIRED_KEYS = ["sacred_path", "mbti", "eq", "iq"]
 
-# === Mock Test Cases
+# === Mock Test Users
 mock_users = [
     {
         "user_id": "user_shadow_006",
@@ -25,7 +26,7 @@ mock_users = [
             "sacred_path": "Discipline",
             "group_opt_in": True
         },
-        "expected": False  # Below level 7 by XP
+        "expected": False  # Below DAO level threshold
     },
     {
         "user_id": "user_trial_007",
@@ -37,7 +38,7 @@ mock_users = [
             "sacred_path": "Compassion",
             "group_opt_in": True
         },
-        "expected": True  # Should pass both level and traits
+        "expected": True  # Valid merit and traits
     },
     {
         "user_id": "user_decay_008",
@@ -54,11 +55,11 @@ mock_users = [
                 "service_connected": False
             }
         },
-        "expected": False  # Should fail trait average (simulate imbalance)
+        "expected": False  # Fails trait balance / tree integrity
     }
 ]
 
-# === Run Eligibility Simulation
+# === Begin DAO Entry Simulation
 print("\n🔍 DAO Ritual Eligibility Test\n")
 
 for mock in mock_users:
