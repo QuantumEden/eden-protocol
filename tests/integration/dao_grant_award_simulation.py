@@ -1,13 +1,13 @@
 # dao_grant_award_simulation.py – Eden Protocol Grant Dispenser Integration
-# Simulates DAO-approved grant awards, including XP and symbolic MeritCoin
+# Simulates DAO-approved grant awards, including XP, symbolic MeritCoin, and soulform-linked zkXP commits
 
 import sys, os, json
 from datetime import datetime
 
 # Fix relative import path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'src')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
-from src.infra.dao.grant_dispenser import grant_xp, grant_meritcoin, get_grant_log
+from dao.grant_dispenser import grant_xp, grant_meritcoin, get_grant_log
 from infra.xp.meritcoin_ledger import log_commit  # ✅ FIXED: Corrected import path
 from infra.xp.meritcoin_minter import mint_meritcoin  # ✅ FIXED: Corrected import path
 from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
@@ -36,7 +36,7 @@ print("\n🌿 DAO Payload Snapshot:")
 print(json.dumps(payload, indent=2))
 
 # === Step 3: Grant XP via DAO ritual system
-xp_grant = grant_xp(user_id, 90, "Co-authored Sacred Architecture Proposal")
+xp_grant = grant_xp(user_id, 90, "Co-authored Sacred Architecture Proposal", zkxp_hash="zkxp-grant-001")
 print("\n📈 DAO XP Grant Issued:")
 print(json.dumps(xp_grant, indent=2))
 
@@ -62,9 +62,10 @@ if mint["success"]:
     # === Step 6: Add DAO grant to log
     merit_grant = grant_meritcoin(
         user_id,
-        mint["meritcoin"]["meritcoin_id"],
         level=8,
-        soulform_id="wyrm"
+        reason="Ritual DAO Grant Merit Issuance",
+        soulform_id="wyrm",
+        zkxp_hash="zkxp-grant-001"
     )
 
     print("\n🔐 DAO Grant Log Entry:")
