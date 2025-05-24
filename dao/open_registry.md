@@ -15,7 +15,7 @@ To unlock DAO voice and registry presence, a user must:
 - Reach **Merit Level 7+**
 - Complete at least **1 Hero Quest**
 - Hold a verified **Sacred Path**
-- Log a **soulbound XP commit**
+- Log a **soulbound XP commit** (zkXP)
 - Accept the **Oath of Alignment**
 
 Only truth grants voice.  
@@ -42,22 +42,24 @@ Upon successful growth, the user must affirm:
 > I hold no vote I have not earned.  
 > I do not act for status, but for sovereignty.”
 
-This is soulbound — not reversible.
+This oath is soulbound and irreversible.
 
 ### 4. 🧾 DAO Profile Creation
-- Fields:
-  - `user_id`
-  - `archetype`
-  - `merit_level`
-  - `soulform`
-  - `sacred_path`
-  - `glyph`
-- DAO profile is **only visible to trusted auditors**
+Fields included:
+- `user_id`
+- `archetype`
+- `merit_level`
+- `soulform`
+- `sacred_path`
+- `glyph`
+- `zkxp_commit_hash`
+
+DAO profiles are **only visible to trusted auditors** or verified governance engines.
 
 ### 5. 🔐 Registry Sync
-- DAO key is derived from XP + soulform metadata
-- Commit hash is stored on-chain (ZK-compatible)
-- Voter signature reflects weighted alignment
+- DAO key derived from XP + soulform metadata
+- zkXP commit hash bound to Tree metadata
+- Voter signature reflects ritual status and alignment
 
 ---
 
@@ -66,12 +68,13 @@ This is soulbound — not reversible.
 DAO votes are not 1:1.  
 They are **truth-weighted**.
 
-| Factor | Influence |
-|--------|-----------|
-| `merit_level` | Logarithmic growth (e.g. 7 = 1x, 10 = 2x, 15 = 3x) |
-| `soulform_stage` | (Seedling → Initiate → Ascendant) |
-| `proposal integrity` | Vote history consistency, DAO ethic adherence |
-| `recent growth curve` | XP and Tree trait delta (last 30 days) |
+| Factor               | Influence                                              |
+|----------------------|--------------------------------------------------------|
+| `merit_level`        | Logarithmic growth (e.g. 7 = 1x, 10 = 2x, 15 = 3x)     |
+| `soulform_stage`     | (Seedling → Initiate → Ascendant)                     |
+| `proposal integrity` | Vote history consistency, DAO ethic adherence          |
+| `recent growth curve`| XP and Tree trait delta over trailing 30 days          |
+| `ritual_verified`    | Whether soulform rituals were honored before voting   |
 
 > The stronger your transformation, the clearer your voice.
 
@@ -79,32 +82,35 @@ They are **truth-weighted**.
 
 ## 📝 Proposal Rights
 
-To submit a **solo proposal**, you must:
+To submit a **solo proposal**, a member must:
 
 - Be Level **9+**
-- Have **no lockouts**
+- Have **no active lockouts**
 - Co-author at least **1 passed proposal**
+- Pass a symbolic **proposal alignment check**
 
-All others may **co-sign** existing proposals with a verified member.
+Others may **co-sign** proposals as part of a verified ritual quorum.
 
-Proposal status is tied to **XP decay** — inactivity diminishes voice over time.
+Proposal status is tied to **XP decay** — prolonged dormancy weakens eligibility.
 
 ---
 
 ## ⛔ Removal Triggers
 
-You may be temporarily removed from the DAO registry if:
+DAO registry presence may be suspended or revoked if:
 
 - XP level falls below `5`
-- Tree trait average drops below `45`
-- A Shadow Quest is failed and no realignment occurs
+- Tree trait average drops under `45`
+- A Shadow Quest is failed without realignment
+- Multiple violations of the DAO Code of Conduct occur
 
-Re-entry is always possible — via a **DAO Realignment Trial**.
+Re-entry is possible through a **DAO Realignment Trial**, requiring:
 
-This includes:
-- Shadow mission success
-- Re-growth of Tree traits
-- Recitation of the Oath again
+- Successful shadow mission
+- Regrowth of Tree attributes
+- Recitation of the Oath of Alignment
+
+Bans are rare but **ritually enforced**. Only tribunal consensus may initiate one.
 
 ---
 
@@ -125,5 +131,5 @@ It is the echo of your evolution.
 > You **become it** — or you do not.
 
 All participation is voluntary.  
-All truth is earned.
+All truth is earned.  
 All memory is sacred.
