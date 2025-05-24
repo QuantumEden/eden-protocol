@@ -15,5 +15,6 @@
   "user_vote": "approve",
   "timestamp": "2025-05-15T22:08:00Z",
   "soulbound": true,
+  "ritual_verified": true,
   "zk_commit_hash": "c134f9de19e89b2463c947bd0820fcba28a4d9f24174e12e383d712a88fa1a7c"
 }
