@@ -1,5 +1,5 @@
 # dao_voting_simulation.py – Eden Protocol DAO Proposal and Voting Test
-# Simulates DAO onboarding, proposal creation, and symbolic vote casting
+# Simulates DAO onboarding, proposal creation, and symbolic vote casting with ritual and zkXP integration
 
 import sys, os, json
 from datetime import datetime
@@ -42,18 +42,27 @@ proposal = vote_handler.submit_proposal(
     group_id="eden_dao",
     proposal_title="Establish Lunar Shrine",
     proposal_type="ritual_structure",
-    proposed_by=user_id
+    proposed_by=user_id,
+    merit_level=payload["merit_level"],
+    soulform_id="seraph",
+    ritual_required=True
 )
 
 print("\n📜 Proposal Submitted:")
 print(json.dumps(proposal, indent=2))
 
 # === Step 3: Simulate symbolic voting
-vote_handler.cast_vote(proposal["proposal_id"], "seer_011", True)
-vote_handler.cast_vote(proposal["proposal_id"], "healer_022", True)
-vote_handler.cast_vote(proposal["proposal_id"], "rogue_999", False)
+vote_handler.cast_vote(proposal["proposal_id"], "seer_011", True, 10, soulform_id="phoenix")
+vote_handler.cast_vote(proposal["proposal_id"], "healer_022", True, 8, soulform_id="seraph")
+vote_handler.cast_vote(proposal["proposal_id"], "rogue_999", False, 6, soulform_id="shadow")
 
-tally = vote_handler.tally_votes(proposal["proposal_id"])
+# === Step 4: Tally with ritual and zkXP hash
+zkxp_hash = "zkxp-vote-001"
+tally = vote_handler.tally_votes(
+    proposal_id=proposal["proposal_id"],
+    zkxp_commit_hash=zkxp_hash,
+    ritual_verified=True
+)
 status = vote_handler.get_proposal_status(proposal["proposal_id"])
 
 print("\n🗳️ Vote Tally:")
