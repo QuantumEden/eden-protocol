@@ -1,5 +1,5 @@
 // ui/react_web_portal/components/DAOVotePanel.tsx
-// Renders active proposals with symbolic metadata and truth-weighted vote actions
+// Renders active proposals with symbolic metadata and truth-weighted vote actions, including ritual and zkXP context
 
 import React from 'react';
 
@@ -11,6 +11,9 @@ type Proposal = {
   archetype: string;
   glyph: string;
   meritLevel: number;
+  ritualVerified?: boolean;
+  soulformStage?: string;
+  zkxpHash?: string;
 };
 
 type Props = {
@@ -31,6 +34,12 @@ const DAOVotePanel: React.FC<Props> = ({ proposals, onVote }) => {
           <p style={styles.summary}>{p.summary}</p>
           <div style={styles.meta}>
             By <strong>{p.author}</strong> [{p.archetype} | Merit {p.meritLevel}]
+          </div>
+          <div style={styles.meta}>
+            Ritual Verified: {p.ritualVerified ? '🕊️ Yes' : '⚠️ No'} | Soulform: {p.soulformStage || 'Unknown'}
+          </div>
+          <div style={styles.meta}>
+            zkXP Commit: {p.zkxpHash || 'Not recorded'}
           </div>
           <div style={styles.buttons}>
             <button onClick={() => onVote(p.id, 'yes')} style={styles.yes}>✅ Affirm</button>
