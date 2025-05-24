@@ -1,25 +1,69 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "DAO Governance",
+  "title": "DAO Governance Proposal",
   "type": "object",
   "properties": {
     "id": { "type": "string" },
     "title": { "type": "string" },
     "description": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["governance", "ban_vote", "mod_policy", "ritual_change"],
+      "default": "governance"
+    },
+    "created_by": { "type": "string" },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
     "votes_for": { "type": "integer", "minimum": 0 },
     "votes_against": { "type": "integer", "minimum": 0 },
     "voter_log": {
-      "type": "object",
-      "additionalProperties": { "type": "string" }
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "user_id": { "type": "string" },
+          "vote": {
+            "type": "string",
+            "enum": ["yes", "no"]
+          },
+          "timestamp": { "type": "string", "format": "date-time" }
+        },
+        "required": ["user_id", "vote", "timestamp"]
+      }
     },
     "status": {
       "type": "string",
-      "enum": ["open", "closed"]
+      "enum": ["open", "closed"],
+      "default": "open"
     },
     "outcome": {
       "type": "string",
-      "enum": ["passed", "rejected"]
+      "enum": ["passed", "rejected", "pending"],
+      "default": "pending"
+    },
+    "ritual_safeguard": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, a symbolic review ritual must be completed before enforcement."
+    },
+    "zk_commit_hash": {
+      "type": "string",
+      "description": "Zero-knowledge proof of proposal integrity (optional future use)."
     }
   },
-  "required": ["id", "title", "description", "votes_for", "votes_against", "voter_log", "status", "outcome"]
+  "required": [
+    "id",
+    "title",
+    "description",
+    "type",
+    "created_by",
+    "created_at",
+    "votes_for",
+    "votes_against",
+    "voter_log",
+    "status",
+    "outcome"
+  ]
 }
