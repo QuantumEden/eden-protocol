@@ -1,6 +1,6 @@
 // DAODashboard.tsx – Eden Protocol DAO Interface (Web Portal)
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, FlatList } from 'react-native';
 
 // 🧠 Mock DAO proposals
@@ -11,7 +11,9 @@ const mockProposals = [
     summary: 'Symbolic mass realignment quest to restore global resilience.',
     requiredLevel: 7,
     proposer: 'seer_011',
-    soulbound: true
+    soulbound: true,
+    ritual_verified: true,
+    zkxp_hash: 'zkxp-prop-001'
   },
   {
     id: 'prop-002',
@@ -19,7 +21,9 @@ const mockProposals = [
     summary: 'Allow new forms from modders with lore and XP verification.',
     requiredLevel: 9,
     proposer: 'healer_022',
-    soulbound: true
+    soulbound: true,
+    ritual_verified: false,
+    zkxp_hash: 'zkxp-prop-002'
   }
 ];
 
@@ -52,6 +56,10 @@ const DAODashboard = () => {
           Proposed by: {item.proposer} {item.soulbound ? '🧬' : ''}
         </Text>
         <Text style={styles.meta}>Required Level: {item.requiredLevel}</Text>
+        <Text style={styles.meta}>
+          Ritual Verified: {item.ritual_verified ? '🕊️ Yes' : '⚠️ No'}
+        </Text>
+        <Text style={styles.meta}>zkXP Hash: {item.zkxp_hash}</Text>
 
         {eligible ? (
           alreadyVoted ? (
