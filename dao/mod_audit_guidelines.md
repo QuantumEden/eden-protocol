@@ -1,93 +1,103 @@
 # 🛡️ DAO Mod Audit Guidelines
 
-> This document defines the symbolic and procedural rules for community-suggested content, code, or ritual modifications within Eden Protocol. All proposals are subject to DAO oversight and sacred path compliance.
+> This document defines the symbolic and procedural rules for community-suggested content, code, or ritual modifications within Eden Protocol. All proposals are subject to DAO oversight, zkXP alignment, and sacred path compliance.
 
 ---
 
 ## 🔄 Purpose
 
-Eden’s modular design allows contributors to:
-- Propose new quests
-- Modify Tree trait logic
-- Suggest visual themes or auras
-- Expand sacred path representations
-- Adjust XP thresholds or decay timers
+Eden’s modular architecture allows contributors to:
 
-These changes are sacred. All mods affect symbolic truth and inner narrative flow — and must be handled with reverence.
+- Propose new quests and shadow trials
+- Modify Tree trait growth or decay logic
+- Suggest visual themes, rituals, or auras
+- Expand sacred path interpretations
+- Adjust XP thresholds, reward curves, or transformation gates
+
+These changes are **sacred**. Every mod influences symbolic truth and the inner mythic arc — and must be handled with reverence and ritual precision.
 
 ---
 
 ## ✅ Eligibility to Submit
 
-- User must have:
-  - Level 3+ MeritCoin
-  - At least 1 completed Shadow Quest
-  - Truth Integrity score above minimum threshold
+- Users must have:
+  - Level 3+ **MeritCoin**
+  - At least 1 completed **Shadow Quest**
+  - A verified **zkXP commit hash**
+  - A **Truth Integrity** score above the dynamic threshold
 
-- Proposal must be:
-  - Submitted via DAO vote system
-  - Reviewed through sacred path filters
-  - Fully documented with schema changes, narrative rationale, and symbolic intent
+- Proposals must:
+  - Be submitted via the DAO `/proposal_submitter.py` interface
+  - Be reviewed through sacred path filters
+  - Include complete documentation:
+    - Schema or mechanic references
+    - Narrative rationale
+    - Symbolic impact
 
 ---
 
 ## 📜 Proposal Format
 
-Each mod proposal must include:
-- `mod_type` – (e.g., "quest", "tree", "aura", "ritual", "trait_decay")
-- `title` – Symbolic name (e.g., "Trial of the Ashen Path")
-- `description` – Purpose, metaphor, and expected transformation
-- `alignment_check` – Which sacred paths it supports or may conflict with
-- `quest_logic` – Stubbed or narrative module reference
-- `impact_zone` – Tree traits, XP schema, or interface nodes affected
+Each mod proposal must include the following fields:
+
+- `mod_type` – *(e.g., "quest", "trait_decay", "ritual", "interface", "aura")*
+- `title` – Symbolic name *(e.g., "Trial of the Ashen Path")*
+- `description` – Purpose, metaphor, and intended transformation
+- `alignment_check` – Supported or conflicting sacred paths
+- `quest_logic` – Stub, logic block, or narrative pointer
+- `impact_zone` – Affected Tree traits, XP schema, or UI interface
 
 ---
 
 ## 🧪 Audit Criteria
 
-All proposals are evaluated on the following:
+Mod proposals are reviewed on:
 
-| Criterion              | Description                                                                 |
-|------------------------|-----------------------------------------------------------------------------|
-| **Symbolic Integrity** | Does this align with mythic healing and transformation?                     |
-| **Sacred Compliance**  | Does it respect allowed sacred paths?                                       |
-| **Non-Exploitability** | Could it be used to farm XP, skip Shadow Quests, or fake transformation?    |
-| **Ritual Cohesion**    | Does it support presence > performance?                                     |
-| **Narrative Clarity**  | Is the proposed mod internally legible as part of Eden’s mythos?            |
+| Criterion              | Description                                                                  |
+|------------------------|------------------------------------------------------------------------------|
+| **Symbolic Integrity** | Does the proposal uphold Eden's mythos of transformation?                   |
+| **Sacred Compliance**  | Does it respect and reinforce valid sacred paths?                           |
+| **Non-Exploitability** | Can it be exploited to bypass XP, Shadow Quests, or ritual requirements?    |
+| **Ritual Cohesion**    | Does it preserve the balance between presence and performance?              |
+| **Narrative Clarity**  | Does it read clearly as part of Eden’s symbolic evolution?                  |
 
 ---
 
 ## ❌ Auto-Reject Conditions
 
-- Proposals that:
-  - Reference forbidden sacred paths
-  - Promote competitive gamification
-  - Contain ironic or trivial elements
-  - Undermine XP lockout or quest thresholds
+Proposals will be immediately rejected if they:
+
+- Reference blacklisted or forbidden sacred paths
+- Promote gamification over transformation
+- Contain trivial, ironic, or non-serious framing
+- Bypass or undermine XP decay, soulform gates, or quest thresholds
 
 ---
 
 ## 🗳️ DAO Approval Process
 
 1. Submit proposal via `/dao/proposal_submitter.py`
-2. Pass symbolic formatting check
-3. Reviewed by:
-   - Community review committee (read-only)
-   - Sacred path audit filter (automated)
-   - Truth Integrity validator (XP + quest history)
-4. DAO-wide vote initiated
-5. If passed → pushed to `/mod_loader.py` and added to `/docs/ritual_quest_examples.md`
+2. Format checked via symbolic lint validator
+3. Three-stage review:
+   - Community committee *(read-only feedback)*
+   - Sacred path audit *(auto-filter by mythic alignment)*
+   - Truth Integrity Validator *(XP + shadow history + soulform check)*
+4. Ritual-verified zkXP vote initiated
+5. If passed → sent to `/mod_loader.py` and appended to `/docs/ritual_quest_examples.md`
 
 ---
 
 ## 🔮 Long-Term Roadmap
 
-Future DAO mod features will include:
-- Mod rating system (symbolic, not stars)
-- Sacred path endorsement
-- Zero-Knowledge Contributor trail
-- DAO-approved seasonal “Ritual Patches”
+Upcoming features for symbolic mod governance:
+
+- Symbolic merit-based mod rating (no stars, only glyphs)
+- Sacred path endorsement system (publicly auditable)
+- zkXP Contributor ledger trail
+- DAO-authorized seasonal **Ritual Patch** cycles
+- `soulform-mod-lock` gating system for high-impact changes
 
 ---
 
-> “To modify the myth is to shape the soul. Propose with intent. Vote with integrity.”
+> “To modify the myth is to shape the soul.  
+> Propose with intent. Vote with integrity. Ascend with reverence.”
