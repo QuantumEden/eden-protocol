@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Interaction Summary",
+  "type": "object",
+  "required": [
+    "user_id",
+    "timestamp",
+    "theme",
+    "key_insight",
+    "reflection_count",
+    "emotional_tone"
+  ],
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Unique identifier for the user"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp of session summarization"
+    },
+    "theme": {
+      "type": "string",
+      "description": "Dominant therapeutic theme of the session (e.g. guilt, shame, fear)"
+    },
+    "key_insight": {
+      "type": "string",
+      "description": "The primary response or idea conveyed by the agent"
+    },
+    "reflection_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of meaningful reflections initiated by the user"
+    },
+    "emotional_tone": {
+      "type": "string",
+      "description": "Predominant emotion detected throughout the session"
+    }
+  }
+}
