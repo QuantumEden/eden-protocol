@@ -2,11 +2,26 @@
 # Eden Protocol – DAO Proposal + Voting Logic
 
 from datetime import datetime
-from api.models.dao import DAOCreation
+from api.models.dao import DAOCreation, DAOEnforcementAction
+import json
+import os
 
-# Temporary in-memory DAO ledger
 DAO_REGISTRY = {}
 VOTE_LOG = {}
+
+USER_REGISTRY_PATH = os.path.join(os.path.dirname(__file__), "../../dao/user_registry.json")
+
+
+def load_user_registry():
+    if os.path.exists(USER_REGISTRY_PATH):
+        with open(USER_REGISTRY_PATH, 'r') as f:
+            return json.load(f)
+    return {}
+
+
+def save_user_registry(registry):
+    with open(USER_REGISTRY_PATH, 'w') as f:
+        json.dump(registry, f, indent=2)
 
 
 class DAOService:
@@ -26,7 +41,9 @@ class DAOService:
             "created_by": author_id,
             "created_at": datetime.utcnow().isoformat() + "Z",
             "votes": {"yes": 0, "no": 0},
-            "voters": []
+            "voters": [],
+            "enforcement_target": getattr(payload, "target_user", None),
+            "enforcement_type": getattr(payload, "action_type", None)
         }
         DAO_REGISTRY[proposal_id] = entry
         return {
@@ -54,6 +71,18 @@ class DAOService:
             "timestamp": datetime.utcnow().isoformat() + "Z"
         })
 
+        # Automatic enforcement check
+        if proposal["enforcement_target"] and proposal["enforcement_type"]:
+            total_votes = proposal["votes"]["yes"] + proposal["votes"]["no"]
+            if total_votes >= 5 and proposal["votes"]["yes"] > proposal["votes"]["no"]:
+                # Majority has voted yes
+                action = DAOEnforcementAction(
+                    target_user=proposal["enforcement_target"],
+                    action_type=proposal["enforcement_type"],
+                    initiated_by="DAO"
+                )
+                self.apply_enforcement_action(action)
+
         return {
             "message": f"Vote '{vote}' recorded",
             "proposal": proposal
@@ -61,3 +90,22 @@ class DAOService:
 
     def get_vote_history(self, user_id: str) -> list:
         return VOTE_LOG.get(user_id, [])
+
+    def get_enforcement_status(self, user_id: str) -> dict:
+        registry = load_user_registry()
+        user = registry.get(user_id)
+        if not user:
+            return {"status": "active"}
+        return {"status": user.get("status", "active")}
+
+    def apply_enforcement_action(self, payload: DAOEnforcementAction) -> dict:
+        registry = load_user_registry()
+        registry[payload.target_user] = {
+            "status": payload.action_type,
+            "updated_at": datetime.utcnow().isoformat() + "Z",
+            "source": payload.initiated_by
+        }
+        save_user_registry(registry)
+        return {
+            "message": f"User {payload.target_user} marked as {payload.action_type}"
+        }
