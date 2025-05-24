@@ -1,6 +1,6 @@
-# src/dao/group_vote_handler.py
 # Group Vote Handler – Eden Protocol DAO Ritual Voting Engine
 # Symbolic proposal and truth-weighted voice system for group ritual governance
+# Includes: Suspension/Ban Logic, Ritual Safeguard Layer, zkXP Commit Hash Integration
 
 import hashlib
 from datetime import datetime
@@ -24,7 +24,8 @@ class GroupVoteHandler:
         proposal_type: str,
         proposed_by: str,
         merit_level: int,
-        soulform_id: Optional[str] = None
+        soulform_id: Optional[str] = None,
+        ritual_required: bool = False
     ) -> Dict:
         if merit_level < MIN_PROPOSAL_LEVEL:
             return {
@@ -43,6 +44,11 @@ class GroupVoteHandler:
             "merit_threshold": MIN_PROPOSAL_LEVEL,
             "created_at": datetime.utcnow().isoformat() + "Z",
             "soulform_required": soulform_id,
+            "ritual_required": ritual_required,
+            "ritual_verified": False,
+            "zkxp_commit_hash": None,
+            "suspension_list": [],
+            "ban_list": [],
             "votes": {}
         }
         self.vote_log.append(proposal)
@@ -54,12 +60,18 @@ class GroupVoteHandler:
         user_id: str,
         vote: bool,
         merit_level: int,
-        soulform_id: Optional[str] = None
+        soulform_id: Optional[str] = None,
+        is_suspended: bool = False,
+        is_banned: bool = False
     ) -> bool:
         for proposal in self.vote_log:
             if proposal["proposal_id"] == proposal_id:
+                if user_id in proposal.get("ban_list", []) or is_banned:
+                    return False  # Banned users may not vote
+                if user_id in proposal.get("suspension_list", []) or is_suspended:
+                    return False  # Suspended users may not vote
                 if user_id in proposal["votes"]:
-                    return False  # Already voted
+                    return False  # Prevent double voting
 
                 weight = merit_level
                 if soulform_id and soulform_id == proposal.get("soulform_required"):
@@ -74,15 +86,38 @@ class GroupVoteHandler:
                 return True
         return False
 
-    def tally_votes(self, proposal_id: str) -> Dict:
+    def tally_votes(
+        self,
+        proposal_id: str,
+        zkxp_commit_hash: Optional[str] = None,
+        ritual_verified: bool = False
+    ) -> Dict:
         for proposal in self.vote_log:
             if proposal["proposal_id"] == proposal_id:
                 votes = proposal["votes"]
                 yes = sum(v["weight"] for v in votes.values() if v["vote"])
                 no = sum(v["weight"] for v in votes.values() if not v["vote"])
 
+                proposal["zkxp_commit_hash"] = zkxp_commit_hash
+                proposal["ritual_verified"] = ritual_verified
+
+                if proposal["ritual_required"] and not ritual_verified:
+                    proposal["status"] = "rejected"
+                    return {
+                        "result": "ritual unverified",
+                        "yes_weight": round(yes, 2),
+                        "no_weight": round(no, 2),
+                        "total_votes": len(votes)
+                    }
+
                 if yes + no == 0:
-                    return {"result": "no quorum", "yes": 0, "no": 0}
+                    proposal["status"] = "no quorum"
+                    return {
+                        "result": "no quorum",
+                        "yes_weight": 0,
+                        "no_weight": 0,
+                        "total_votes": 0
+                    }
 
                 outcome = "approved" if yes > no else "rejected"
                 proposal["status"] = outcome
