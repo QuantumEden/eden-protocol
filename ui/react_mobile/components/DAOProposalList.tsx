@@ -9,6 +9,8 @@ type Proposal = {
   description: string;
   proposer_glyph: string;
   merit_score: number;
+  ritual_verified?: boolean;
+  soulform_stage?: string;
 };
 
 interface DAOProposalListProps {
@@ -26,6 +28,14 @@ const DAOProposalList: React.FC<DAOProposalListProps> = ({ proposals, onSelect }
       <View style={styles.footer}>
         <Text style={styles.glyph}>{item.proposer_glyph}</Text>
         <Text style={styles.merit}>Merit: {item.merit_score}</Text>
+      </View>
+      <View style={styles.meta}>
+        <Text style={styles.metaText}>
+          Ritual: {item.ritual_verified ? '🕊️ Verified' : '⚠️ Unverified'}
+        </Text>
+        <Text style={styles.metaText}>
+          Soulform: {item.soulform_stage || 'N/A'}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -85,6 +95,15 @@ const styles = StyleSheet.create({
   merit: {
     fontSize: 13,
     color: '#6cf',
+  },
+  meta: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 6,
+  },
+  metaText: {
+    fontSize: 12,
+    color: '#ccc',
   },
   empty: {
     color: '#777',
