@@ -1,5 +1,5 @@
 // ui/react_web_portal/pages/dao.tsx
-// DAO Proposal Browser and Voting Interface
+// DAO Proposal Browser and Voting Interface (Ritual-Aware)
 
 import React from 'react';
 import DAOVotePanel from '../components/DAOVotePanel';
@@ -12,7 +12,10 @@ const mockProposals = [
     author: 'healer_echo_022',
     archetype: 'Healer',
     glyph: '💧',
-    meritLevel: 6
+    meritLevel: 6,
+    ritualVerified: true,
+    soulformStage: 'Initiate',
+    zkxpHash: 'zkxp-shadow-moon'
   },
   {
     id: 'prop-004',
@@ -21,7 +24,10 @@ const mockProposals = [
     author: 'rogue_path_019',
     archetype: 'Builder',
     glyph: '🛠️',
-    meritLevel: 7
+    meritLevel: 7,
+    ritualVerified: false,
+    soulformStage: 'Ascendant',
+    zkxpHash: 'zkxp-lock-null'
   }
 ];
 
