@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Eidolon Session Schema",
+  "type": "object",
+  "required": [
+    "session_id",
+    "user_id",
+    "start_time",
+    "turns"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Unique identifier for the therapeutic session"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Unique identifier for the user"
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when session began"
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when session ended, if concluded"
+    },
+    "turns": {
+      "type": "array",
+      "items": {
+        "$ref": "./chat_message.schema.json"
+      },
+      "description": "Sequence of messages exchanged during session"
+    },
+    "escalated": {
+      "type": "boolean",
+      "description": "Indicates if the session triggered a crisis escalation"
+    }
+  }
+}
