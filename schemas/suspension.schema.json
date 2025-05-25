@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Suspension Record Schema",
+  "type": "object",
+  "required": [
+    "user_id",
+    "reason",
+    "timestamp",
+    "reinstated"
+  ],
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Unique identifier of the suspended user"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Reason for suspension, based on Ritual Safeguard violation or DAO ruling"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the suspension was enacted"
+    },
+    "reinstated": {
+      "type": "boolean",
+      "description": "Whether the user has been reinstated"
+    },
+    "reinstated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of reinstatement, if applicable"
+    }
+  }
+}
