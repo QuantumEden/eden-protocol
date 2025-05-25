@@ -1,0 +1,42 @@
+{
+  "world": {
+    "id": "realm_phoenix_resilience",
+    "name": "Sanctum of Resilience",
+    "terrain": "mountain",
+    "climate": "stormy",
+    "tone": "ascending",
+    "entry_condition": {
+      "trait": "resilience",
+      "minimum_value": 40
+    },
+    "objectives": [
+      "Confront inner fragmentation",
+      "Recover ancestral memory",
+      "Forge new ritual bond"
+    ],
+    "emblem": "phoenix"
+  },
+  "npcs": [
+    {
+      "name": "The Mirror",
+      "role": "Wounded Reflection",
+      "alignment": "neutral",
+      "appearance": "silver-masked figure, radiating silence",
+      "dialogue": "Do you see yourself through the eyes of those who harmed you?"
+    },
+    {
+      "name": "Aurelia",
+      "role": "Guiding Light",
+      "alignment": "mentor",
+      "appearance": "robed figure surrounded by bioluminescent moths",
+      "dialogue": "Even broken wings remember how to fly."
+    },
+    {
+      "name": "The Shadowling",
+      "role": "Echo of Doubt",
+      "alignment": "challenger",
+      "appearance": "shifting silhouette with a cracked voice",
+      "dialogue": "What will you become when no one is watching?"
+    }
+  ]
+}
