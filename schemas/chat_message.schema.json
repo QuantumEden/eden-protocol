@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Chat Message Schema",
+  "type": "object",
+  "required": [
+    "user_id",
+    "role",
+    "content",
+    "timestamp"
+  ],
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Identifier of the user involved in the message"
+    },
+    "role": {
+      "type": "string",
+      "enum": ["user", "eidolon"],
+      "description": "Role of the speaker in the conversation"
+    },
+    "content": {
+      "type": "string",
+      "description": "Message content from the speaker"
+    },
+    "emotion": {
+      "type": "string",
+      "description": "Emotion detected or expressed during message (optional)"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of when the message was sent"
+    }
+  }
+}
