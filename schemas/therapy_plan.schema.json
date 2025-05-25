@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Therapy Plan Schema",
+  "type": "object",
+  "required": [
+    "user_id",
+    "soulform",
+    "merit_level",
+    "core_themes",
+    "modules",
+    "recommendations"
+  ],
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "The unique identifier of the user"
+    },
+    "soulform": {
+      "type": "string",
+      "description": "Current soulform or symbolic transformation state"
+    },
+    "merit_level": {
+      "type": "integer",
+      "description": "Current user merit level based on DAO alignment and growth"
+    },
+    "core_themes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Detected themes from session logs (e.g., guilt, identity, fear)"
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Recommended therapeutic modalities or symbolic modules"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Concrete symbolic or behavioral next steps"
+    }
+  }
+}
