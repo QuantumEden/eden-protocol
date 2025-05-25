@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UE5 World Export Format",
+  "type": "object",
+  "required": ["world", "npcs"],
+  "properties": {
+    "world": {
+      "type": "object",
+      "required": ["id", "name", "terrain", "climate", "tone", "entry_condition", "objectives", "emblem"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "terrain": { "type": "string" },
+        "climate": { "type": "string" },
+        "tone": { "type": "string" },
+        "entry_condition": {
+          "type": "object",
+          "required": ["trait", "minimum_value"],
+          "properties": {
+            "trait": { "type": "string" },
+            "minimum_value": { "type": "number" }
+          }
+        },
+        "objectives": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "emblem": { "type": "string" }
+      }
+    },
+    "npcs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "role", "alignment", "appearance", "dialogue"],
+        "properties": {
+          "name": { "type": "string" },
+          "role": { "type": "string" },
+          "alignment": { "type": "string" },
+          "appearance": { "type": "string" },
+          "dialogue": { "type": "string" }
+        }
+      }
+    }
+  }
+}
