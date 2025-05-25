@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Voice Mapping for NPCs and Soulforms",
+  "description": "Maps NPC roles and soulform archetypes to voice synthesis identifiers.",
+  "type": "object",
+  "properties": {
+    "npc_voices": {
+      "type": "object",
+      "properties": {
+        "The Mirror": { "type": "string", "example": "eidolon_reflective" },
+        "Aurelia": { "type": "string", "example": "eidolon_mentor" },
+        "The Shadowling": { "type": "string", "example": "eidolon_challenger" }
+      },
+      "additionalProperties": { "type": "string" }
+    },
+    "soulform_voices": {
+      "type": "object",
+      "properties": {
+        "phoenix": { "type": "string", "example": "eidolon_fire" },
+        "seraph": { "type": "string", "example": "eidolon_air" },
+        "wyrm": { "type": "string", "example": "eidolon_earth" },
+        "leviathan": { "type": "string", "example": "eidolon_water" }
+      },
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "required": ["npc_voices", "soulform_voices"]
+}
