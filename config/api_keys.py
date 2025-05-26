@@ -1,4 +1,11 @@
-import os
+# config/api_keys.py
+
+"""
+Secure API key loader for Eden Protocol integrations.
+Keys are sourced from the .env file using pydantic-settings.
+Do NOT hardcode secrets directly in code.
+"""
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class APIKeys(BaseSettings):
@@ -8,5 +15,7 @@ class APIKeys(BaseSettings):
     HUME_SECRET_KEY: str
     ELEVENLABS_API_KEY: str
     PINECONE_API_KEY: str
+    OPENAI_API_KEY: str  # Used for ChatGPT/GPT-4o integration
 
+# Global access point for all loaded keys
 keys = APIKeys()
