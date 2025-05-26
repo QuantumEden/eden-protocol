@@ -1,7 +1,6 @@
 # Eden Protocol Git Ignore Rules
 
 # Secrets and sensitive configs
-.env
 .env.*
 
 # Python cache and virtual environments
