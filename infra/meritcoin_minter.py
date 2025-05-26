@@ -1,13 +1,16 @@
-# meritcoin_minter.py – Eden Protocol Infra
-# Handles symbolic minting of MeritCoin tokens based on verified growth
+"""
+MeritCoin Minter – Eden Protocol XP Engine
+
+Handles symbolic minting of soulbound MeritCoins tied to verified growth.
+Includes level gate, trait thresholds, soulform linking, and DAO sync compatibility.
+"""
 
 from datetime import datetime
-from uuid import uuid4
+import hashlib
+from typing import Dict, Optional
 
-# Minimum required level to mint a MeritCoin
+# Minimum requirements for minting
 MIN_LEVEL = 7
-
-# Minimum threshold for Tree of Life traits
 MIN_TRAITS = {
     "discipline": 60,
     "resilience": 60,
@@ -17,40 +20,64 @@ MIN_TRAITS = {
     "emotional_regulation": 55
 }
 
-def check_tree_threshold(tree: dict) -> bool:
-    """Verifies the Tree of Life meets required trait thresholds."""
+# Optional in-memory ledger to prevent duplicate mints (simulate external db check)
+MINT_HISTORY: Dict[str, Dict] = {}
+
+def check_tree_threshold(tree: Dict[str, int]) -> bool:
+    """
+    Verifies that all required Tree of Life traits meet the minimum threshold.
+    """
     for trait, threshold in MIN_TRAITS.items():
         if tree.get(trait, 0) < threshold:
             return False
     return True
 
-def mint_meritcoin_commit(user_id: str, level: int, xp: int, tree_traits: dict, reason: str, soulform: dict = None) -> dict:
-    """Constructs a validated meritcoin commit object."""
+def generate_meritcoin_id(user_id: str, level: int, soulform_id: Optional[str]) -> str:
+    """
+    Generates a unique, hash-based meritcoin ID to prevent duplication and ensure traceability.
+    """
+    payload = f"{user_id}|{level}|{soulform_id or 'none'}|{datetime.utcnow().isoformat()}"
+    return "MERIT-" + hashlib.sha256(payload.encode()).hexdigest()[:12].upper()
+
+def mint_meritcoin(user_id: str, level: int, tree_traits: Dict[str, int], soulform_id: Optional[str] = None) -> Dict:
+    """
+    Mints a symbolic MeritCoin if level and trait thresholds are met.
+    
+    Args:
+        user_id (str): User's unique identifier
+        level (int): User's current level
+        tree_traits (Dict): Tree of Life trait scores
+        soulform_id (Optional[str]): Active soulform transformation
+    
+    Returns:
+        Dict: Minting result object
+    """
     if level < MIN_LEVEL:
         return {"success": False, "reason": "Insufficient level"}
 
     if not check_tree_threshold(tree_traits):
         return {"success": False, "reason": "Tree of Life threshold not met"}
 
-    commit = {
+    # Optional: prevent re-minting per level + soulform combo
+    ledger_key = f"{user_id}|L{level}|{soulform_id or 'none'}"
+    if ledger_key in MINT_HISTORY:
+        return {"success": False, "reason": "MeritCoin already minted for this transformation"}
+
+    # Generate Mint
+    coin_id = generate_meritcoin_id(user_id, level, soulform_id)
+    mint = {
         "timestamp": datetime.utcnow().isoformat() + "Z",
         "user_id": user_id,
-        "meritcoin_id": f"MERIT-{uuid4().hex[:8].upper()}",
+        "meritcoin_id": coin_id,
         "level": level,
-        "xp": xp,
-        "reason": reason,
-        "verified_by": "zkXP_stub_hash",  # Will be signed in ledger
-        "traits_snapshot": tree_traits,
-        "soulform": soulform or {
-            "id": "none",
-            "name": "Untransformed",
-            "element": "Neutral"
-        }
+        "soulform_unlock": soulform_id or None,
+        "status": "minted"
     }
 
-    return {"success": True, "commit": commit}
+    MINT_HISTORY[ledger_key] = mint
+    return {"success": True, "meritcoin": mint}
 
-# Local CLI test
+# === CLI Test ===
 if __name__ == "__main__":
     mock_tree = {
         "discipline": 65,
@@ -61,20 +88,11 @@ if __name__ == "__main__":
         "emotional_regulation": 60
     }
 
-    soulform_data = {
-        "id": "phoenix",
-        "name": "Ashborn Phoenix",
-        "element": "Fire",
-        "transformed_at": "2025-05-14T17:00:00Z"
-    }
-
-    result = mint_meritcoin_commit(
-        user_id="seer_alch_001",
-        level=9,
-        xp=880,
+    result = mint_meritcoin(
+        user_id="user_alch_001",
+        level=8,
         tree_traits=mock_tree,
-        reason="edenquest",
-        soulform=soulform_data
+        soulform_id="phoenix"
     )
 
     print(result)
