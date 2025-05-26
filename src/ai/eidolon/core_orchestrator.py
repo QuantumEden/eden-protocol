@@ -18,23 +18,30 @@ from src.ai.support.crisis_detector import detect_crisis_keywords
 from src.ai.support.emotion_advisor import recommend_tone
 from src.ai.eidolon.personality_config import get_persona
 
-# Initialize session and API
+# Initialize session and OpenAI API client
 session_tracker = SessionTracker()
-openai.api_key = keys.OPENAI_API_KEY
+client = openai.OpenAI(api_key=keys.OPENAI_API_KEY)
 
 def call_gpt4o(prompt: str, persona: str, tone: str) -> str:
     """
     Sends a prompt to GPT-4o and returns the generated therapeutic response.
+    Updated to use OpenAI API v1.0+
     """
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
-                {"role": "system", "content": f"You are Eidelon, a therapeutic AI trained in CBT, Logotherapy, and Jungian psychology. Respond with a {tone} tone and a {persona} perspective."},
+                {
+                    "role": "system",
+                    "content": (
+                        f"You are Eidelon, a therapeutic AI trained in CBT, Logotherapy, "
+                        f"and Jungian psychology. Respond with a {tone} tone and a {persona} perspective."
+                    )
+                },
                 {"role": "user", "content": prompt}
             ]
         )
-        return response.choices[0].message["content"]
+        return response.choices[0].message.content
     except Exception as e:
         return f"⚠️ AI error: {str(e)}"
 
@@ -58,7 +65,7 @@ def process_user_input(user_id: str, message: str, metadata: dict) -> dict:
     # === Synchronize Memory ===
     session_context = sync_memory(user_id)
 
-    # === Route to Therapeutic Agent or GPT ===
+    # === Route to Therapeutic Agent ===
     agent_result = route_to_agent(
         user_id=user_id,
         message=message,
@@ -67,7 +74,7 @@ def process_user_input(user_id: str, message: str, metadata: dict) -> dict:
         persona=persona
     )
 
-    # === Backup with GPT-4o if fallback is flagged or explicitly routed ===
+    # === Backup with GPT-4o if fallback is triggered ===
     if agent_result.get("fallback_to_gpt", False):
         ai_response = call_gpt4o(message, persona, tone_suggestion)
         agent_result = {
