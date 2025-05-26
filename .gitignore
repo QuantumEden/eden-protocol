@@ -1,0 +1,22 @@
+# Eden Protocol Git Ignore Rules
+
+# Secrets and sensitive configs
+.env
+.env.*
+
+# Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# VS Code / IDE settings
+.vscode/
+.idea/
