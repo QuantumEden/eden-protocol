@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join(base_path, 'infra'))
 
 # Imports
 from eden_payload_viewer import get_all_mock_payloads
-from xp.meritcoin_ledger import load_ledger
+from infra.xp.meritcoin_ledger import load_ledger
 
 # DAO Thresholds
 TREE_MINIMUM = 50
