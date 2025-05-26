@@ -1,11 +1,19 @@
 # sim/final_system_test.py – Full Eden Protocol Simulation Pass
 # Ensures DAO, XP, Soulform, and Tree logic are integrated properly
 
+import sys, os
 import json
 from datetime import datetime
-from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
-from infra.xp.meritcoin_minter import mint_meritcoin  # ✅ correct path
-from infra.xp.meritcoin_ledger import log_commit      # ✅ correct path
+
+# === Patch import paths ===
+base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(base_path, 'src'))
+sys.path.insert(0, os.path.join(base_path, 'infra'))
+
+# === Core imports ===
+from eden_payload_generator.eden_payload_generator import generate_eden_payload
+from xp.meritcoin_minter import mint_meritcoin
+from xp.meritcoin_ledger import log_commit
 
 def run_full_test():
     print("\n🧪 Starting Full Protocol Integration Test\n")
@@ -33,12 +41,12 @@ def run_full_test():
         }
     }
 
-    # Step 1: Generate payload
+    # === Step 1: Generate Payload ===
     payload = generate_eden_payload(user_id, profile, secret_key)
-    print("✅ Payload Generated\n")
+    print("\n✅ Payload Generated\n")
     print(json.dumps(payload, indent=2))
 
-    # Step 2: Mint symbolic MeritCoin
+    # === Step 2: Mint Symbolic MeritCoin ===
     result = mint_meritcoin(user_id, 8, payload["tree_traits"], soulform_id="phoenix")
     if not result["success"]:
         print("\n❌ Minting Failed:", result["reason"])
@@ -47,7 +55,7 @@ def run_full_test():
     print("\n✅ MeritCoin Minted:")
     print(json.dumps(result["meritcoin"], indent=2))
 
-    # Step 3: Log transformation
+    # === Step 3: Log Ritual Commit ===
     commit = log_commit(
         user_id=user_id,
         level=8,
