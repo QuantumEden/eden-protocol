@@ -16,40 +16,49 @@ def route_to_agent(user_id: str, message: str, context: str, tone: str, persona:
     """
     Routes a message to the correct therapeutic agent.
     Selection is based on heuristics, context tags, and session tone.
+    Returns a response and agent type, with fallback_to_gpt flag if no symbolic agent matched.
     """
     lowered = message.lower()
 
     if "meaning" in lowered or "purpose" in lowered:
         response = logotherapy_probe(user_id, message, context)
         agent = "Logotherapy"
+        fallback = False
 
     elif "dream" in lowered or "archetype" in lowered:
         response = jungian_reflection(user_id, message, context)
         agent = "Jungian"
+        fallback = False
 
     elif "trauma" in lowered or "childhood" in lowered:
         response = freudian_analysis(user_id, message, context)
         agent = "Freudian"
+        fallback = False
 
-    elif "distorted thought" in lowered or "catastrophizing" in lowered:
+    elif "distorted thought" in lowered or "catastrophizing" in lowered or "irrational" in lowered:
         response = cbt_reframe(user_id, message, context)
         agent = "CBT"
+        fallback = False
 
     elif "trigger" in lowered or "emotional regulation" in lowered:
         response = dbt_balance(user_id, message, context)
         agent = "DBT"
+        fallback = False
 
-    elif "medication" in lowered or "diagnose me" in lowered:
+    elif "medication" in lowered or "diagnose me" in lowered or "psychiatrist" in lowered:
         response = emergency_psy_eval(user_id, message, context)
         agent = "Psychiatrist"
+        fallback = False
 
     else:
-        response = logotherapy_probe(user_id, message, context)  # Default fallback
-        agent = "Logotherapy"
+        response = "🤖 No symbolic route matched. Handing off to GPT core orchestrator."
+        agent = "Unrouted"
+        fallback = True
 
     return {
         "response": response,
-        "agent": agent
+        "agent": agent,
+        "fallback_to_gpt": fallback
     }
 
 # Test routing (manual override)
