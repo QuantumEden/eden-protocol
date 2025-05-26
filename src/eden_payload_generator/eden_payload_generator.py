@@ -1,5 +1,5 @@
 # eden_payload_generator.py – Eden Protocol Payload Core
-# Phase 17 Final – DAO, soulform, and zk compatibility
+# Phase 17 Final – DAO, soulform, and zk compatibility (with Healer override fix)
 
 import random
 from typing import Dict
@@ -70,7 +70,13 @@ def generate_eden_payload(user_id: str, user_profile: Dict[str, any], secret_key
 
     # === DAO Eligibility ===
     merit_level = 1 + xp_awarded // 100
-    trait_pass = all(v >= DAO_TRAIT_MIN for v in tree_traits.values())
+
+    # Special override for Healers with EQ ≥ 120 (emotional mastery)
+    if archetype == "Healer" and eq >= 120:
+        trait_pass = all(v >= DAO_TRAIT_MIN for k, v in tree_traits.items() if k != "physical_care")
+    else:
+        trait_pass = all(v >= DAO_TRAIT_MIN for v in tree_traits.values())
+
     eligible_for_dao = merit_level >= DAO_LEVEL_MIN and trait_pass
 
     # === Final Payload ===
