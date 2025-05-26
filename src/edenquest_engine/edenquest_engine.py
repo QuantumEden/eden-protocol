@@ -66,6 +66,12 @@ QUEST_LIBRARY = {
 
 # === Step 2: Accept symbolic imbalance and generate quest ===
 def generate_quest(tree: Dict[str, Dict[str, int]], user_profile: Dict[str, Any] = None) -> Dict[str, Any]:
+    if not tree:
+        return {
+            "status": "error",
+            "reason": "Tree input is missing or malformed"
+        }
+
     weakest = min(tree.items(), key=lambda item: item[1]["score"])[0]
     quest_options = QUEST_LIBRARY.get(weakest, [])
 
@@ -88,13 +94,13 @@ def generate_quest(tree: Dict[str, Dict[str, int]], user_profile: Dict[str, Any]
         "quest": base_quest
     }
 
-    # Step 3: Apply modifiers (archetype, soulform, disclosure)
+    # === Step 3: Apply symbolic modifiers (e.g. soulform, archetype, trauma) ===
     if user_profile:
         result["quest"] = apply_quest_modifiers(base_quest, user_profile)
 
     return result
 
-# === Optional CLI test ===
+# === Optional CLI Test Harness ===
 if __name__ == "__main__":
     sample_tree = {
         "discipline": {"score": 80},
