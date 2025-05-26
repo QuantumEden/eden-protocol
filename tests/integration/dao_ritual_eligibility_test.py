@@ -4,6 +4,7 @@
 
 import sys, os, json
 from datetime import datetime
+from typing import List, Dict
 
 # === Import patch for src
 base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -17,7 +18,7 @@ DAO_TRAIT_MIN = 50
 DAO_REQUIRED_KEYS = ["sacred_path", "mbti", "eq", "iq"]
 
 # === Mock Test Users
-mock_users = [
+mock_users: List[Dict] = [
     {
         "user_id": "user_shadow_006",
         "profile": {
@@ -28,7 +29,7 @@ mock_users = [
             "sacred_path": "Discipline",
             "group_opt_in": True
         },
-        "expected": False  # Below DAO level threshold
+        "expected": False
     },
     {
         "user_id": "user_trial_007",
@@ -40,7 +41,7 @@ mock_users = [
             "sacred_path": "Compassion",
             "group_opt_in": True
         },
-        "expected": True  # Valid merit and traits
+        "expected": True
     },
     {
         "user_id": "user_decay_008",
@@ -57,29 +58,30 @@ mock_users = [
                 "service_connected": False
             }
         },
-        "expected": False  # Fails trait balance / tree integrity
+        "expected": False
     }
 ]
 
-# === Begin DAO Entry Simulation
-print("\n🔍 DAO Ritual Eligibility Test –", datetime.utcnow().isoformat(), "UTC\n")
+def test_dao_eligibility():
+    """
+    Validates that all mock users match expected DAO eligibility outcomes.
+    """
+    for mock in mock_users:
+        user_id = mock["user_id"]
+        profile = mock["profile"]
+        expected = mock["expected"]
 
-for mock in mock_users:
-    user_id = mock["user_id"]
-    profile = mock["profile"]
-    expected = mock["expected"]
+        result = generate_eden_payload(user_id, profile, secret_key="test_key_xyz")
+        eligibility = result.get("eligible_for_dao", False)
 
-    result = generate_eden_payload(user_id, profile, secret_key="test_key_xyz")
-    eligibility = result.get("eligible_for_dao", False)
+        assert eligibility == expected, (
+            f"❌ Eligibility mismatch for {user_id}\n"
+            f"Expected: {expected}, Got: {eligibility}\n"
+        )
 
-    print(f"\n🧪 {user_id} Payload Snapshot:")
-    print(json.dumps(result, indent=2))
+        print(f"✅ {user_id}: Eligibility Passed – Expected: {expected}, Got: {eligibility}")
 
-    assert eligibility == expected, (
-        f"❌ Eligibility mismatch for {user_id}\n"
-        f"Expected: {expected}, Got: {eligibility}\n"
-    )
-
-    print(f"✅ Eligibility Check Passed – Expected: {expected}, Got: {eligibility}")
-
-print("\n🎯 All DAO eligibility simulations completed successfully.\n")
+if __name__ == "__main__":
+    print("\n🔍 DAO Ritual Eligibility Test –", datetime.utcnow().isoformat(), "UTC\n")
+    test_dao_eligibility()
+    print("\n🎯 All DAO eligibility simulations completed successfully.\n")
