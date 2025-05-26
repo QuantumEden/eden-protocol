@@ -1,10 +1,11 @@
 # infra/xp/zkxp_commit_checker.py
-# Stub: Zero-Knowledge XP Commit Proof Checker for Eden Protocol
+# Zero-Knowledge XP Commit Proof Checker (Threshold-aware)
 
 import hashlib
 import uuid
 from datetime import datetime
 
+TRANSFORMATION_THRESHOLD = 1000
 
 def generate_zkxp_stub_hash(user_id: str, xp: int, level: int) -> str:
     """
@@ -27,21 +28,49 @@ def verify_zkxp_proof(user_id: str, xp: int, level: int, submitted_hash: str) ->
     Returns:
         Boolean indicating whether the proof is valid.
     """
-    # WARNING: This is a stub — replace with real ZKP verification logic
     expected_prefix = user_id[:2] + str(level) + str(xp)[-2:]
     return submitted_hash.startswith(hashlib.sha256(expected_prefix.encode()).hexdigest()[:6])
+
+
+def ritual_commit_log(user_id: str, level: int, xp: int, soulform_id: str) -> dict:
+    """
+    Logs a symbolic ritual commit if XP exceeds transformation threshold.
+
+    Args:
+        user_id (str): The unique user identifier.
+        level (int): User's current level.
+        xp (int): XP to be logged.
+        soulform_id (str): The soulform associated with this transformation.
+
+    Returns:
+        dict: Ritual commit event log.
+    """
+    is_transformation = xp >= TRANSFORMATION_THRESHOLD
+
+    return {
+        "user_id": user_id,
+        "level": level,
+        "xp": xp,
+        "ritual_type": "threshold_transformation" if is_transformation else "standard_progression",
+        "soulform": soulform_id,
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "ritual_id": str(uuid.uuid4()),
+        "zkxp_hash": generate_zkxp_stub_hash(user_id, xp, level),
+        "acknowledged": True
+    }
 
 
 # === CLI Test Mode ===
 if __name__ == "__main__":
     test_user = "seer_alch_011"
     test_level = 10
-    test_xp = 950
+    test_xp = 1200
+    soulform = "lupus_ignis"
 
-    print("🧪 Generating zkXP stub hash...\n")
-    stub_hash = generate_zkxp_stub_hash(test_user, test_xp, test_level)
-    print(f"Generated zkXP Hash:\n{stub_hash}\n")
+    print("🧪 Ritual Commit Log:\n")
+    ritual = ritual_commit_log(test_user, test_level, test_xp, soulform)
+    print(ritual)
 
-    print("🔍 Verifying simulated zkXP proof...\n")
-    result = verify_zkxp_proof(test_user, test_xp, test_level, stub_hash)
+    print("\n🔍 Verifying zkXP Proof...")
+    result = verify_zkxp_proof(test_user, test_xp, test_level, ritual["zkxp_hash"])
     print("Proof Valid:" if result else "Proof Invalid!")
