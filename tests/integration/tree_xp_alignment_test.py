@@ -4,13 +4,16 @@
 import sys, os, json
 from datetime import datetime
 
-# ✅ Patch for relative imports
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'src')))
+# === Path Patching for Imports ===
+current_dir = os.path.dirname(__file__)
+repo_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
+sys.path.insert(0, os.path.join(repo_root, 'src'))
+sys.path.insert(0, os.path.join(repo_root, 'infra'))
 
-# ✅ Import corrected
-from src.eden_payload_generator.eden_payload_generator import generate_eden_payload
-from infra.xp.meritcoin_minter import mint_meritcoin
-from infra.xp.meritcoin_ledger import log_commit
+# === Module Imports ===
+from eden_payload_generator.eden_payload_generator import generate_eden_payload
+from xp.meritcoin_minter import mint_meritcoin
+from xp.meritcoin_ledger import log_commit
 
 # === Constants
 DAO_LEVEL_MIN = 7
