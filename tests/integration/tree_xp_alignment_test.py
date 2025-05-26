@@ -12,8 +12,8 @@ sys.path.insert(0, os.path.join(repo_root, 'infra'))
 
 # === Module Imports ===
 from eden_payload_generator.eden_payload_generator import generate_eden_payload
-from xp.meritcoin_minter import mint_meritcoin
-from xp.meritcoin_ledger import log_commit
+from infra.xp.meritcoin_minter import mint_meritcoin
+from infra.xp.meritcoin_ledger import log_commit
 
 # === Constants
 DAO_LEVEL_MIN = 7
