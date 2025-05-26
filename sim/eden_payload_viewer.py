@@ -5,16 +5,16 @@ import sys, os
 import json
 from typing import List, Dict
 
-# Route to src/ modules
+# Patch src path for direct access
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
 from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-# === Individual Simulation: Print Payload ===
+# === Single Simulation: Console Snapshot ===
 def print_single_payload() -> None:
     """
-    Prints a single symbolic Eden payload for seer_011.
-    Used to verify structure alignment and inspect formatting for UI/DAO.
+    Prints a single symbolic Eden payload for inspection.
+    Used to verify structural consistency and field schema.
     """
     profile = {
         "mbti": "INTJ",
@@ -34,16 +34,14 @@ def print_single_payload() -> None:
     print(json.dumps(payload, indent=2))
 
 
-# === Bulk Simulation: DAO Mock Payload Suite ===
+# === Bulk Simulation: DAO-Ready Payload Bank ===
 def get_all_mock_payloads() -> List[Dict]:
     """
-    Returns a list of enriched Eden payloads for use in:
-
+    Returns a list of enriched Eden payloads for:
     - DAO ritual eligibility audits
-    - Tree of Life symbolic integrity checks
-    - MeritCoin simulation engine
-    - Frontend rendering of user soulform & growth state
-    - Regression tests (reflection and XP decay tracking)
+    - Soulform simulations
+    - UI rendering and symbolic visualization
+    - Integrity testing of XP logic and Tree of Life structure
     """
     mock_users = [
         {
@@ -86,21 +84,21 @@ def get_all_mock_payloads() -> List[Dict]:
 
     payloads = []
     for mock in mock_users:
-        enriched = generate_eden_payload(
+        payload = generate_eden_payload(
             user_id=mock["user_id"],
             user_profile=mock["profile"],
             secret_key=mock["secret_key"]
         )
-        enriched["user_id"] = mock["user_id"]
-        payloads.append(enriched)
+        payload["user_id"] = mock["user_id"]
+        payloads.append(payload)
 
     return payloads
 
 
-# === Optional CLI Run ===
+# === CLI Diagnostic Run ===
 if __name__ == "__main__":
     print_single_payload()
 
-    print("\n=== Batch DAO Payloads ===")
-    dao_payloads = get_all_mock_payloads()
-    print(json.dumps(dao_payloads, indent=2))
+    print("\n=== 🔍 DAO Payload Audit Set ===")
+    all_payloads = get_all_mock_payloads()
+    print(json.dumps(all_payloads, indent=2))
