@@ -10,45 +10,40 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 
 from eden_payload_generator.eden_payload_generator import generate_eden_payload
 
-# === Single Payload Viewer ===
+# === Individual Simulation: Print Payload ===
+def print_single_payload() -> None:
+    """
+    Prints a single symbolic Eden payload for seer_011.
+    Used to verify structure alignment and inspect formatting for UI/DAO.
+    """
+    profile = {
+        "mbti": "INTJ",
+        "iq": 140,
+        "eq": 120,
+        "moral": "truth",
+        "sacred_path": "Hermeticism",
+        "group_opt_in": True
+    }
 
-profile = {
-    "mbti": "INTJ",
-    "iq": 140,
-    "eq": 120,
-    "moral": "truth",
-    "sacred_path": "Hermeticism",
-    "group_opt_in": True
-}
+    user_id = "seer_011"
+    secret_key = "vault_key_456"
 
-user_id = "seer_011"
-secret_key = "vault_key_456"
+    payload = generate_eden_payload(user_id, profile, secret_key)
 
-payload = generate_eden_payload(user_id, profile, secret_key)
+    print("\n=== Eden Payload Structure View ===\n")
+    print(json.dumps(payload, indent=2))
 
-print("\n=== Eden Payload Structure View ===\n")
-print(json.dumps(payload, indent=2))
 
-# === Group Payload Export ===
-
+# === Bulk Simulation: DAO Mock Payload Suite ===
 def get_all_mock_payloads() -> List[Dict]:
     """
-    Returns a list of enriched mock payloads for use in:
-    - DAO eligibility audits
-    - Tree of Life synchronization
-    - XP/MeritCoin ledger alignment
-    - UI symbolic rendering
+    Returns a list of enriched Eden payloads for use in:
 
-    Each mock includes all current Eden payload fields, including:
-    - archetype
-    - tree_traits
-    - conviction_glyph
-    - quest_unlocked
-    - disclosure_adjustment
-    - (optional) soulform_id
-    - xp_awarded
-    - eligible_for_dao
-    - zk_ready
+    - DAO ritual eligibility audits
+    - Tree of Life symbolic integrity checks
+    - MeritCoin simulation engine
+    - Frontend rendering of user soulform & growth state
+    - Regression tests (reflection and XP decay tracking)
     """
     mock_users = [
         {
@@ -100,3 +95,12 @@ def get_all_mock_payloads() -> List[Dict]:
         payloads.append(enriched)
 
     return payloads
+
+
+# === Optional CLI Run ===
+if __name__ == "__main__":
+    print_single_payload()
+
+    print("\n=== Batch DAO Payloads ===")
+    dao_payloads = get_all_mock_payloads()
+    print(json.dumps(dao_payloads, indent=2))
