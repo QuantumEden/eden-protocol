@@ -1,4 +1,4 @@
-# infra/xp/meritcoin_ledger.py – Eden Protocol Infra
+# meritcoin_ledger.py – Eden Protocol Infra
 # Logs soulbound XP commits and symbolic milestone events with zkXP compatibility
 
 import os
