@@ -26,58 +26,57 @@ TREE_PASS_THRESHOLD = {
     "emotional_regulation": 55
 }
 
-# === Mock User Profile
-user_id = "user_alignment_023"
-mock_profile = {
-    "mbti": "ENFP",
-    "iq": 128,
-    "eq": 125,
-    "moral": "justice",
-    "sacred_path": "Logotherapy",
-    "group_opt_in": True,
-    "current_soulform": {
-        "id": "dragon",
-        "name": "Celestial Dragon",
-        "elemental_affinity": "Air",
-        "activated_at": datetime.utcnow().isoformat() + "Z"
+def test_tree_alignment():
+    """
+    Ensures soulform minting works when traits and level exceed thresholds.
+    """
+    user_id = "user_alignment_023"
+    mock_profile = {
+        "mbti": "ENFP",
+        "iq": 128,
+        "eq": 125,
+        "moral": "justice",
+        "sacred_path": "Logotherapy",
+        "group_opt_in": True,
+        "current_soulform": {
+            "id": "dragon",
+            "name": "Celestial Dragon",
+            "elemental_affinity": "Air",
+            "activated_at": datetime.utcnow().isoformat() + "Z"
+        }
     }
-}
 
-# === Step 1: Generate payload
-payload = generate_eden_payload(user_id, mock_profile, secret_key="tree_align_secret")
-tree = payload["tree_traits"]
+    payload = generate_eden_payload(user_id, mock_profile, secret_key="tree_align_secret")
+    tree = payload["tree_traits"]
+    level = 8
+    soulform_id = mock_profile["current_soulform"]["id"]
 
-print("\n🌳 Tree of Life from Payload:")
-print(json.dumps(tree, indent=2))
+    mint = mint_meritcoin(user_id, level, tree, soulform_id=soulform_id)
+    assert mint["success"], "❌ Soulform minting failed despite level and valid traits"
 
-# === Step 2: Verify XP-soulform alignment
-level = 8  # Mocked qualifying level
-soulform_id = mock_profile["current_soulform"]["id"]
+    for trait, required in TREE_PASS_THRESHOLD.items():
+        actual = tree.get(trait, 0)
+        assert actual >= required, f"❌ Trait '{trait}' below threshold: {actual} < {required}"
 
-mint = mint_meritcoin(user_id, level, tree, soulform_id=soulform_id)
-print("\n🪙 Mint Result:")
-print(json.dumps(mint, indent=2))
-
-# === Step 3: Log to Ledger if minting successful
-if mint["success"]:
     commit = log_commit(
         user_id=user_id,
         level=level,
         xp=1020,
         reason="Passed Celestial Trial",
-        soulform=mock_profile["current_soulform"]
+        soulform=mock_profile["current_soulform"],
+        traits_snapshot=tree
     )
-    print("\n📜 XP Commit Entry:")
-    print(json.dumps(commit, indent=2))
-else:
-    print("\n❌ Soulform minting failed — check trait thresholds.")
 
-# === Step 4: Validate tree meets minimum symbolic thresholds
-for trait, required in TREE_PASS_THRESHOLD.items():
-    actual = tree.get(trait, 0)
-    assert actual >= required, f"❌ Trait '{trait}' below threshold: {actual} < {required}"
+    assert commit["user_id"] == user_id, "❌ Commit failed to log correctly"
 
-# === Final assertion
-assert mint["success"], "❌ Soulform minting failed despite level and tree being valid."
+    return payload, mint, commit
 
-print("\n✅ Tree alignment test passed.\n")
+
+# === CLI Manual Diagnostic Run ===
+if __name__ == "__main__":
+    print("\n🌳 Running Tree Alignment Integration Test...\n")
+    payload, mint, commit = test_tree_alignment()
+    print("🌲 Tree Traits:", json.dumps(payload["tree_traits"], indent=2))
+    print("\n🪙 Mint Result:", json.dumps(mint, indent=2))
+    print("\n📜 Commit Log:", json.dumps(commit, indent=2))
+    print("\n✅ Tree alignment test passed.\n")
