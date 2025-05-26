@@ -2,51 +2,62 @@
 # Applies soulform, archetype, and disclosure modifiers to generated quests
 
 from typing import Dict, Any
+import copy
 
 def apply_quest_modifiers(quest: Dict[str, Any], user_profile: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Modifies the base quest object based on user's soulform, archetype, sacred path,
-    and symbolic indicators of trauma disclosure or group alignment.
+    Modifies a symbolic quest using user metadata:
+    - Soulform (elemental overlay)
+    - Archetype (growth path influence)
+    - Sacred Path (narrative lens)
+    - Disclosure (trauma shadow tagging)
+    - Group resonance flag
+
+    Returns a modified quest dictionary.
     """
+    # Work from a copy to avoid mutation
+    modified_quest = copy.deepcopy(quest)
+
     soulform = user_profile.get("current_soulform", {})
     archetype = user_profile.get("archetype", "Strategist")
     path = user_profile.get("sacred_path", "None")
     group_opt_in = user_profile.get("group_opt_in", False)
     disclosure = user_profile.get("disclosure", {})
 
-    # Soulform animation and theme modifier
+    # === Soulform Overlay ===
     if soulform:
-        quest["aura_overlay"] = {
-            "element": soulform.get("elemental_affinity", "None"),
-            "effect": "flare_burst" if soulform.get("elemental_affinity") == "Fire" else "ethereal_wind"
+        element = soulform.get("elemental_affinity", "None")
+        modified_quest["aura_overlay"] = {
+            "element": element,
+            "effect": "flare_burst" if element == "Fire" else "ethereal_wind"
         }
-        quest["soulform_trial"] = f"Trial of the {soulform.get('name', 'Unseen Form')}"
+        modified_quest["soulform_trial"] = f"Trial of the {soulform.get('name', 'Unseen Form')}"
 
-    # Archetype thematic overlay
-    quest["archetype_influence"] = f"Path of the {archetype}"
+    # === Archetype Thematic Influence ===
+    modified_quest["archetype_influence"] = f"Path of the {archetype}"
 
-    # Sacred path lore alignment
+    # === Sacred Path Narrative Lens ===
     if path != "None":
-        quest["narrative_lens"] = f"Framed through the lens of {path}"
+        modified_quest["narrative_lens"] = f"Framed through the lens of {path.lower()}"
 
-    # Group resonance bonus
+    # === Group Resonance Activation ===
     if group_opt_in:
-        quest["resonance"] = "Collective Aura Active"
+        modified_quest["resonance"] = "Collective Aura Active"
 
-    # Disclosure presence (symbolic quest weight)
+    # === Disclosure Weight & Symbolic Tags ===
     if disclosure.get("diagnosis") or disclosure.get("trauma_tags"):
-        quest["shadow_weight"] = "High"
-        quest["disclosure_gate"] = True
+        modified_quest["shadow_weight"] = "High"
+        modified_quest["disclosure_gate"] = True
+        modified_quest["symbolic_tags"] = list(set(disclosure.get("trauma_tags", []) + disclosure.get("diagnosis", [])))
     else:
-        quest["shadow_weight"] = "Low"
-        quest["disclosure_gate"] = False
+        modified_quest["shadow_weight"] = "Low"
+        modified_quest["disclosure_gate"] = False
+        modified_quest["symbolic_tags"] = []
 
-    return quest
+    return modified_quest
 
-# ✅ Optional CLI test (fully qualified for import diagnostics)
+# === CLI Diagnostic Test ===
 if __name__ == "__main__":
-    from src.quest_engine.quest_modifier import apply_quest_modifiers
-
     mock_quest = {
         "title": "The Ashen Spire",
         "theme": "Pain endurance and symbolic rebirth",
