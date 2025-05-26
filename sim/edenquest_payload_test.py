@@ -1,18 +1,21 @@
-# edenquest_payload_test.py – Eden Protocol Simulation
+# sim/edenquest_payload_test.py – Eden Protocol Simulation
 # End-to-end test: payload ➝ quest ➝ modifiers ➝ soulform ➝ DAO hooks
 
 import sys, os
 import json
 from datetime import datetime
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+# === Import Path Setup ===
+base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(base_path, 'src'))
+sys.path.insert(0, os.path.join(base_path, 'sim'))
 
+# === Core Modules ===
 from eden_payload_generator.eden_payload_generator import generate_eden_payload
 from edenquest_engine.edenquest_engine import generate_quest
 from token_router_stub import inject_soulform_payload
 
 # === Mock User Profile ===
-
 mock_profile = {
     "mbti": "INFJ",
     "iq": 132,
@@ -34,28 +37,23 @@ mock_profile = {
 }
 
 # === Step 1: Generate Raw Payload ===
-
 user_id = "seer_demo_001"
 secret_key = "sacred_key_001"
-
 payload = generate_eden_payload(user_id, mock_profile, secret_key)
 
 # === Step 2: Inject Soulform Visuals ===
+payload = inject_soulform_payload(user_id, mock_profile)
 
-payload = inject_soulform_payload(payload, mock_profile)
-
-# === Step 3: Prepare Tree Format for Quest Engine ===
-
+# === Step 3: Format Tree for Quest Engine ===
 tree = {
-    key: {"score": score} for key, score in payload.get("tree_traits", {}).items()
+    key: {"score": score}
+    for key, score in payload.get("tree_traits", {}).items()
 }
 
 # === Step 4: Generate Symbolic Quest ===
-
 quest = generate_quest(tree, mock_profile)
 
 # === Output Results ===
-
 print("\n=== 🔮 EdenQuest Test Output ===\n")
 print(json.dumps({
     "payload": payload,
