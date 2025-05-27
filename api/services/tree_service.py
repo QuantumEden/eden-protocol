@@ -1,13 +1,13 @@
 # api/services/tree_service.py
 # Eden Protocol – Tree of Life Service
 
-from src.tree_of_life.tree_of_life_engine import (
+from tree_of_life.tree_of_life_engine import (
     get_default_tree,
     grow_branch,
     apply_decay,
     compute_health_score
 )
-from src.xp.meritcoin_ledger import log_commit
+from xp.meritcoin_ledger import log_commit
 from infra.voice_response_stub import speak
 
 from api.models.user import User
