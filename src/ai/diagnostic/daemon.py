@@ -6,9 +6,13 @@ to detect instability, ritual breaches, or therapeutic stagnation.
 """
 
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List, Optional
 from src.ai.support.emotion_memory import get_emotion_history
 from api.services.chat_service import CHAT_SESSIONS
+
+# 🔮 Symbolic Daemon Modules (to be generated)
+from src.ai.diagnostic.sandbox_executor import try_symbolic_execution
+from src.ai.diagnostic.report_adapter import log_sandbox_result
 
 DIAGNOSTIC_FLAGS: Dict[str, List[Dict]] = {}
 
@@ -50,6 +54,20 @@ def get_latest_flags(user_id: str) -> List[Dict]:
     Returns the most recent diagnostic flags for a user.
     """
     return DIAGNOSTIC_FLAGS.get(user_id, [])
+
+def attempt_runtime_patch(symbolic_plan: str, context: str, user_id: Optional[str] = None) -> Dict:
+    """
+    Symbolically executes a runtime patch plan and logs the result as a synchronicity.
+    This does not modify source files—only ephemeral in-memory repair.
+    """
+    result = try_symbolic_execution(symbolic_plan, context=context, user_id=user_id)
+    log_sandbox_result(
+        success=result.get("success", False),
+        context=context,
+        message=result.get("message", ""),
+        symbol=result.get("symbol", "undefined_synchronicity")
+    )
+    return result
 
 # Example
 if __name__ == "__main__":
