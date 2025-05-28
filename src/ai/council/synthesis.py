@@ -10,6 +10,7 @@ precision, and depth depending on the mode of interpretation.
 
 from typing import Dict, List
 
+
 def synthesize_responses(
     inputs: Dict[str, Dict],
     mode: str = "balanced"
@@ -39,19 +40,31 @@ def synthesize_responses(
         if not content:
             continue
 
+        # Psychiatrist triage always takes lead if escalation exists
+        if name == "Psychiatrist":
+            escalation = response.get("escalation", "none")
+            if escalation in ["medium", "high"]:
+                return {
+                    "success": True,
+                    "mode": mode,
+                    "escalation": escalation,
+                    "insight": [{"source": name, "text": content}],
+                    "narrative": content
+                }
+
+        # Mode-based prioritization
         if mode == "rational" and name in ["CBT", "DBT"]:
             priority.append((name, content))
         elif mode == "insightful" and name in ["Jung", "Logotherapy"]:
             priority.append((name, content))
         elif mode == "clinical" and name == "Psychiatrist":
-            priority.insert(0, (name, content))  # Always lead with clinical triage
+            priority.insert(0, (name, content))  # Lead with clinical triage
         else:
             summary.append((name, content))
 
-    # Fallback if no priority responses
+    # Fallback
     final = priority if priority else summary
 
-    # Assemble final response
     return {
         "success": True,
         "mode": mode,
