@@ -12,6 +12,7 @@ def get_auth_header():
         "username": "seer",
         "password": "eden123"
     })
+    assert login.status_code == 200
     token = login.json()["access_token"]
     return {"Authorization": f"Bearer {token}"}
 
@@ -22,12 +23,15 @@ def test_soulform_status_and_eligibility():
     # Status
     status = client.get("/api/soulform/seer_alch_011", headers=headers)
     assert status.status_code == 200
-    assert "soulform" in status.json()
+    soulform_data = status.json()
+    assert "soulform" in soulform_data
 
     # Eligibility
     eligibility = client.get("/api/soulform/seer_alch_011/eligibility", headers=headers)
     assert eligibility.status_code == 200
-    assert "eligible" in eligibility.json()
+    eligibility_data = eligibility.json()
+    assert "eligible" in eligibility_data
+    assert isinstance(eligibility_data["eligible"], bool)
 
 
 def test_trigger_transformation():
@@ -37,8 +41,9 @@ def test_trigger_transformation():
     assert result.status_code == 200
     data = result.json()
 
-    if data.get("soulform"):
-        assert data["soulform"]["id"] == "seraph"
-        assert data["soulform"]["transformed"] is True
+    if "soulform" in data:
+        soulform = data["soulform"]
+        assert soulform["id"] == "seraph"
+        assert soulform["transformed"] is True
     else:
-        assert "reason" in data  # Not eligible
+        assert "reason" in data
