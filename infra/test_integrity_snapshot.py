@@ -32,20 +32,24 @@ def snapshot_dao_readiness():
 
     for user in payloads:
         user_id = user.get("user_id", "unknown")
-        level = user.get("xp_awarded", 0) // 100 + 1  # approximate level
+        level = user.get("xp_awarded", 0) // 100 + 1
         tree = user.get("tree_traits", {})
         tree_ok = validate_tree_health(tree) if tree else False
 
         merit_logs = find_merit_log_for_user(user_id, ledger)
         merit_synced = any(log.get("level", 0) >= DAO_ENTRY_LEVEL for log in merit_logs)
 
+        eligible = tree_ok and merit_synced and level >= DAO_ENTRY_LEVEL
         snapshot.append({
             "user_id": user_id,
             "level_estimate": level,
             "tree_ok": tree_ok,
             "merit_synced": merit_synced,
-            "eligible_for_dao": tree_ok and merit_synced and level >= DAO_ENTRY_LEVEL
+            "eligible_for_dao": eligible
         })
+
+        if not eligible:
+            print(f"⚠️  User {user_id} is *not yet* eligible for DAO entry.")
 
     print("\n=== 🧬 DAO Readiness Snapshot –", datetime.utcnow().isoformat(), "UTC ===\n")
     print(json.dumps(snapshot, indent=2))
