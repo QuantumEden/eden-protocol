@@ -5,6 +5,7 @@ import sys, os
 import json
 import random
 from time import time
+from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 
 # Add src to path
@@ -40,6 +41,7 @@ def simulate_user(index: int, data: dict) -> dict:
     user_id = data["user_id"]
     profile = data["profile"]
     secret_key = data["secret_key"]
+    timestamp = datetime.utcnow().isoformat() + "Z"
 
     try:
         payload = generate_eden_payload(user_id, profile, secret_key)
@@ -50,6 +52,7 @@ def simulate_user(index: int, data: dict) -> dict:
         result = mint_meritcoin(user_id, level, tree, soulform_id=soulform)
 
         return {
+            "timestamp": timestamp,
             "user_id": user_id,
             "xp": payload["xp_awarded"],
             "level": level,
@@ -59,6 +62,7 @@ def simulate_user(index: int, data: dict) -> dict:
         }
     except Exception as e:
         return {
+            "timestamp": timestamp,
             "user_id": user_id,
             "error": str(e)
         }
@@ -70,7 +74,7 @@ if __name__ == "__main__":
 
     with ThreadPoolExecutor(max_workers=10) as executor:
         futures = [executor.submit(simulate_user, i, data) for i, data in enumerate(mock_profiles)]
-        results = [f.result() for f in futures]
+        results = sorted([f.result() for f in futures], key=lambda r: r.get("user_id"))
 
     duration = time() - start
 
