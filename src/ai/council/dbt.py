@@ -32,6 +32,13 @@ def dbt_balance(user_id: str, message: str, context: Optional[str] = None) -> st
             "Let’s take a mindful pause. What are five things you can see, four you can touch, three you can hear, two you can smell, and one you can taste?"
         )
 
+# Registry alias for compatibility
+def interpret(user_id: str, message: str, context: Optional[str] = None) -> str:
+    """
+    Alias function for registry compatibility.
+    """
+    return dbt_balance(user_id, message, context)
+
 # Example
 if __name__ == "__main__":
     print(dbt_balance("balance_seeker", "I'm feeling panicked and can't calm down."))
