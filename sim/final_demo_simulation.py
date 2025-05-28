@@ -1,7 +1,13 @@
 # /sim/final_demo_simulation.py
 
 import json
-from src.ui.renderer import render
+import sys
+import os
+
+# === Path Injection ===
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
+from ui.renderer import render
 from narrative.voice_module import speak
 from narrative.oracle_prompt_bank import get_prompt
 
