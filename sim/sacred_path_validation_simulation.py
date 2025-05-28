@@ -13,7 +13,8 @@ test_profiles = [
 print("\n=== Sacred Path Application Simulation ===\n")
 
 for profile in test_profiles:
+    path = profile.get("sacred_path", "Undeclared")
     result = apply_sacred_path_effects(profile.copy())
-    print(f"-- {profile['sacred_path']} --")
+    print(f"-- Sacred Path: {path} --")
     print(json.dumps(result, indent=2))
     print()
