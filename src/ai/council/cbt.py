@@ -32,6 +32,13 @@ def cbt_reframe(user_id: str, message: str, context: Optional[str] = None) -> st
             "Can we look at it from a more balanced angle together?"
         )
 
+# Registry alias for compatibility
+def interpret(user_id: str, message: str, context: Optional[str] = None) -> str:
+    """
+    Alias function for registry compatibility.
+    """
+    return cbt_reframe(user_id, message, context)
+
 # Example
 if __name__ == "__main__":
     print(cbt_reframe("reframer_099", "I always mess everything up."))
