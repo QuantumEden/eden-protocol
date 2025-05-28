@@ -6,14 +6,14 @@
 
 ## 🧠 Trait Overview
 
-| Trait                | Symbol       | Core Domain            | DAO Minimum | XP Bonus Role       |
-|---------------------|--------------|------------------------|-------------|---------------------|
-| Discipline           | 🧭           | Focus & Order          | 60          | Strategist / Builder |
-| Resilience           | 🛡️           | Recovery & Tenacity    | 60          | Guardian             |
-| Mindfulness          | 🪷           | Presence & Perception  | 60          | Healer               |
-| Expression           | 📣           | Communication & Self   | 50          | Healer / Visionary   |
-| Physical Care        | 💪           | Body & Vitality        | 50          | Builder              |
-| Emotional Regulation | 🔥           | Control & Clarity      | 55          | Healer / Guardian    |
+| Trait                | Symbol       | Core Domain            | DAO Minimum | XP Bonus Role         |
+|---------------------|--------------|------------------------|-------------|-----------------------|
+| Discipline           | 🧭           | Focus & Order          | 60          | Strategist / Builder  |
+| Resilience           | 🛡️           | Recovery & Tenacity    | 60          | Guardian              |
+| Mindfulness          | 🪷           | Presence & Perception  | 60          | Healer                |
+| Expression           | 📣           | Communication & Self   | 50          | Healer / Visionary    |
+| Physical Care        | 💪           | Body & Vitality        | 50          | Builder               |
+| Emotional Regulation | 🔥           | Control & Clarity      | 55          | Healer / Guardian     |
 
 ---
 
@@ -52,10 +52,10 @@
 
 ## 🧩 Use Cases
 
-- **UI Rendering**: Trait scores mapped to animated branches and icons
-- **Quest Targeting**: Weakest trait → primary quest focus
-- **DAO Proposals**: Proposal metadata tags match trait(s) modified
-- **Soulform Gating**: Trait + XP levels required for transformation
+- **UI Rendering**: Trait scores mapped to animated branches and icons  
+- **Quest Targeting**: Weakest trait → primary quest focus  
+- **DAO Proposals**: Proposal metadata tags match trait(s) modified  
+- **Soulform Gating**: Trait + XP levels required for transformation  
 
 ---
 
