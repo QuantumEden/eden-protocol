@@ -12,6 +12,7 @@ def get_auth_header():
         "username": "seer",
         "password": "eden123"
     })
+    assert login.status_code == 200
     token = login.json()["access_token"]
     return {"Authorization": f"Bearer {token}"}
 
@@ -25,27 +26,32 @@ def test_create_proposal_and_vote():
         "description": "Mandate symbolic alignment before soulform unlock."
     }, headers=headers)
     assert create.status_code == 200
-    proposal = create.json()["proposal"]
-    proposal_id = proposal["id"]
+    proposal = create.json().get("proposal", {})
+    proposal_id = proposal.get("id")
+    assert proposal_id is not None
 
-    # View All
+    # View All Proposals
     list_response = client.get("/api/dao/proposals", headers=headers)
     assert list_response.status_code == 200
-    assert any(p["id"] == proposal_id for p in list_response.json())
+    all_proposals = list_response.json()
+    assert any(p.get("id") == proposal_id for p in all_proposals)
 
-    # View Specific
+    # View Specific Proposal
     detail = client.get(f"/api/dao/proposals/{proposal_id}", headers=headers)
     assert detail.status_code == 200
-    assert detail.json()["id"] == proposal_id
+    proposal_details = detail.json()
+    assert proposal_details.get("id") == proposal_id
 
-    # Vote
+    # Submit Vote
     vote = client.post(f"/api/dao/proposals/{proposal_id}/vote", json={
         "vote": "yes"
     }, headers=headers)
     assert vote.status_code == 200
-    assert vote.json()["proposal"]["votes"]["yes"] >= 1
+    updated_proposal = vote.json().get("proposal", {})
+    assert updated_proposal.get("votes", {}).get("yes", 0) >= 1
 
-    # Vote History
+    # Retrieve Vote History
     history = client.get("/api/dao/user/seer/votes", headers=headers)
     assert history.status_code == 200
-    assert any(v["proposal_id"] == proposal_id for v in history.json())
+    vote_history = history.json()
+    assert any(v.get("proposal_id") == proposal_id for v in vote_history)
