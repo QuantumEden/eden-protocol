@@ -1,24 +1,17 @@
 """
-Psychiatric Evaluation Agent – Eden Protocol Therapeutic Council
+Psychiatric Evaluation & Triage Agent – Eden Protocol Therapeutic Council
 
-Performs simulated psychiatric triage, severity estimation,
-and guides escalation when risk or diagnostic thresholds are breached.
+Performs symbolic psychiatric evaluation, determines diagnostic tags,
+and dynamically selects appropriate psychologist agents from the Council.
 """
 
-from typing import Optional, Dict
+from typing import Optional, Dict, List
+from ai.council import registry
 
 def emergency_psy_eval(user_id: str, message: str, context: Optional[str] = None) -> Dict[str, str]:
     """
-    Symbolic psychiatric evaluation using message pattern scanning.
-    Returns a structured response with escalation flag and tag hints.
-    
-    Args:
-        user_id (str): The user being evaluated
-        message (str): Raw user input
-        context (Optional[str]): Recent context or summary
-
-    Returns:
-        Dict[str, str]: Evaluation response, escalation signal, and diagnostic tags
+    Symbolic psychiatric triage based on pattern detection.
+    Returns structured response with escalation flags and diagnostic tags.
     """
     lowered = message.lower()
 
@@ -31,7 +24,6 @@ def emergency_psy_eval(user_id: str, message: str, context: Optional[str] = None
         "trauma": ["flashbacks", "combat", "nightmares", "hypervigilant", "triggered"]
     }
 
-    # === Crisis Check ===
     if any(flag in lowered for flag in crisis_flags):
         return {
             "response": (
@@ -42,13 +34,11 @@ def emergency_psy_eval(user_id: str, message: str, context: Optional[str] = None
             "tags": "crisis,triage,escalation"
         }
 
-    # === Diagnostic Pattern Scan ===
     detected_tags = []
     for condition, phrases in diagnostic_flags.items():
         if any(p in lowered for p in phrases):
             detected_tags.append(condition)
 
-    # === Identity Evaluation Logic ===
     if "diagnose" in lowered or "mental illness" in lowered:
         return {
             "response": (
@@ -70,7 +60,6 @@ def emergency_psy_eval(user_id: str, message: str, context: Optional[str] = None
             "tags": tag_summary
         }
 
-    # === Default Reflective Prompt ===
     return {
         "response": (
             "Let’s pause and evaluate how you’ve been feeling over the past few weeks. "
@@ -80,17 +69,46 @@ def emergency_psy_eval(user_id: str, message: str, context: Optional[str] = None
         "tags": ""
     }
 
-# === CLI Test ===
+
+def select_council_agents(diagnostic_tags: str) -> List[str]:
+    """
+    Selects psychologist agents from the Council based on diagnostic tag relevance.
+    Uses the Council Registry metadata to match focus areas.
+
+    Args:
+        diagnostic_tags (str): Comma-separated tags from psy_eval
+
+    Returns:
+        List[str]: IDs of council members to activate
+    """
+    if not diagnostic_tags:
+        return ["freudian", "jungian"]  # default symbolic base
+
+    tags = {tag.strip().lower() for tag in diagnostic_tags.split(",")}
+    selected = []
+
+    for agent_id, agent_meta in registry.COUNCIL_AGENTS.items():
+        focus_tags = set(agent_meta.get("focus_areas", []))
+        if focus_tags.intersection(tags):
+            selected.append(agent_id)
+
+    # Fallback if no match
+    return selected if selected else ["freudian", "jungian"]
+
+
+# === CLI Diagnostic Mode ===
 if __name__ == "__main__":
-    tests = [
+    samples = [
         "I want to end it all.",
-        "I've been having nightmares and flashbacks again.",
+        "My trauma won't go away.",
         "Can you diagnose me?",
-        "I feel hopeless and worthless.",
-        "I'm just tired lately."
+        "I'm numb and anxious lately.",
+        "Nothing’s wrong. Just tired."
     ]
 
-    for t in tests:
-        result = emergency_psy_eval("triage_007", t)
-        print(f"\n🧪 Input: {t}")
-        print("🧾 Output:", result)
+    for msg in samples:
+        triage = emergency_psy_eval("seer_001", msg)
+        selected = select_council_agents(triage["tags"])
+        print(f"\n🧪 Input: {msg}")
+        print("🧾 Triage:", triage)
+        print("🧠 Council Selected:", selected)
