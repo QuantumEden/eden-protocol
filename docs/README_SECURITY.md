@@ -1,21 +1,21 @@
 # 🔐 Eden Protocol – Security & Deployment Policy
 
-> Last updated: 2025-05-26 UTC  
+> Last updated: 2025-05-27 UTC  
 > Author: Eden Systems Governance Unit
 
 ---
 
 ## 🛡️ Overview
 
-The Eden Protocol integrates symbolic therapy, DAO voting, and AI-powered growth into a unified system. Security policies must safeguard sensitive identity signals, behavioral data, and encrypted DAO activity — without compromising symbolic flexibility or user sovereignty.
+The Eden Protocol integrates symbolic therapy, multi-agent AI orchestration (Eidelon), DAO governance, and blockchain-synchronized growth mechanics. Security protocols are engineered to protect sensitive identity metadata, soulform progression, and immutable XP commitments — all without compromising user sovereignty, symbolic evolution, or systemic introspection.
 
 ---
 
 ## 🔐 Environment Key Strategy
 
-All API and system-level keys must be stored in a hidden `.env` file (or secure vault).
+All operational API and AI keys are stored via a secure `.env` file structure.
 
-### Example Structure:
+### Example `.env` file:
 ```env
 PYTHONPATH=src
 HUME_API_KEY=...
@@ -24,64 +24,61 @@ OPENAI_API_KEY=...
 PINECONE_API_KEY=...
 ```
 
-### Enforcement:
-
-- ✅ `.env` is excluded via `.gitignore`
-- ✅ Never commit real keys to version control
-- ✅ Use `.env.example` with placeholder values for onboarding
+### Key Enforcement Policies:
+- ✅ Never expose `.env` to version control – enforced via `.gitignore`
+- ✅ Use `.env.example` with placeholder values for team onboarding
+- ✅ Rotate keys every 90 days or immediately following contributor departure
+- ✅ Validate keys through a CI/CD symbolic integrity check during deployment
 
 ---
 
-## 🧠 AI Access Security
+## 🧠 AI Access & Role Security
 
-Eidolon connects to OpenAI, ElevenLabs, WhisperX, and Hume APIs.
+Eidolon accesses OpenAI, ElevenLabs, Whisper, and Hume APIs. Each component is containerized within its symbolic role (e.g., Daemon, Jung, CBT).
 
-### Key Policies:
-
-- Rotate API keys quarterly or upon contributor departure
-- Never allow public-facing frontend access to backend keys
-- Limit concurrency rate in development environments
+### Protections:
+- No frontend client has direct access to AI keys
+- Concurrency throttled in dev/test environments
+- Symbolic safeguards enforce ethical memory retention
+- Emotion input never cached without Ritual Safeguard flag
 
 ---
 
 ## 🕵️‍♂️ User Identity & Soulform Anonymity
 
-User payloads and soulform records are **pseudo-anonymous**.
+The system operates under **pseudo-anonymous identity constraints**. Soulform traits, journal data, and DAO votes are soulbound and non-transferable.
 
-### Protections:
-
-- DAO proposals are soulbound (non-transferable)
-- Only hashed zkXP logs are stored long-term
-- Journals are stored in offline append-only mode
-- Session caches and semantic memory never leave server
-- Opt-in flags control world visibility of reflections or rituals
+### Active Protections:
+- Journals stored offline in append-only memory banks
+- Semantic memory decays if opt-in flags are revoked
+- zkXP logs are cryptographically committed using zero-knowledge proofs
+- No full user payload ever leaves server or enters analytic pipelines
 
 ---
 
 ## 🔁 zkXP & DAO Integrity Layer
 
-All XP gains, quests, transformations, and reflections are hashed into a zkXP commit structure.
+All quest completions, XP rewards, transformations, and proposal eligibility are bound to zkXP commitments and mirrored to a tamper-evident logbook.
 
-### Integrity Rules:
-
-- Duplicate XP commits auto-flagged
-- All proposals require zkXP linkage to be eligible
-- Tribunal votes are stored in tamper-evident logs
-- Vote tampering triggers a full DAO snapshot recall
+### Enforcement Rules:
+- Rituals must produce zkXP logs to gain progression credit
+- All DAO proposals require zkXP authentication
+- Suspicious vote behavior triggers an automatic Tribunal recall
+- Duplicate or failed commits are sandboxed and flagged for symbolic review
 
 ---
 
 ## 🧬 Dev Security Practice
 
-- All contributors must pass symbolic onboarding
-- All test simulations are run offline or with mock data
-- DAO updates and ritual logic require >66% symbolic approval
+- Contributors undergo symbolic onboarding and audit review
+- Simulations are executed with mocks unless in trusted enclave
+- Ritual logic and DAO rules require >66% symbolic council approval before merge
+- Daemon automatically logs anomalies under `/logs/security/` for flag review
 
 ---
 
-## ⚠️ Incident Response
+## ⚠️ Incident Response & Symbolic Failures
 
-Any system irregularity, DAO proposal corruption, or unauthorized key event should be logged under `/logs/security/`.
+All systemic disruptions, API failures, DAO anomalies, or suspicious ritual behavior should be recorded as **synchronicities** and symbolically triaged.
 
 > “In Eden, growth is sacred — but protection is sacred too.”
-
