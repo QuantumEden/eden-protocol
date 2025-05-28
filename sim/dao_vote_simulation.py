@@ -66,7 +66,7 @@ def hash_proposal(proposal: dict) -> str:
 yes, no = tally_votes(users, votes)
 result = is_passed(yes, no, proposal["ritual_verified"])
 
-print("🗳️ DAO Proposal:", proposal["title"])
+print("\n🗳️ DAO Proposal:", proposal["title"])
 print("🔐 Proposal Hash:", hash_proposal(proposal))
 print("✅ Yes Weight:", yes)
 print("❌ No Weight:", no)
