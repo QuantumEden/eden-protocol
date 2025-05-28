@@ -1,5 +1,3 @@
-# /sim/quest_generation_simulation.py
-
 """
 Eden Protocol Quest Simulation — Phase 11 Test Harness
 
@@ -15,10 +13,9 @@ Connects:
 - schema validation (optional)
 """
 
+import json
 from src.ai.quest_generator import generate_symbolic_quest
 from src.ai.quest_difficulty_calculator import calculate_resistance_curve
-import json
-
 
 def simulate_user_quest(user_id: str, archetype: str, trait_xp: dict):
     # Choose weakest trait as focus
@@ -29,12 +26,12 @@ def simulate_user_quest(user_id: str, archetype: str, trait_xp: dict):
     print(f"⚔️ Weakest Trait: {weakest_trait} | XP total: {total_xp}")
 
     resistance_curve = calculate_resistance_curve(trait_xp)
-    print("🧠 Resistance Curve:", resistance_curve)
+    print("\n🧠 Resistance Curve:")
+    print(json.dumps(resistance_curve, indent=2))
 
     quest = generate_symbolic_quest(user_id, archetype, weakest_trait, total_xp)
     print("\n🧾 Generated Quest Payload:")
     print(json.dumps(quest, indent=2))
-
 
 if __name__ == "__main__":
     sample_user = {
