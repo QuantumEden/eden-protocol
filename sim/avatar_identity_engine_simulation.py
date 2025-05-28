@@ -1,10 +1,20 @@
-import sys, os
+"""
+Avatar Identity Engine Simulation – Eden Protocol
+
+Simulates the generation of avatars based on psychometric profiles
+using the identity engine to validate symbolic consistency.
+"""
+
+import sys
+import os
+import json
+
+# 🧠 Patch module path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
-import json
 from avatar_identity_engine.identity_engine import generate_avatar
 
-# Simulated user profiles for identity engine test
+# 🧬 Sample user psychometric profiles
 sample_profiles = [
     {
         "mbti": "ISTP",
@@ -38,9 +48,9 @@ sample_profiles = [
     }
 ]
 
-print("\n=== Avatar Identity Engine Simulation ===\n")
+# 🔁 Run simulation
+print("\n🎭 Avatar Identity Engine Simulation\n" + "—" * 50)
 for i, profile in enumerate(sample_profiles):
-    print(f"--- Profile {i+1}: {profile['mbti']} ---")
+    print(f"\n🧾 Profile {i+1} — {profile['mbti']}")
     avatar = generate_avatar(profile)
     print(json.dumps(avatar, indent=2))
-    print("\n")
