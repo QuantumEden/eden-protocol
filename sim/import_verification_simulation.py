@@ -3,10 +3,12 @@
 # Detects outdated or incorrect import paths and suggests updates
 
 import os
+from datetime import datetime
 
 # === Constants ===
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SCRIPT_NAME = "import_verification_simulation.py"
+SKIP_DIRS = {'.git', '__pycache__'}
 
 # === Rules to Audit ===
 AUDIT_RULES = [
@@ -29,12 +31,16 @@ AUDIT_RULES = [
 ]
 
 flagged_files = []
+scanned_count = 0
 
 def scan_python_files():
-    for dirpath, _, filenames in os.walk(REPO_ROOT):
+    global scanned_count
+    for dirpath, dirnames, filenames in os.walk(REPO_ROOT):
+        dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
         for fname in filenames:
             if fname.endswith(".py") and fname != SCRIPT_NAME:
                 full_path = os.path.join(dirpath, fname)
+                scanned_count += 1
                 try:
                     with open(full_path, "r", encoding="utf-8") as f:
                         content = f.read()
@@ -51,11 +57,13 @@ def scan_python_files():
 
 # === Execution ===
 if __name__ == "__main__":
-    print("\n🔍 Running Eden Protocol Import Path Diagnostic...\n")
+    print(f"\n🔍 Eden Protocol Import Path Diagnostic – {datetime.utcnow().isoformat()}Z\n")
     scan_python_files()
 
+    print(f"🗂️  Scanned {scanned_count} Python files\n")
+
     if flagged_files:
-        print("🚨 Import issues found:\n")
+        print("🚨 Import issues detected:\n")
         for entry in flagged_files:
             print(f" - {entry['file']}")
             print(f"   ⛔ Uses: {entry['bad']}")
