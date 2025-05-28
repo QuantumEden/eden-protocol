@@ -1,5 +1,5 @@
 # api/tests/test_tree_api.py
-# Eden Protocol – Tree of Life API Tests
+# Eden Protocol – Tree of Life API Tests (Updated for Synchronicity Model)
 
 from fastapi.testclient import TestClient
 from api.main import app
@@ -12,51 +12,61 @@ def get_auth_header():
         "username": "seer",
         "password": "eden123"
     })
+    assert login.status_code == 200
     token = login.json()["access_token"]
     return {"Authorization": f"Bearer {token}"}
 
 
 def test_get_tree():
     headers = get_auth_header()
-    response = client.get("/api/tree/seer_alch_011", headers=headers)
-    assert response.status_code == 200
-    assert "discipline" in response.json()
+    r = client.get("/api/tree/seer_alch_011", headers=headers)
+    assert r.status_code == 200
+    body = r.json()
+    assert isinstance(body, dict)
+    assert "discipline" in body
 
 
 def test_trait_growth():
     headers = get_auth_header()
-    response = client.put("/api/tree/seer_alch_011/trait", json={
+    r = client.put("/api/tree/seer_alch_011/trait", json={
         "trait": "resilience",
         "amount": 7
     }, headers=headers)
-    assert response.status_code == 200
-    assert response.json()["resilience"] >= 7
+    assert r.status_code == 200
+    body = r.json()
+    assert body["resilience"] >= 7
 
 
 def test_decay():
     headers = get_auth_header()
-    response = client.post("/api/tree/seer_alch_011/decay", json={
+    r = client.post("/api/tree/seer_alch_011/decay", json={
         "decay_map": {
             "expression": 3,
             "physical_care": 2
         }
     }, headers=headers)
-    assert response.status_code == 200
-    assert "expression" in response.json()
+    assert r.status_code == 200
+    body = r.json()
+    assert "expression" in body
+    assert isinstance(body["expression"], int)
 
 
 def test_health_check():
     headers = get_auth_header()
-    response = client.get("/api/tree/seer_alch_011/health", headers=headers)
-    assert response.status_code == 200
-    assert "health_score" in response.json()
+    r = client.get("/api/tree/seer_alch_011/health", headers=headers)
+    assert r.status_code == 200
+    body = r.json()
+    assert "health_score" in body
+    assert isinstance(body["health_score"], (int, float))
 
 
 def test_disclosure_reflection():
     headers = get_auth_header()
-    response = client.post("/api/tree/seer_alch_011/reflection", json={
+    r = client.post("/api/tree/seer_alch_011/reflection", json={
         "truth_level": 80,
         "emotional_intensity": 70
     }, headers=headers)
-    assert response.status_code == 200
-    assert "updated_traits" in response.json()
+    assert r.status_code == 200
+    body = r.json()
+    assert "updated_traits" in body
+    assert isinstance(body["updated_traits"], dict)
