@@ -1,5 +1,5 @@
 # api/tests/test_xp_api.py
-# Eden Protocol – XP + MeritCoin API Tests
+# Eden Protocol – XP + MeritCoin API Tests (Updated)
 
 from fastapi.testclient import TestClient
 from api.main import app
@@ -12,6 +12,7 @@ def get_auth_header():
         "username": "seer",
         "password": "eden123"
     })
+    assert login.status_code == 200
     token = login.json()["access_token"]
     return {"Authorization": f"Bearer {token}"}
 
@@ -35,7 +36,10 @@ def test_commit_xp():
         "traits_snapshot": traits_snapshot
     }, headers=headers)
     assert response.status_code == 200
-    assert "commit" in response.json()
+    data = response.json()
+    assert "commit" in data
+    assert "commit_hash" in data["commit"]
+    assert data["commit"]["xp"] == 300
 
 
 def test_disclosure_reward():
@@ -47,7 +51,9 @@ def test_disclosure_reward():
         "traits_snapshot": traits_snapshot
     }, headers=headers)
     assert response.status_code == 200
-    assert "xp_awarded" in response.json()
+    data = response.json()
+    assert "xp_awarded" in data
+    assert data["xp_awarded"] > 0
 
 
 def test_mod_xp_grant():
@@ -58,4 +64,7 @@ def test_mod_xp_grant():
         "traits_snapshot": traits_snapshot
     }, headers=headers)
     assert response.status_code == 200
-    assert "commit" in response.json()
+    data = response.json()
+    assert "commit" in data
+    assert data["commit"]["xp"] == 150
+    assert "mod_validated" in data["commit"]
