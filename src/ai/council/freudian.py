@@ -29,6 +29,13 @@ def freudian_analysis(user_id: str, message: str, context: Optional[str] = None)
             "Our actions are rarely as conscious as we believe. What internal tension hides beneath your words?"
         )
 
+# Registry alias for compatibility
+def interpret(user_id: str, message: str, context: Optional[str] = None) -> str:
+    """
+    Alias function for registry compatibility.
+    """
+    return freudian_analysis(user_id, message, context)
+
 # Example
 if __name__ == "__main__":
     print(freudian_analysis("voidling_003", "My father never listened."))
