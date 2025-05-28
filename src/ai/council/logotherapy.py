@@ -32,6 +32,13 @@ def logotherapy_probe(user_id: str, message: str, context: Optional[str] = None)
             "Every moment contains a question. Not 'Why is this happening?' but 'Who am I becoming through this?'"
         )
 
+# Registry alias for compatibility
+def interpret(user_id: str, message: str, context: Optional[str] = None) -> str:
+    """
+    Alias function for registry compatibility.
+    """
+    return logotherapy_probe(user_id, message, context)
+
 # Example
 if __name__ == "__main__":
     print(logotherapy_probe("alpha_witness", "I don’t see the point of any of this anymore."))
