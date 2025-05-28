@@ -32,6 +32,13 @@ def jungian_reflection(user_id: str, message: str, context: Optional[str] = None
             "Every experience shapes your myth. What role do you feel you're playing in your current story?"
         )
 
+# Registry alias for compatibility
+def interpret(user_id: str, message: str, context: Optional[str] = None) -> str:
+    """
+    Alias function for registry compatibility.
+    """
+    return jungian_reflection(user_id, message, context)
+
 # Example
 if __name__ == "__main__":
     print(jungian_reflection("dreamer_007", "I keep seeing a wolf in my dreams."))
