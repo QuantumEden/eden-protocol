@@ -6,7 +6,7 @@ and dynamically selects appropriate psychologist agents from the Council.
 """
 
 from typing import Optional, Dict, List
-from ai.council import registry
+from . import registry
 
 def emergency_psy_eval(user_id: str, message: str, context: Optional[str] = None) -> Dict[str, str]:
     """
