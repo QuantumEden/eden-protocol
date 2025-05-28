@@ -12,6 +12,7 @@ This simulation runs mock mod entries through:
 
 import sys, os
 import json
+from datetime import datetime
 from jsonschema import validate, ValidationError
 
 # Fix for Codespaces and relative imports
@@ -26,32 +27,52 @@ from dao.mod_registry import is_mod_approved
 MOD_TEST_PATH = "infra/mod_manifest_template.json"
 
 def simulate_mod_activation(manifest_path):
+    print("\n🔧 Mod Validation Simulation – Starting...\n")
+
     try:
         with open(manifest_path, 'r') as f:
             manifest = json.load(f)
 
-        # Step 1 — Schema validation
+        print("📄 Step 1 — Validating mod schema...")
         validate(instance=manifest, schema=mod_manifest)
+        print("✅ Schema validation passed.")
 
-        # Step 2 — DAO approval check
+        required_fields = ["mod_id", "target_trait", "xp_value"]
+        for field in required_fields:
+            if field not in manifest:
+                raise KeyError(f"Missing required manifest field: {field}")
+
+        print(f"\n🛡️ Step 2 — Checking DAO approval for mod: {manifest['mod_id']}...")
         if not is_mod_approved(manifest['mod_id']):
             raise PermissionError("Mod is not DAO-approved.")
+        print("✅ DAO approval granted.")
 
-        # Step 3 — XP validation logic
+        print(f"\n📊 Step 3 — Validating XP: {manifest['xp_value']} for trait: {manifest['target_trait']}")
         validate_xp_from_mod(user_id="test_user", mod_id=manifest['mod_id'], amount=manifest['xp_value'])
+        print("✅ XP validation passed.")
 
-        # Step 4 — Simulate trait effect
+        print(f"\n🌳 Step 4 — Simulating Tree of Life effect on: {manifest['target_trait']}")
         tree = TreeOfLife()
         pre = tree.get_trait(manifest['target_trait'])
-        tree.apply_mod_effect(manifest['target_trait'], manifest['xp_value'], manifest['mod_id'], "test_user")
+        tree.apply_mod_effect(
+            trait=manifest['target_trait'],
+            xp=manifest['xp_value'],
+            mod_id=manifest['mod_id'],
+            user_id="test_user"
+        )
         post = tree.get_trait(manifest['target_trait'])
 
-        print(f"\n✅ Mod simulation successful! {manifest['target_trait']} increased from {pre} to {post}.\n")
+        print(f"\n🎉 Mod successfully simulated at {datetime.utcnow().isoformat()}Z")
+        print(f"Trait '{manifest['target_trait']}' increased from {pre} ➜ {post}\n")
 
     except ValidationError as ve:
-        print("❌ Schema validation failed:", ve.message)
+        print(f"❌ Schema validation failed: {ve.message}")
+    except PermissionError as pe:
+        print(f"⛔ DAO check failed: {str(pe)}")
+    except KeyError as ke:
+        print(f"❗ Manifest key error: {str(ke)}")
     except Exception as e:
-        print("❌ Mod simulation error:", str(e))
+        print(f"💥 Mod simulation error: {str(e)}")
 
 
 if __name__ == "__main__":
