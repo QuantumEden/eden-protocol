@@ -1,11 +1,11 @@
-# src/ai/diagnostic/symbolic_interpreter.py
-
 """
 Symbolic Interpreter – Jungian Classification Engine
 
 Maps runtime exceptions and anomalies to symbolic archetypes
 for synchronicity interpretation by the Daemon and the Jung AI.
 """
+
+from typing import Optional
 
 def classify_exception(e: Exception) -> str:
     """
@@ -21,7 +21,15 @@ def classify_exception(e: Exception) -> str:
     error_str = str(e).lower()
 
     if isinstance(e, ImportError):
+        try:
+            from src.ai.diagnostic.daemon import resolve_import
+            module_name = _extract_module_name_from_import_error(e)
+            if module_name and resolve_import(module_name):
+                return "daemon_import_resolution"
+        except Exception:
+            pass
         return "path_dissonance"
+
     elif isinstance(e, KeyError):
         return "lost_map_piece"
     elif isinstance(e, ValueError):
@@ -38,3 +46,26 @@ def classify_exception(e: Exception) -> str:
         return "ouroboros_loop"
     else:
         return "undefined_synchronicity"
+
+def _extract_module_name_from_import_error(error: ImportError) -> Optional[str]:
+    """
+    Extracts the module name from an ImportError message, if possible.
+
+    Args:
+        error: The ImportError exception
+
+    Returns:
+        The name of the module that failed to import
+    """
+    msg = str(error)
+
+    if "No module named" in msg:
+        parts = msg.split("'")
+        if len(parts) >= 2:
+            return parts[1]
+    elif "cannot import name" in msg and "from" in msg:
+        parts = msg.split("'")
+        if len(parts) >= 4:
+            return parts[3]
+
+    return None
