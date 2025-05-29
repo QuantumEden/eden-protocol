@@ -5,13 +5,12 @@ Provides dynamic import resolution capabilities to the Daemon component,
 allowing it to intercept and resolve import errors at runtime without
 modifying source files.
 """
-
 import sys
 import importlib.abc
 import importlib.util
 import importlib.machinery
 from types import ModuleType
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Tuple, Any
 from pathlib import Path
 
 # Cache for resolved modules to avoid repeated lookups
@@ -27,20 +26,27 @@ class EdenImportFinder(importlib.abc.MetaPathFinder):
     """
     @staticmethod
     def find_spec(fullname: str, path: Optional[List[str]] = None, target: Optional[ModuleType] = None):
+        # Skip if we're already trying to import this module (prevent recursion)
         if fullname in IMPORT_IN_PROGRESS:
             return None
+
+        # Skip if module is already successfully imported or in standard library
         if fullname in sys.modules or not "." in fullname:
             return None
+
+        # Skip third-party packages
         if not fullname.startswith(('src.', 'api.', 'infra.', 'sim.')):
             return None
 
         try:
             IMPORT_IN_PROGRESS.append(fullname)
 
+            # Check if we've already resolved this module
             if fullname in RESOLVED_MODULES:
                 module = RESOLVED_MODULES[fullname]
                 return importlib.machinery.ModuleSpec(fullname, EdenImportLoader(fullname, module))
 
+            # Try to find the module in alternative locations
             module_path = EdenModuleMapper.find_module_path(fullname)
             if module_path:
                 spec = importlib.util.spec_from_file_location(fullname, module_path)
@@ -63,13 +69,14 @@ class EdenImportLoader(importlib.abc.Loader):
     def create_module(self, spec):
         if self.module:
             return self.module
-        return None
+        return None  # Use default module creation
 
     def exec_module(self, module):
         if self.module:
-            return
+            return  # Using cached module
+
         RESOLVED_MODULES[self.fullname] = module
-        ImportErrorHandler.log_resolution(self.fullname, getattr(module, '__file__', 'memory'))
+        ImportErrorHandler.log_resolution(self.fullname, module.__file__ if hasattr(module, '__file__') else "memory")
 
 class EdenModuleMapper:
     """
@@ -83,23 +90,26 @@ class EdenModuleMapper:
         parts = fullname.split('.')
         potential_paths = []
 
-        file_path = '/'.join(parts) + '.py'
-        init_path = '/'.join(parts) + '/__init__.py'
-        potential_paths += [file_path, init_path]
+        # src/module/submodule.py
+        potential_paths.append('/'.join(parts) + '.py')
+        # src/module/submodule/__init__.py
+        potential_paths.append('/'.join(parts) + '/__init__.py')
 
         if len(parts) >= 3:
             alt_path = f"src/{parts[-1]}.py"
-            alt_init = f"src/{parts[-1]}/__init__.py"
-            potential_paths += [alt_path, alt_init]
+            potential_paths.append(alt_path)
+            alt_init_path = f"src/{parts[-1]}/__init__.py"
+            potential_paths.append(alt_init_path)
 
             if len(parts) >= 4:
                 alt_path2 = f"src/{parts[-2]}/{parts[-1]}.py"
-                alt_init2 = f"src/{parts[-2]}/{parts[-1]}/__init__.py"
-                potential_paths += [alt_path2, alt_init2]
+                potential_paths.append(alt_path2)
+                alt_init_path2 = f"src/{parts[-2]}/{parts[-1]}/__init__.py"
+                potential_paths.append(alt_init_path2)
 
         root_dir = Path(__file__).parent.parent.parent.parent
-        for rel_path in potential_paths:
-            full_path = root_dir / rel_path
+        for path in potential_paths:
+            full_path = root_dir / path
             if full_path.exists():
                 MODULE_PATHS[fullname] = str(full_path)
                 return str(full_path)
@@ -112,13 +122,16 @@ class ImportErrorHandler:
     """
     @staticmethod
     def log_resolution(module_name: str, file_path: str):
-        from src.ai.diagnostic.report_adapter import log_sandbox_result
-        log_sandbox_result(
-            success=True,
-            context="Import Resolution",
-            message=f"Dynamically resolved import for {module_name} from {file_path}",
-            symbol="daemon_import_resolution"
-        )
+        try:
+            from src.ai.diagnostic.report_adapter import log_sandbox_result
+            log_sandbox_result(
+                success=True,
+                context="Import Resolution",
+                message=f"Dynamically resolved import for {module_name} from {file_path}",
+                symbol="daemon_import_resolution"
+            )
+        except Exception:
+            pass
 
     @staticmethod
     def notify_eidelon(module_name: str, error_msg: str):
@@ -142,7 +155,6 @@ class ImportErrorHandler:
             return None
 
 def install_import_hooks():
-    """Install the Eden Protocol import hooks into the Python import system."""
     for finder in sys.meta_path:
         if isinstance(finder, EdenImportFinder):
             return
