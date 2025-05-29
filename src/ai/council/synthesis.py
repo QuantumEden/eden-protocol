@@ -8,7 +8,7 @@ into a unified response. Eidelon uses this to balance tone,
 precision, and depth depending on the mode of interpretation.
 """
 
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 
 def synthesize_responses(
@@ -73,3 +73,50 @@ def synthesize_responses(
         ],
         "narrative": " ".join(content for _, content in final)
     }
+
+
+def synthesize_council_response(flags: dict, council_insights: dict, symbolic_feedback: Optional[List] = None) -> str:
+    """
+    Synthesizes diagnostic flags, council insights, and symbolic feedback into a unified response.
+    
+    This is the main integration point between Daemon diagnostics and Council perspectives,
+    creating the final message that Eidelon delivers.
+    
+    Args:
+        flags (dict): Diagnostic flags from the Daemon system
+        council_insights (dict): Insights gathered from various council members
+        symbolic_feedback (list, optional): Results from symbolic execution attempts
+        
+    Returns:
+        str: Synthesized final message for user delivery
+    """
+    # Prepare inputs for the synthesize_responses function
+    inputs = {}
+
+    # Add council insights directly
+    for agent_name, insight in council_insights.items():
+        inputs[agent_name] = {"message": insight, "success": True}
+
+    # Process diagnostic flags if present
+    if flags:
+        flag_message = "System diagnostics indicate: " + ", ".join(f"{k}={v}" for k, v in flags.items())
+        inputs["Diagnostics"] = {"message": flag_message, "success": True}
+
+    # Process symbolic feedback if present
+    if symbolic_feedback:
+        feedback_messages = []
+        for feedback in symbolic_feedback:
+            if isinstance(feedback, dict) and "message" in feedback:
+                feedback_messages.append(feedback["message"])
+            elif isinstance(feedback, str):
+                feedback_messages.append(feedback)
+
+        if feedback_messages:
+            symbolic_message = "Symbolic execution results: " + " ".join(feedback_messages)
+            inputs["Symbolic"] = {"message": symbolic_message, "success": True}
+
+    # Use the existing synthesize_responses function to combine everything
+    synthesis_result = synthesize_responses(inputs, mode="balanced")
+
+    # Return the narrative as the final message
+    return synthesis_result.get("narrative", "No insights available at this time.")
