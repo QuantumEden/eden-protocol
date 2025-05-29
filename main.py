@@ -9,6 +9,11 @@ and synthesizes the insight through Eidelon (Unified Self).
 Designed for symbolic testing, debugging, and enlightenment.
 """
 
+# 🛠 Bootstrap the Daemon first to activate dynamic import healing
+from src.ai.diagnostic.daemon_bootstrap import bootstrap_daemon
+bootstrap_daemon()
+
+# 🌌 Now load all other components after import hooks are in place
 from src.ai.diagnostic.daemon import run_diagnostic_daemon, get_latest_flags
 from src.eidelon.eidelon_core import generate_eidelon_insight
 
