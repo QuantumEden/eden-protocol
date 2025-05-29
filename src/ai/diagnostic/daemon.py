@@ -7,10 +7,18 @@ to detect instability, ritual breaches, or therapeutic stagnation.
 
 from datetime import datetime
 from typing import Dict, List, Optional
+
+# Initialize dynamic import healing
+from src.ai.diagnostic.daemon_bootstrap import bootstrap_daemon
+from src.ai.diagnostic.import_hook import install_import_hooks, ImportErrorHandler
+from src.ai.diagnostic.import_resolver import ImportResolver
+
+bootstrap_daemon()
+install_import_hooks()
+
+# Core dependencies
 from src.ai.support.emotion_memory import get_emotion_history
 from api.services.chat_service import CHAT_SESSIONS
-
-# 🔮 Symbolic Daemon Modules (to be generated)
 from src.ai.diagnostic.sandbox_executor import try_symbolic_execution
 from src.ai.diagnostic.report_adapter import log_sandbox_result
 
@@ -21,6 +29,8 @@ def run_diagnostic_daemon(user_id: str) -> List[Dict]:
     Executes a diagnostic sweep of the user’s session history and emotion log.
     Returns list of flags if anomalies are detected.
     """
+    install_import_hooks()
+
     flags = []
     emotion_log = get_emotion_history(user_id)
 
@@ -69,7 +79,40 @@ def attempt_runtime_patch(symbolic_plan: str, context: str, user_id: Optional[st
     )
     return result
 
+def resolve_import(module_name: str, function_name: Optional[str] = None) -> bool:
+    """
+    Attempt to resolve a missing import dynamically.
+
+    Args:
+        module_name: The name of the module to resolve
+        function_name: Optional name of a specific function to ensure exists
+
+    Returns:
+        True if resolution was successful, False otherwise
+    """
+    try:
+        module = ImportResolver.resolve_missing_module(module_name)
+        if not module:
+            return False
+
+        if function_name and not hasattr(module, function_name):
+            def placeholder_function(*args, **kwargs):
+                log_sandbox_result(
+                    success=False,
+                    context="Function Placeholder",
+                    message=f"Placeholder for {module_name}.{function_name} was called",
+                    symbol="daemon_function_placeholder"
+                )
+                return None
+
+            ImportResolver.inject_function(module_name, function_name, placeholder_function)
+
+        return True
+    except Exception:
+        return False
+
 # Example
 if __name__ == "__main__":
+    bootstrap_daemon()
     flags = run_diagnostic_daemon("seer_beta")
     print("🧪 Diagnostic Flags:", flags)
