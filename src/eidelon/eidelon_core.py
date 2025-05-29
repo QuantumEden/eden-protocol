@@ -76,6 +76,29 @@ def invoke_eidelon(user_id: str, context: str, symbolic_plan: Optional[str] = No
     }
 
 
+def generate_eidelon_insight(user_id: str, context: str = "general_insight", message: str = None) -> str:
+    """
+    Wrapper function for invoke_eidelon that simplifies the interface for main.py.
+
+    This function serves as the primary entry point for generating insights from the Eidelon system.
+    It calls the more detailed invoke_eidelon function and returns just the final message.
+
+    Args:
+        user_id (str): ID of the user seeking insight
+        context (str, optional): Context for the insight generation. Defaults to "general_insight".
+        message (str, optional): User message to analyze. Defaults to None.
+
+    Returns:
+        str: The synthesized insight message from Eidelon
+    """
+    result = invoke_eidelon(
+        user_id=user_id,
+        context=context,
+        message=message
+    )
+    return result.get("message", "No insight available at this time.")
+
+
 # 🔥 Optional CLI run
 if __name__ == "__main__":
     output = invoke_eidelon(
