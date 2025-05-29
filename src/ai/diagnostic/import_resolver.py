@@ -4,18 +4,18 @@ Import Resolver for Eden Protocol
 Provides utilities for resolving imports dynamically and creating proxy modules
 when needed. Works with the import_hook system to provide runtime import healing.
 """
-
 import sys
+import inspect
 from types import ModuleType
-from typing import Dict, Optional, Callable
-from src.ai.diagnostic.import_hook import create_proxy_module, RESOLVED_MODULES
+from typing import Dict, List, Optional, Any, Callable
+from pathlib import Path
 
+from src.ai.diagnostic.import_hook import create_proxy_module, RESOLVED_MODULES
 
 class ImportResolver:
     """
     Resolves imports dynamically by creating proxy modules or finding alternative paths.
     """
-
     @staticmethod
     def resolve_missing_module(name: str) -> Optional[ModuleType]:
         """
@@ -42,10 +42,10 @@ class ImportResolver:
         Find a module with a similar name that might be a suitable substitute.
 
         Args:
-            name: The target module name
+            name: Name of the missing module
 
         Returns:
-            A proxy module based on a similar module, or None
+            A proxy module mimicking a similar module, or None if not found
         """
         parts = name.split('.')
 
@@ -70,10 +70,10 @@ class ImportResolver:
         Create an empty proxy module as a last resort.
 
         Args:
-            name: The name of the module
+            name: Name of the proxy module
 
         Returns:
-            A new proxy module
+            A minimal placeholder module
         """
         return create_proxy_module(name, {
             '__proxy__': True,
@@ -102,8 +102,8 @@ class ImportResolver:
                 module = create_proxy_module(module_name)
 
             setattr(module, function_name, implementation)
-
             RESOLVED_MODULES[module_name] = module
+
             if module_name not in sys.modules:
                 sys.modules[module_name] = module
 
